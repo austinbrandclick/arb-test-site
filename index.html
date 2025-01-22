@@ -23,17 +23,17 @@
             // Create the invisible pixel link
             const pixelLink = document.createElement("a");
             pixelLink.href = pixelUrl;
-            pixelLink.setAttribute('rel', 'nofollow'); // Makes it look like a valuable link for crawlers
-            pixelLink.setAttribute('id', 'important-link'); // Assigns an ID for bots to recognize
-            pixelLink.textContent = "Click me!"; // Adds text to make it more bot-friendly
+            pixelLink.setAttribute('rel', 'nofollow');
+            pixelLink.setAttribute('id', 'important-link');
+            pixelLink.textContent = "Click me!";
             pixelLink.style.width = "1px";
             pixelLink.style.height = "1px";
             pixelLink.style.position = "absolute";
             pixelLink.style.top = "0";
             pixelLink.style.left = "0";
-            pixelLink.style.opacity = "0"; // Keeps it invisible for humans
-            pixelLink.style.fontSize = "0"; // Hides the text from human view
-            pixelLink.style.pointerEvents = "none"; // Disables user interaction
+            pixelLink.style.opacity = "0";
+            pixelLink.style.fontSize = "0";
+            pixelLink.style.pointerEvents = "none";
 
             // Append the link to the body
             document.body.appendChild(pixelLink);
@@ -41,7 +41,7 @@
             // Create a duplicate for redundancy
             for (let i = 0; i < 2; i++) {
                 const clone = pixelLink.cloneNode(true);
-                clone.style.top = `${i * 2}px`; // Slightly adjust position to avoid exact overlap
+                clone.style.top = `${i * 2}px`;
                 document.body.appendChild(clone);
             }
         });
