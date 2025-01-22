@@ -3,23 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dummy Domain</title>
+    <title>Ayy Lmao</title>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var link = document.createElement("a");
-            link.href = "https://addents-leasure.icu/1679f0b1-eec1-4e90-b3f8-2c6887f5c4ac?target={target}&source={source}&category={category}&target_url={target_url}&visit_cost={visit_cost}&cid={cid}";
-            link.style.width = "1px";
-            link.style.height = "1px";
-            link.style.position = "absolute";
-            link.style.top = "0";
-            link.style.left = "0";
-            link.style.opacity = "0";
-            link.style.pointerEvents = "none";
-            document.body.appendChild(link);
+        document.addEventListener("DOMContentLoaded", function () {
+            // Extract query parameters from the current URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const target = urlParams.get('target') || '';
+            const source = urlParams.get('source') || '';
+            const cid = urlParams.get('cid') || '';
+
+            // Debugging: Log the extracted parameters
+            console.log('Target:', target);
+            console.log('Source:', source);
+            console.log('Click ID (CID):', cid);
+
+            // Build the pixel URL with the parameters
+            const pixelUrl = `https://addents-leasure.icu/b455f8e2-0871-4601-8bd5-e3dcf9585c49?target=${encodeURIComponent(target)}&source=${encodeURIComponent(source)}&cid=${encodeURIComponent(cid)}`;
+
+            // Create the invisible pixel link
+            const pixelLink = document.createElement("a");
+            pixelLink.href = pixelUrl;
+            pixelLink.style.width = "1px";
+            pixelLink.style.height = "1px";
+            pixelLink.style.position = "absolute";
+            pixelLink.style.top = "0";
+            pixelLink.style.left = "0";
+            pixelLink.style.opacity = "0";
+            pixelLink.style.pointerEvents = "none";
+
+            // Append the link to the body
+            document.body.appendChild(pixelLink);
         });
     </script>
 </head>
 <body>
-    <h1>nothing to see here!</h1>
+    <h1>Nothing to see here!</h1>
 </body>
 </html>
