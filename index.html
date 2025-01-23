@@ -12,9 +12,20 @@
             background-color: #1d1e20;
             color: #e4e7ea;
             display: flex;
+            flex-direction: column; /* Stacks the logo and search bar vertically */
             justify-content: center;
             align-items: center;
             height: 100vh;
+        }
+
+        /* Style for the logo */
+        .logo-container {
+            margin-bottom: 20px; /* Space between the logo and search bar */
+        }
+
+        .logo {
+            max-width: 200px; /* Adjust the width of the logo */
+            height: auto; /* Maintain aspect ratio */
         }
 
         /* Center the Google Custom Search box */
@@ -122,6 +133,11 @@
     </script>
 </head>
 <body>
+    <!-- Logo -->
+    <div class="logo-container">
+        <img src="sitelogo.png" alt="Search Logo" class="logo">
+    </div>
+
     <!-- Google Custom Search Box -->
     <div class="gcse-container">
         <div class="gcse-searchbox-only"></div>
