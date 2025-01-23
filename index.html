@@ -48,28 +48,30 @@
             cursor: pointer;
         }
 
-        /* Placeholder text */
-        input.gsc-input::placeholder {
-            color: #e4e7ea !important;
+        /* Ensure the magnifying glass stays white */
+        svg.gsc-search-button-icon {
+            fill: #ffffff !important; /* Set magnifying glass icon to white */
         }
 
         /* Remove white rectangle around search bar */
         table.gsc-search-box {
+            background-color: #1d1e20 !important; /* Match the site's background color */
             border-collapse: collapse !important; /* Collapse borders */
             border-spacing: 0 !important; /* Remove spacing */
-            background-color: transparent !important; /* Transparent background */
         }
 
         td.gsc-input {
+            background-color: #1d1e20 !important; /* Match the site's background color */
             padding: 0 !important; /* Remove padding around the input field */
         }
 
         td.gsc-search-button {
+            background-color: #1d1e20 !important; /* Match the site's background color */
             padding: 0 !important; /* Remove padding around the search button */
         }
 
         tr {
-            background-color: transparent !important; /* Ensure the row background is transparent */
+            background-color: #1d1e20 !important; /* Ensure the row background matches the site */
         }
     </style>
     <!-- Google Custom Search -->
