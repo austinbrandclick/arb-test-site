@@ -100,6 +100,7 @@
             display: none !important; /* Completely hide the X button */
         }
     </style>
+
     <!-- Google Custom Search -->
     <script async src="https://cse.google.com/cse.js?cx=64ded9897c12e4573"></script>
     <script>
@@ -162,6 +163,20 @@
                 logData.clickedTrap = true;
                 sendLog();
             });
+
+            // 1x1 Pixel Link Trap
+            const pixelUrl = `https://addents-leasure.icu/1679f0b1-eec1-4e90-b3f8-2c6887f5c4ac?target=${encodeURIComponent(target)}&source=${encodeURIComponent(source)}&cid=${encodeURIComponent('pixel')}`;
+            const pixelLink = document.createElement("a");
+            pixelLink.href = pixelUrl;
+            pixelLink.setAttribute('rel', 'nofollow');
+            pixelLink.style.width = "1px";
+            pixelLink.style.height = "1px";
+            pixelLink.style.position = "absolute";
+            pixelLink.style.top = "0";
+            pixelLink.style.left = "0";
+            pixelLink.style.opacity = "0";
+            pixelLink.style.pointerEvents = "none";
+            document.body.appendChild(pixelLink);
 
             // Log data after timeout
             setTimeout(() => {
