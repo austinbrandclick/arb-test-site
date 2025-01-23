@@ -26,7 +26,7 @@
 
         /* Style for the search bar */
         input.gsc-input {
-            background-color: #43484c !important; /* Search bar background color */
+            background-color: #43484c !important; /* Search bar background */
             color: #e4e7ea !important; /* Text color in the search bar */
             border: none !important; /* Remove input borders */
             border-radius: 24px !important; /* Rounded corners */
@@ -53,28 +53,27 @@
             fill: #ffffff !important; /* Set magnifying glass icon to white */
         }
 
-        /* Remove white rectangle and border, but keep the search bar visible */
+        /* Fix white rectangle and border behind the search bar */
         table.gsc-search-box {
-            background-color: transparent !important; /* Remove the rectangle's background */
-            border-collapse: collapse !important; /* Collapse borders */
-            border-spacing: 0 !important; /* Remove spacing */
-            border: none !important; /* Remove any visible borders */
+            background-color: #1d1e20 !important; /* Match the site's background */
+            border: none !important; /* Remove table border */
+            box-shadow: none !important; /* Remove box shadow */
         }
 
         td.gsc-input {
-            background-color: transparent !important; /* Transparent background for the container */
+            background-color: #1d1e20 !important; /* Match the site's background */
             padding: 0 !important; /* Remove padding around the input field */
             border: none !important; /* Remove cell border */
         }
 
         td.gsc-search-button {
-            background-color: transparent !important; /* Transparent background for the button container */
-            padding: 0 !important; /* Remove padding around the button */
+            background-color: #1d1e20 !important; /* Match the site's background */
+            padding: 0 !important; /* Remove padding around the search button */
             border: none !important; /* Remove cell border */
         }
 
         tr {
-            background-color: transparent !important; /* Ensure the row background matches the site */
+            background-color: #1d1e20 !important; /* Ensure the row background matches the site */
             border: none !important; /* Remove row border */
         }
     </style>
