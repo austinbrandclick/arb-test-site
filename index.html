@@ -6,11 +6,11 @@
     <title>Search Results</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', Arial, sans-serif;
             margin: 0;
             padding: 20px;
-            background-color: #f8f9fa;
-            color: #202124;
+            background-color: #1d1d1d;
+            color: #e4e7ea;
         }
 
         /* Search bar container */
@@ -22,10 +22,17 @@
             width: 100%;
             max-width: 600px;
             padding: 10px;
-            border: 1px solid #dfe1e5;
+            border: 1px solid #43484c;
             border-radius: 24px;
             font-size: 16px;
             outline: none;
+            background-color: #43484c;
+            color: #e4e7ea;
+        }
+
+        /* Placeholder color in search bar */
+        .search-bar::placeholder {
+            color: #e4e7ea;
         }
 
         /* About X results */
@@ -41,8 +48,8 @@
         }
 
         .result-link {
-            font-size: 16px;
-            color: #1a0dab;
+            font-size: 12px;
+            color: #88befa;
             text-decoration: none;
             cursor: pointer;
         }
@@ -53,7 +60,7 @@
 
         .result-title {
             font-size: 20px;
-            color: #1a0dab;
+            color: #88befa;
             margin: 0;
             cursor: pointer;
         }
@@ -63,7 +70,8 @@
         }
 
         .result-description {
-            color: #4d5156;
+            font-size: 14px;
+            color: #e4e7ea;
             margin: 5px 0 0;
         }
     </style>
@@ -113,7 +121,7 @@
 <body>
     <!-- Search Bar -->
     <div class="search-container">
-        <input type="text" class="search-bar" placeholder="Search..." readonly>
+        <input type="text" class="search-bar" placeholder="Search...">
     </div>
 
     <!-- Results Info -->
