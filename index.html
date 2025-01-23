@@ -53,27 +53,33 @@
             fill: #ffffff !important; /* Set magnifying glass icon to white */
         }
 
-        /* Remove white rectangle and border */
-        table.gsc-search-box {
-            background-color: #1d1e20 !important; /* Match the site's background to remove the rectangle */
-            border: 1px solid #1d1e20 !important; /* Match border to background to hide it */
-            border-collapse: collapse !important; /* Remove extra space */
-            border-spacing: 0 !important; /* Remove spacing */
+        /* Fix the evil white rectangle and its border */
+        table.gsc-input {
+            background-color: #1d1e20 !important; /* Match background to site color */
+            border: none !important; /* Remove table border */
+            box-shadow: none !important; /* Remove any shadows */
         }
 
         td.gsc-input {
-            background-color: #1d1e20 !important; /* Transparent background for input container */
-            border: none !important; /* Remove border for the input container */
+            background-color: #1d1e20 !important; /* Match background to site color */
+            border: none !important; /* Remove any border on the cell */
         }
 
-        td.gsc-search-button {
-            background-color: #1d1e20 !important; /* Transparent background for the button container */
-            border: none !important; /* Remove border for the button container */
+        table.gstl_50 {
+            background-color: #1d1e20 !important; /* Match background to site color */
+            border: none !important; /* Remove table border */
+            box-shadow: none !important; /* Remove any shadows */
         }
 
         tr {
             background-color: #1d1e20 !important; /* Transparent row background */
             border: none !important; /* Remove row border */
+        }
+
+        td.gsib_a,
+        td.gsib_b {
+            background-color: #1d1e20 !important; /* Match background to site color */
+            border: none !important; /* Remove any borders */
         }
     </style>
     <!-- Google Custom Search -->
