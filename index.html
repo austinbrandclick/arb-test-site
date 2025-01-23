@@ -8,15 +8,33 @@
         body {
             font-family: 'Roboto', Arial, sans-serif;
             margin: 0;
-            padding: 20px;
-            background-color: #1d1d1d;
+            padding: 0;
+            background-color: #1d1e20;
             color: #e4e7ea;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
-        /* Google Custom Search Container */
+        /* Center the Google Custom Search box */
         .gcse-container {
-            max-width: 600px;
-            margin: 0 auto 20px;
+            text-align: center;
+        }
+
+        /* Style for the search bar */
+        input.gsc-input {
+            background-color: #43484c !important; /* Search bar background */
+            color: #e4e7ea !important; /* Text color in the search bar */
+            border: none !important; /* Remove borders */
+            border-radius: 24px !important; /* Rounded corners */
+            padding: 10px 20px !important; /* Add padding */
+            font-size: 16px !important; /* Adjust font size */
+        }
+
+        /* Style for the search button */
+        input.gsc-search-button {
+            display: none !important; /* Hide the default search button */
         }
     </style>
     <!-- Google Custom Search -->
