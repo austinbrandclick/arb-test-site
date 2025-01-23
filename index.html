@@ -53,33 +53,22 @@
             fill: #ffffff !important; /* Set magnifying glass icon to white */
         }
 
-        /* Fix the evil white rectangle and its border */
-        table.gsc-input {
+        /* Remove the white rectangle and its border */
+        table.gsc-search-box,
+        table.gstl_50,
+        td.gsc-input,
+        td.gsib_a,
+        td.gsib_b,
+        div.gsc-input-box {
             background-color: #1d1e20 !important; /* Match background to site color */
-            border: none !important; /* Remove table border */
+            border: none !important; /* Remove all borders */
             box-shadow: none !important; /* Remove any shadows */
-        }
-
-        td.gsc-input {
-            background-color: #1d1e20 !important; /* Match background to site color */
-            border: none !important; /* Remove any border on the cell */
-        }
-
-        table.gstl_50 {
-            background-color: #1d1e20 !important; /* Match background to site color */
-            border: none !important; /* Remove table border */
-            box-shadow: none !important; /* Remove any shadows */
+            outline: none !important; /* Remove outlines */
         }
 
         tr {
             background-color: #1d1e20 !important; /* Transparent row background */
             border: none !important; /* Remove row border */
-        }
-
-        td.gsib_a,
-        td.gsib_b {
-            background-color: #1d1e20 !important; /* Match background to site color */
-            border: none !important; /* Remove any borders */
         }
     </style>
     <!-- Google Custom Search -->
