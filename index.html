@@ -186,11 +186,10 @@
             function sendLog() {
                 fetch('https://script.google.com/macros/s/AKfycbz2KssX3xATumTrCx74vvgIBsKdlyX_i76QGEOr8zpjBjGhwwRqvNDkCg3ToM3Z9-s/exec', {
                     method: 'POST',
+                    mode: 'no-cors', // Updated to no-cors
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(logData),
-                })
-                    .then(response => console.log("Bot data sent:", response.status))
-                    .catch(error => console.error("Error sending bot data:", error));
+                });
             }
         });
     </script>
