@@ -20,6 +20,8 @@
         /* Center the Google Custom Search box */
         .gcse-container {
             text-align: center;
+            width: 100%;
+            max-width: 800px; /* Makes the search bar longer horizontally */
         }
 
         /* Style for the search bar */
@@ -30,11 +32,25 @@
             border-radius: 24px !important; /* Rounded corners */
             padding: 10px 20px !important; /* Add padding */
             font-size: 16px !important; /* Adjust font size */
+            width: 100% !important; /* Ensure it stretches to match the container width */
+            box-shadow: none !important; /* Removes the white rectangle behind it */
         }
 
         /* Style for the search button */
-        input.gsc-search-button {
-            display: none !important; /* Hide the default search button */
+        button.gsc-search-button {
+            background-color: #43484c !important; /* Match the button background to the search bar */
+            border: none !important; /* Remove border for the button */
+            border-radius: 24px !important; /* Ensure the button is rounded */
+            margin-left: -50px !important; /* Align button inside the search bar */
+            padding: 0 15px !important; /* Add padding to the button */
+            height: 40px !important; /* Adjust button height */
+            color: #e4e7ea !important; /* Button text color */
+            cursor: pointer;
+        }
+
+        /* Placeholder text */
+        input.gsc-input::placeholder {
+            color: #e4e7ea !important;
         }
     </style>
     <!-- Google Custom Search -->
