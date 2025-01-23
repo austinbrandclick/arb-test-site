@@ -33,7 +33,7 @@
             padding: 10px 20px !important; /* Add padding */
             font-size: 16px !important; /* Adjust font size */
             width: 100% !important; /* Ensure it stretches to match the container width */
-            box-shadow: none !important; /* Removes the white rectangle behind it */
+            box-shadow: none !important; /* Removes box shadow */
         }
 
         /* Style for the search button */
@@ -51,6 +51,25 @@
         /* Placeholder text */
         input.gsc-input::placeholder {
             color: #e4e7ea !important;
+        }
+
+        /* Remove white rectangle around search bar */
+        table.gsc-search-box {
+            border-collapse: collapse !important; /* Collapse borders */
+            border-spacing: 0 !important; /* Remove spacing */
+            background-color: transparent !important; /* Transparent background */
+        }
+
+        td.gsc-input {
+            padding: 0 !important; /* Remove padding around the input field */
+        }
+
+        td.gsc-search-button {
+            padding: 0 !important; /* Remove padding around the search button */
+        }
+
+        tr {
+            background-color: transparent !important; /* Ensure the row background is transparent */
         }
     </style>
     <!-- Google Custom Search -->
