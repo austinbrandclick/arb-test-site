@@ -53,29 +53,22 @@
             fill: #ffffff !important; /* Set magnifying glass icon to white */
         }
 
-        /* Set background and border color for white rectangle */
-        table.gsc-search-box {
-            background-color: #1d1e20 !important; /* Match the site's background color */
-            border-collapse: collapse !important; /* Collapse borders */
-            border-spacing: 0 !important; /* Remove spacing */
-            border: 2px solid #1d1e20 !important; /* Match border color to background */
-        }
-
-        td.gsc-input {
-            background-color: #1d1e20 !important; /* Match the site's background color */
-            padding: 0 !important; /* Remove padding around the input field */
-            border: 2px solid #1d1e20 !important; /* Match border color to background */
-        }
-
-        td.gsc-search-button {
-            background-color: #1d1e20 !important; /* Match the site's background color */
-            padding: 0 !important; /* Remove padding around the search button */
-            border: 2px solid #1d1e20 !important; /* Match border color to background */
-        }
-
+        /* Remove white rectangle and force background colors */
+        table.gsc-search-box,
+        td.gsc-input,
+        td.gsc-search-button,
         tr {
-            background-color: #1d1e20 !important; /* Ensure the row background matches the site */
-            border: 2px solid #1d1e20 !important; /* Match row border color to background */
+            background-color: #1d1e20 !important; /* Match the site's background color */
+            border: none !important; /* Remove any visible borders */
+            border-color: #1d1e20 !important; /* If border exists, match it to the background */
+            box-shadow: none !important; /* Remove box shadow */
+        }
+
+        /* Additional fallback: Force transparent borders */
+        table.gsc-search-box * {
+            background-color: #1d1e20 !important; /* Match site's background color */
+            border: none !important;
+            border-color: #1d1e20 !important;
         }
     </style>
     <!-- Google Custom Search -->
