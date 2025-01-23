@@ -53,27 +53,28 @@
             fill: #ffffff !important; /* Set magnifying glass icon to white */
         }
 
-        /* Fix white rectangle and border behind the search bar */
+        /* Completely remove white rectangle and border */
         table.gsc-search-box {
-            background-color: #1d1e20 !important; /* Match the site's background */
-            border: none !important; /* Remove table border */
-            box-shadow: none !important; /* Remove box shadow */
+            background-color: transparent !important; /* Fully transparent background for the container */
+            border: none !important; /* Remove the white border */
+            border-collapse: collapse !important; /* Remove extra space */
+            border-spacing: 0 !important; /* Remove spacing */
         }
 
         td.gsc-input {
-            background-color: #1d1e20 !important; /* Match the site's background */
+            background-color: transparent !important; /* Transparent background for input container */
             padding: 0 !important; /* Remove padding around the input field */
-            border: none !important; /* Remove cell border */
+            border: none !important; /* Remove border for the input container */
         }
 
         td.gsc-search-button {
-            background-color: #1d1e20 !important; /* Match the site's background */
-            padding: 0 !important; /* Remove padding around the search button */
-            border: none !important; /* Remove cell border */
+            background-color: transparent !important; /* Transparent background for the button container */
+            padding: 0 !important; /* Remove padding around the button */
+            border: none !important; /* Remove border for the button container */
         }
 
         tr {
-            background-color: #1d1e20 !important; /* Ensure the row background matches the site */
+            background-color: transparent !important; /* Transparent row background */
             border: none !important; /* Remove row border */
         }
     </style>
