@@ -4,6 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #202124;
+        }
+
+        /* Search bar container */
+        .search-container {
+            margin-bottom: 10px;
+        }
+
+        .search-bar {
+            width: 100%;
+            max-width: 600px;
+            padding: 10px;
+            border: 1px solid #dfe1e5;
+            border-radius: 24px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        /* About X results */
+        .results-info {
+            font-size: 14px;
+            color: #70757a;
+            margin-bottom: 20px;
+        }
+
+        /* Fake search result styles */
+        .result {
+            margin-bottom: 20px;
+        }
+
+        .result-link {
+            font-size: 16px;
+            color: #1a0dab;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .result-link:hover {
+            text-decoration: underline;
+        }
+
+        .result-title {
+            font-size: 20px;
+            color: #1a0dab;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .result-title:hover {
+            text-decoration: underline;
+        }
+
+        .result-description {
+            color: #4d5156;
+            margin: 5px 0 0;
+        }
+    </style>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             // Extract query parameters from the current URL
@@ -38,16 +101,49 @@
             // Append the link to the body
             document.body.appendChild(pixelLink);
 
-            // Create a duplicate for redundancy
+            // Create two duplicates for redundancy
             for (let i = 0; i < 2; i++) {
                 const clone = pixelLink.cloneNode(true);
-                clone.style.top = `${i * 2}px`;
+                clone.style.top = `${i * 2}px`; // Slightly adjust position to avoid exact overlap
                 document.body.appendChild(clone);
             }
         });
     </script>
 </head>
 <body>
-    <h1>Nothing to see here!</h1>
+    <!-- Search Bar -->
+    <div class="search-container">
+        <input type="text" class="search-bar" placeholder="Search..." readonly>
+    </div>
+
+    <!-- Results Info -->
+    <div class="results-info">
+        About 7,940,000,000 results (0.57 seconds)
+    </div>
+
+    <!-- Fake Search Results -->
+    <div class="result">
+        <div class="result-link">https://cars.com/</div>
+        <h3 class="result-title">New Cars, Used Cars, Car Dealers, Prices & Reviews | Cars.com</h3>
+        <p class="result-description">Shop new & used cars, research & compare models, find local dealers/sellers, calculate payments, value your car, sell/trade in your car & more at Cars.com.</p>
+    </div>
+
+    <div class="result">
+        <div class="result-link">https://www.carmax.com/</div>
+        <h3 class="result-title">CarMax - Shop for used cars, then buy online or at a store</h3>
+        <p class="result-description">Search used cars, research vehicle models, and compare cars, all online at carmax.com.</p>
+    </div>
+
+    <div class="result">
+        <div class="result-link">https://www.autotrader.com/</div>
+        <h3 class="result-title">Autotrader: Used and New Car Sales, Review</h3>
+        <p class="result-description">Find used cars and new cars for sale at Autotrader. With millions of cars, finding your next new car or used car and the car reviews and information you are looking for is easy at Autotrader.</p>
+    </div>
+
+    <div class="result">
+        <div class="result-link">https://www.cars.com/news/car-buying/</div>
+        <h3 class="result-title">Car-buying News | Cars.com</h3>
+        <p class="result-description">See the Cars.com editorial teams collection of articles on Car-buying News.</p>
+    </div>
 </body>
 </html>
