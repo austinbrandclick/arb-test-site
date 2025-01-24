@@ -56,8 +56,10 @@
             border-radius: 24px !important; /* Rounded corners */
             padding: 10px 20px !important; /* Add padding */
             font-size: 16px !important; /* Adjust font size */
-            width: 100% !important; /* Ensure it stretches to match the container width */
+            width: calc(100% - 50px) !important; /* Adjust for button width */
             box-shadow: none !important; /* Removes box shadow */
+            display: inline-block; /* Aligns input field with the button */
+            vertical-align: middle; /* Align input field vertically with the button */
         }
 
         /* Updated style for the search button */
@@ -65,7 +67,7 @@
             background-color: #43484c !important; /* Match the button background to the search bar */
             border: none !important; /* Remove border for the button */
             border-radius: 24px !important; /* Ensure the button is rounded */
-            margin: 0 !important; /* Remove the margin */
+            margin: 0 !important; /* Remove margins */
             padding: 0 !important; /* Adjust padding to align properly */
             height: 40px !important; /* Adjust button height */
             width: 40px !important; /* Adjust button width to fit inside the search bar */
@@ -80,7 +82,7 @@
         svg.gsc-search-button-icon {
             fill: #ffffff !important; /* Set magnifying glass icon to white */
             height: 18px !important; /* Adjust size */
-            width: 18px !important;
+            width: 18px !important; /* Adjust size */
         }
 
         /* Remove the white rectangle and its border */
@@ -120,7 +122,7 @@
                 return params;
             }
 
-            // Extract URL and referer parameters
+            // Extract URL and referrer parameters
             const currentParams = getUrlParams(window.location.href);
             let target = currentParams.target || 'unknown';
             let source = currentParams.source || 'unknown';
