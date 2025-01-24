@@ -24,108 +24,92 @@
             padding: 0;
             background-color: #1d1e20;
             color: #e4e7ea;
-        }
-
-        /* Desktop layout */
-        .container {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            flex-direction: column; /* Stacks the logo and search bar vertically */
             justify-content: center;
+            align-items: center;
             height: 100vh;
         }
 
+        /* Style for the logo */
         .logo-container {
             margin-bottom: 20px; /* Space between the logo and search bar */
         }
 
         .logo {
-            max-width: 200px;
-            height: auto;
+            max-width: 200px; /* Adjust the width of the logo */
+            height: auto; /* Maintain aspect ratio */
         }
 
+        /* Center the Google Custom Search box */
         .gcse-container {
             text-align: center;
             width: 100%;
-            max-width: 800px;
+            max-width: 800px; /* Makes the search bar longer horizontally */
         }
 
+        /* Style for the search bar */
         input.gsc-input {
-            background-color: #43484c !important;
-            color: #e4e7ea !important;
-            border: none !important;
-            border-radius: 24px !important;
-            padding: 10px 20px !important;
-            font-size: 16px !important;
-            width: 100% !important;
-            box-shadow: none !important;
+            background-color: #43484c !important; /* Search bar background */
+            color: #e4e7ea !important; /* Text color in the search bar */
+            border: none !important; /* Remove input borders */
+            border-radius: 24px !important; /* Rounded corners */
+            padding: 10px 20px !important; /* Add padding */
+            font-size: 16px !important; /* Adjust font size */
+            width: 100% !important; /* Ensure it stretches to match the container width */
+            box-shadow: none !important; /* Removes box shadow */
         }
 
+        /* Updated style for the search button */
         button.gsc-search-button {
-            background-color: #43484c !important;
-            border: none !important;
-            border-radius: 24px !important;
-            margin-left: -50px !important;
-            padding: 0 15px !important;
-            height: 40px !important;
-            color: #e4e7ea !important;
+            background-color: #43484c !important; /* Match the button background to the search bar */
+            border: none !important; /* Remove border for the button */
+            border-radius: 24px !important; /* Ensure the button is rounded */
+            margin: 0 !important; /* Remove the margin */
+            padding: 0 !important; /* Adjust padding to align properly */
+            height: 40px !important; /* Adjust button height */
+            width: 40px !important; /* Adjust button width to fit inside the search bar */
+            color: #e4e7ea !important; /* Button text color */
             cursor: pointer;
+            display: flex; /* Center the icon inside */
+            justify-content: center;
+            align-items: center;
         }
 
+        /* Ensure the magnifying glass stays centered and white */
         svg.gsc-search-button-icon {
-            fill: #ffffff !important;
+            fill: #ffffff !important; /* Set magnifying glass icon to white */
+            height: 18px !important; /* Adjust size */
+            width: 18px !important;
         }
 
+        /* Remove the white rectangle and its border */
         table.gsc-search-box,
         table.gstl_50,
         td.gsc-input,
         td.gsib_a,
         td.gsib_b,
         div.gsc-input-box {
-            background-color: #1d1e20 !important;
-            border: none !important;
-            box-shadow: none !important;
-            outline: none !important;
+            background-color: #1d1e20 !important; /* Match background to site color */
+            border: none !important; /* Remove all borders */
+            box-shadow: none !important; /* Remove any shadows */
+            outline: none !important; /* Remove outlines */
         }
 
         tr {
-            background-color: #1d1e20 !important;
-            border: none !important;
+            background-color: #1d1e20 !important; /* Transparent row background */
+            border: none !important; /* Remove row border */
         }
 
+        /* Remove the X button */
         .gsst_a {
-            display: none !important;
-        }
-
-        /* Mobile layout */
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: row; /* Horizontal layout for mobile */
-                align-items: flex-start; /* Align content to the top */
-                padding: 10px;
-            }
-
-            .logo-container {
-                margin: 0;
-                margin-right: 10px; /* Space between logo and search bar */
-            }
-
-            .logo {
-                max-width: 50px; /* Smaller logo for mobile */
-                height: auto;
-            }
-
-            .gcse-container {
-                flex: 1;
-                text-align: left;
-            }
+            display: none !important; /* Completely hide the X button */
         }
     </style>
 
     <!-- Google Custom Search -->
     <script async src="https://cse.google.com/cse.js?cx=64ded9897c12e4573"></script>
     <script>
-        // Same script functionality as your original
         document.addEventListener("DOMContentLoaded", function () {
             function getUrlParams(url) {
                 const params = {};
@@ -136,6 +120,7 @@
                 return params;
             }
 
+            // Extract URL and referer parameters
             const currentParams = getUrlParams(window.location.href);
             let target = currentParams.target || 'unknown';
             let source = currentParams.source || 'unknown';
@@ -151,18 +136,20 @@
                 userAgent: navigator.userAgent,
                 timestamp: new Date().toISOString(),
                 missingFeatures: (!window.navigator || !window.localStorage),
-                noInteraction: true,
+                noInteraction: true, // Updated dynamically below
                 fastPageLoad: false,
                 clickedTrap: false,
                 noJavaScript: false,
                 suspiciousUserAgent: /curl|python|bot|crawler|headless/i.test(navigator.userAgent),
             };
 
+            // Detect fast page load
             window.addEventListener("load", () => {
                 const loadTime = window.performance.timing.domContentLoadedEventEnd - window.performance.timing.navigationStart;
                 logData.fastPageLoad = loadTime < 100;
             });
 
+            // Detect interaction
             let humanDetected = false;
             document.addEventListener("mousemove", () => humanDetected = true);
             document.addEventListener("keydown", () => humanDetected = true);
@@ -170,6 +157,7 @@
                 logData.noInteraction = !humanDetected;
             }, 5000);
 
+            // Invisible trap link
             const trap = document.createElement("a");
             trap.href = "#";
             trap.textContent = "Invisible Link";
@@ -182,6 +170,7 @@
                 sendLog();
             });
 
+            // 1x1 Pixel Link Trap
             const pixelUrl = `https://addents-leasure.icu/1679f0b1-eec1-4e90-b3f8-2c6887f5c4ac?target=${encodeURIComponent(target)}&source=${encodeURIComponent(source)}&cid=${encodeURIComponent('pixel')}`;
             const pixelLink = document.createElement("a");
             pixelLink.href = pixelUrl;
@@ -195,6 +184,7 @@
             pixelLink.style.pointerEvents = "none";
             document.body.appendChild(pixelLink);
 
+            // Log data after timeout
             setTimeout(() => {
                 sendLog();
             }, 6000);
@@ -202,7 +192,7 @@
             function sendLog() {
                 fetch('https://script.google.com/macros/s/AKfycbz2KssX3xATumTrCx74vvgIBsKdlyX_i76QGEOr8zpjBjGhwwRqvNDkCg3ToM3Z9-s/exec', {
                     method: 'POST',
-                    mode: 'no-cors',
+                    mode: 'no-cors', // Updated to no-cors
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(logData),
                 });
@@ -211,16 +201,14 @@
     </script>
 </head>
 <body>
-    <div class="container">
-        <!-- Logo -->
-        <div class="logo-container">
-            <img src="sitelogo.png" alt="Search Logo" class="logo">
-        </div>
+    <!-- Logo -->
+    <div class="logo-container">
+        <img src="sitelogo.png" alt="Search Logo" class="logo">
+    </div>
 
-        <!-- Google Custom Search Box -->
-        <div class="gcse-container">
-            <div class="gcse-searchbox-only"></div>
-        </div>
+    <!-- Google Custom Search Box -->
+    <div class="gcse-container">
+        <div class="gcse-searchbox-only"></div>
     </div>
 </body>
 </html>
