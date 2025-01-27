@@ -63,7 +63,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             color: white;
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             gap: 15px;
         }
 
@@ -71,10 +71,9 @@
         .carousel {
             position: relative;
             overflow: hidden;
-            width: 33%; /* 1/3 of the container's width */
+            width: 33%;
             height: 300px;
             border-radius: 15px;
-            flex-shrink: 0; /* Prevents it from shrinking */
         }
 
         .carousel-inner {
@@ -163,22 +162,6 @@
         .carousel-dots button.active {
             background-color: rgb(255, 255, 255);
         }
-
-        /* Placeholder for right-side content */
-        .right-content {
-            flex: 1; /* Take up remaining space */
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .right-content-item {
-            background-color: #444;
-            border-radius: 10px;
-            padding: 10px;
-            color: white;
-            text-align: center;
-        }
     </style>
 </head>
 <body>
@@ -194,15 +177,19 @@
     </div>
 
     <div class="content-container">
-        <!-- Carousel occupies left 1/3rd -->
         <div class="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item" style="background-image: url('images/article1.jpg');">
-                    <div class="overlay">
-                        <h2>China Built a Gigantic Lift to Navigate Ships</h2>
-                        <span>Tekniq (Video) &bull; 9h ago</span>
-                    </div>
+                <!-- Article 1 -->
+                <div class="carousel-item" style="background-image: url('2025modely.avif');">
+                    <a href="https://addents-leasure.icu/db08c8f0-3300-4ff6-b246-28d5710e293d?target={target}&source={source}&category={category}&target_url={target_url}&visit_cost={visit_cost}&cid={cid}" 
+                       target="_blank" style="display: block; width: 100%; height: 100%; text-decoration: none;">
+                        <div class="overlay">
+                            <h2>Tesla Unveils the New 2025 Model Y</h2>
+                            <span>Wealthpulse &bull; 9h ago</span>
+                        </div>
+                    </a>
                 </div>
+                <!-- Placeholder Article 2 -->
                 <div class="carousel-item" style="background-image: url('images/article2.jpg');">
                     <div class="overlay">
                         <h2>Another Amazing Article</h2>
@@ -216,12 +203,6 @@
                 <button class="active"></button>
                 <button></button>
             </div>
-        </div>
-
-        <!-- Placeholder for right-side content -->
-        <div class="right-content">
-            <div class="right-content-item">Ad/Article 1</div>
-            <div class="right-content-item">Ad/Article 2</div>
         </div>
     </div>
 
