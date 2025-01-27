@@ -216,13 +216,18 @@
                 });
             }
 
+            // Updated Google Search button functionality
             document.getElementById("googleSearch").addEventListener("click", () => {
-                document.querySelector("input.gsc-input").dispatchEvent(new Event("change"));
+                const searchButton = document.querySelector("button.gsc-search-button");
+                searchButton.click();
             });
 
+            // Updated I'm Feeling Lucky button functionality
             document.getElementById("feelingLucky").addEventListener("click", () => {
-                document.querySelector("input.gsc-input").value = "best cars 2025";
-                document.querySelector("input.gsc-input").dispatchEvent(new Event("change"));
+                const searchInput = document.querySelector("input.gsc-input");
+                searchInput.value = "best cars 2025";
+                const searchButton = document.querySelector("button.gsc-search-button");
+                searchButton.click();
             });
         });
     </script>
