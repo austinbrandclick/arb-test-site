@@ -9,10 +9,14 @@
             margin: 0;
             padding: 0;
             background: transparent;
+            font-family: Arial, sans-serif;
+        }
+
+        .search-bar-wrapper {
+            margin: 20px auto 0;
+            width: 100%;
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
         }
 
         .search-bar-container {
@@ -48,13 +52,15 @@
     </style>
 </head>
 <body>
-    <div class="search-bar-container">
-        <form action="https://cse.google.com/cse" method="get" style="display: flex; align-items: center; width: 100%;">
-            <input type="text" name="q" placeholder="Search the web">
-            <button type="submit">
-                <img src="https://cdn-icons-png.flaticon.com/512/49/49116.png" alt="Search">
-            </button>
-        </form>
+    <div class="search-bar-wrapper">
+        <div class="search-bar-container">
+            <form action="https://cse.google.com/cse" method="get" style="display: flex; align-items: center; width: 100%;">
+                <input type="text" name="q" placeholder="Search the web">
+                <button type="submit">
+                    <img src="https://cdn-icons-png.flaticon.com/512/49/49116.png" alt="Search">
+                </button>
+            </form>
+        </div>
     </div>
 </body>
 </html>
