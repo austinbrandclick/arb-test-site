@@ -63,7 +63,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             color: white;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             gap: 15px;
         }
 
@@ -109,16 +109,6 @@
         .carousel-item .overlay span {
             font-size: 12px;
             color: #ccc;
-        }
-
-        /* Stock Widget Styling */
-        .stock-widget {
-            width: 33%;
-            background-color: rgb(40, 40, 40);
-            border-radius: 15px;
-            padding: 15px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            height: 300px;
         }
 
         /* Navigation Buttons */
@@ -187,7 +177,6 @@
     </div>
 
     <div class="content-container">
-        <!-- Carousel -->
         <div class="carousel">
             <div class="carousel-inner">
                 <!-- Article 1 -->
@@ -240,36 +229,6 @@
                 <button></button>
             </div>
         </div>
-
-        <!-- Stock Widget -->
-        <div class="stock-widget">
-            <!-- Finlogix Widget BEGIN-->
-            <div class="finlogix-container"></div>
-            <script type="text/javascript" src="https://widget.finlogix.com/Widget.js"></script>
-            <script type="text/javascript">
-                Widget.init({
-                    widgetId: "593d7f5b-097b-4551-8508-4487ba1ce21c",
-                    type: "SymbolChartList",
-                    language: "en",
-                    showBrand: true,
-                    isShowTradeButton: true,
-                    isShowBeneathLink: true,
-                    isShowDataFromACYInfo: true,
-                    symbolIDs: [
-                        52,
-                        10007,
-                        10029,
-                        10021,
-                        66,
-                        10014,
-                        10004
-                    ],
-                    isAdaptive: true,
-                    withBorderBox: true
-                });
-            </script>
-            <!-- Finlogix Widget END-->
-        </div>
     </div>
 
     <script>
@@ -311,4 +270,12 @@
             dot.addEventListener('click', () => {
                 currentIndex = index;
                 updateCarousel(index);
-               
+                resetAutoScroll();
+            });
+        });
+
+        // Initialize auto-scroll with a 5-second interval
+        autoScrollTimer = setInterval(autoScroll, 5000);
+    </script>
+</body>
+</html>
