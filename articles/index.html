@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="sitelogofavicon.png" type="image/png">
+
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('background-image.jpg'); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            color: #e4e7ea;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: rgba(29, 30, 32, 0.8); /* Semi-transparent background */
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            max-height: 40px;
+            margin-right: 10px;
+        }
+
+        .search-bar {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        input.gsc-input {
+            width: 80%;
+            max-width: 800px;
+            padding: 10px;
+            border-radius: 24px;
+            border: none;
+            background-color: #43484c;
+            color: #e4e7ea;
+            font-size: 16px;
+        }
+
+        button.gsc-search-button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #43484c;
+            border: none;
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        button.gsc-search-button:hover {
+            background-color: rgb(0, 177, 249);
+        }
+
+        svg.gsc-search-button-icon {
+            fill: #000000;
+            height: 18px;
+            width: 18px;
+        }
+
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .category {
+            padding: 10px 20px;
+            border-radius: 20px;
+            background-color: rgba(67, 72, 76, 0.8);
+            color: #e4e7ea;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .category:hover {
+            background-color: rgb(0, 177, 249);
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: rgba(67, 72, 76, 0.9);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0 0 10px;
+        }
+
+        .card-description {
+            font-size: 14px;
+            margin: 0;
+        }
+    </style>
+
+    <!-- Google Custom Search -->
+    <script async src="https://cse.google.com/cse.js?cx=64ded9897c12e4573"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-container">
+            <img src="sitelogo.png" alt="Site Logo" class="logo">
+        </div>
+        <div class="search-bar">
+            <input class="gsc-input" placeholder="Search articles...">
+            <button class="gsc-search-button">
+                <svg class="gsc-search-button-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C8.01 14 6 11.99 6 9.5S8.01 5 10.5 5 15 7.01 15 9.5 12.99 14 10.5 14z"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <div class="categories">
+        <a href="#" class="category">Finance</a>
+        <a href="#" class="category">Travel</a>
+        <a href="#" class="category">Auto</a>
+        <a href="#" class="category">Lifestyle</a>
+        <a href="#" class="category">Health</a>
+        <a href="#" class="category">Tech</a>
+    </div>
+
+    <div class="content">
+        <div class="card">
+            <img src="example-image1.jpg" alt="Example Article">
+            <div class="card-content">
+                <h3 class="card-title">Example Title</h3>
+                <p class="card-description">Brief description of the article goes here...</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="example-image2.jpg" alt="Example Article">
+            <div class="card-content">
+                <h3 class="card-title">Example Title</h3>
+                <p class="card-description">Brief description of the article goes here...</p>
+            </div>
+        </div>
+        <!-- Add more cards here -->
+    </div>
+</body>
+</html>
