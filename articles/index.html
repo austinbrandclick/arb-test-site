@@ -50,6 +50,23 @@
         .search-bar-container button img {
             height: 20px;
         }
+
+        /* The scrollable container */
+        .content-container {
+            margin: 20px auto 0;
+            width: 90%;
+            max-width: 1200px;
+            background-color: rgb(33, 33, 33);
+            border-radius: 20px;
+            overflow-y: auto;
+            max-height: 80vh;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
     </style>
 </head>
 <body>
@@ -62,6 +79,15 @@
                 </button>
             </form>
         </div>
+    </div>
+
+    <div class="content-container">
+        <!-- Placeholder for future articles -->
+        <div>Placeholder for Article 1</div>
+        <div>Placeholder for Article 2</div>
+        <div>Placeholder for Article 3</div>
+        <div>Placeholder for Article 4</div>
+        <div>Placeholder for Article 5</div>
     </div>
 </body>
 </html>
