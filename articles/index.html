@@ -212,56 +212,86 @@
     </div>
 
     <div class="content-container">
-        <div class="carousel">
-            <div class="carousel-inner">
-                <!-- Article 1 -->
-                <div class="carousel-item" style="background-image: url('2025modely.avif');">
-                    <a href="https://wealthpulse.com/model-y/?target={var1}&source={var2}&cid={clickid}" 
-                       target="_blank">
-                        <div class="overlay">
-                            <h2>Tesla Unveils the New 2025 Model Y</h2>
-                            <span>Wealthpulse &bull; 9h ago</span>
-                        </div>
-                    </a>
+        <div class="carousel-trending-container" style="display: flex; justify-content: space-between; align-items: flex-start; gap: 15px;">
+            <!-- Carousel Section -->
+            <div class="carousel" style="width: 65%; height: 300px;">
+                <div class="carousel-inner">
+                    <div class="carousel-item" style="background-image: url('2025modely.avif');">
+                        <a href="https://wealthpulse.com/model-y/?target={var1}&source={var2}&cid={clickid}" target="_blank">
+                            <div class="overlay">
+                                <h2>Tesla Unveils the New 2025 Model Y</h2>
+                                <span>Wealthpulse &bull; 9h ago</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="carousel-item" style="background-image: url('homesauna.avif');">
+                        <a href="https://wealthpulse.com/home-sauna/?target={var1}&source={var2}&cid={clickid}" target="_blank">
+                            <div class="overlay">
+                                <h2>Why Everyone Loves This Home Sauna</h2>
+                                <span>Wealthpulse &bull; 7h ago</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="carousel-item" style="background-image: url('futurhealth.avif');">
+                        <a href="https://www.wealthpulse.com/futurhealth/?target={var1}&source={var2}&cid={clickid}" target="_blank">
+                            <div class="overlay">
+                                <h2>How To Get Ozempic Delivered With FuturHealth</h2>
+                                <span>Wealthpulse &bull; 5h ago</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="carousel-item" style="background-image: url('lasvegas.avif');">
+                        <a href="https://www.wealthpulse.com/vegas/?target={var1}&source={var2}&cid={clickid}" target="_blank">
+                            <div class="overlay">
+                                <h2>Top 5 Hotel Deals From Vegas.com For Super Bowl Weekend</h2>
+                                <span>Wealthpulse &bull; 3h ago</span>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-                <!-- Article 2 -->
-                <div class="carousel-item" style="background-image: url('homesauna.avif');">
-                    <a href="https://wealthpulse.com/home-sauna/?target={var1}&source={var2}&cid={clickid}" 
-                       target="_blank">
-                        <div class="overlay">
-                            <h2>Why Everyone Loves This Home Sauna</h2>
-                            <span>Wealthpulse &bull; 7h ago</span>
-                        </div>
-                    </a>
-                </div>
-                <!-- Article 3 -->
-                <div class="carousel-item" style="background-image: url('futurhealth.avif');">
-                    <a href="https://www.wealthpulse.com/futurhealth/?target={var1}&source={var2}&cid={clickid}" 
-                       target="_blank">
-                        <div class="overlay">
-                            <h2>How To Get Ozempic Delivered With FuturHealth</h2>
-                            <span>Wealthpulse &bull; 5h ago</span>
-                        </div>
-                    </a>
-                </div>
-                <!-- Article 4 -->
-                <div class="carousel-item" style="background-image: url('lasvegas.avif');">
-                    <a href="https://www.wealthpulse.com/vegas/?target={var1}&source={var2}&cid={clickid}" 
-                       target="_blank">
-                        <div class="overlay">
-                            <h2>Top 5 Hotel Deals From Vegas.com For Super Bowl Weekend</h2>
-                            <span>Wealthpulse &bull; 3h ago</span>
-                        </div>
-                    </a>
+                <button class="carousel-button left">&lt;</button>
+                <button class="carousel-button right">&gt;</button>
+                <div class="carousel-dots">
+                    <button class="active"></button>
+                    <button></button>
+                    <button></button>
+                    <button></button>
                 </div>
             </div>
-            <button class="carousel-button left">&lt;</button>
-            <button class="carousel-button right">&gt;</button>
-            <div class="carousel-dots">
-                <button class="active"></button>
-                <button></button>
-                <button></button>
-                <button></button>
+        
+            <!-- Trending Searches Section -->
+            <div class="trending-searches" style="width: 33%; background: rgb(30, 30, 30); border-radius: 10px; padding: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                <h2 style="color: white; font-size: 18px; margin-bottom: 15px;">Trending Searches</h2>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <a href="https://search.yahoo.com/search?p=who+is+playing+in+the+super+bowl" target="_blank" style="text-decoration: none;">
+                        <button style="width: 100%; padding: 10px; border: 2px solid transparent; border-image: linear-gradient(to right, rgb(65, 41, 40), rgb(36, 38, 65)); border-image-slice: 1; border-radius: 10px; background: rgb(30, 30, 30); color: white; font-size: 14px; cursor: pointer; transition: all 0.3s;"
+                            onmouseover="this.style.background='linear-gradient(to right, rgb(65, 41, 40), rgb(36, 38, 65))'; this.style.color='white';"
+                            onmouseout="this.style.background='rgb(30, 30, 30)'; this.style.color='white';">
+                            Who is Playing in the Super Bowl
+                        </button>
+                    </a>
+                    <a href="https://search.yahoo.com/search?p=best+car+lease+deals+2025" target="_blank" style="text-decoration: none;">
+                        <button style="width: 100%; padding: 10px; border: 2px solid transparent; border-image: linear-gradient(to right, rgb(65, 41, 40), rgb(36, 38, 65)); border-image-slice: 1; border-radius: 10px; background: rgb(30, 30, 30); color: white; font-size: 14px; cursor: pointer; transition: all 0.3s;"
+                            onmouseover="this.style.background='linear-gradient(to right, rgb(65, 41, 40), rgb(36, 38, 65))'; this.style.color='white';"
+                            onmouseout="this.style.background='rgb(30, 30, 30)'; this.style.color='white';">
+                            Best Car Lease Deals 2025
+                        </button>
+                    </a>
+                    <a href="https://search.yahoo.com/search?p=file+taxes+for+Free" target="_blank" style="text-decoration: none;">
+                        <button style="width: 100%; padding: 10px; border: 2px solid transparent; border-image: linear-gradient(to right, rgb(65, 41, 40), rgb(36, 38, 65)); border-image-slice: 1; border-radius: 10px; background: rgb(30, 30, 30); color: white; font-size: 14px; cursor: pointer; transition: all 0.3s;"
+                            onmouseover="this.style.background='linear-gradient(to right, rgb(65, 41, 40), rgb(36, 38, 65))'; this.style.color='white';"
+                            onmouseout="this.style.background='rgb(30, 30, 30)'; this.style.color='white';">
+                            File Taxes For Free
+                        </button>
+                    </a>
+                    <a href="https://search.yahoo.com/search?p=highest+yield+savings+accounts+2025" target="_blank" style="text-decoration: none;">
+                        <button style="width: 100%; padding: 10px; border: 2px solid transparent; border-image: linear-gradient(to right, rgb(65, 41, 40), rgb(36, 38, 65)); border-image-slice: 1; border-radius: 10px; background: rgb(30, 30, 30); color: white; font-size: 14px; cursor: pointer; transition: all 0.3s;"
+                            onmouseover="this.style.background='linear-gradient(to right, rgb(65, 41, 40), rgb(36, 38, 65))'; this.style.color='white';"
+                            onmouseout="this.style.background='rgb(30, 30, 30)'; this.style.color='white';">
+                            Highest Yield Savings Accounts 2025
+                        </button>
+                    </a>
+                </div>
             </div>
         </div>
 
