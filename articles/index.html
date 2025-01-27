@@ -235,12 +235,18 @@
         let currentIndex = 0;
         const items = document.querySelectorAll('.carousel-item');
         const dots = document.querySelectorAll('.carousel-dots button');
+        let autoScrollTimer;
 
         function updateCarousel(index) {
             const offset = index * -100;
             document.querySelector('.carousel-inner').style.transform = `translateX(${offset}%)`;
             dots.forEach(dot => dot.classList.remove('active'));
             dots[index].classList.add('active');
+        }
+
+        function resetAutoScroll() {
+            clearInterval(autoScrollTimer);
+            autoScrollTimer = setInterval(autoScroll, 5000);
         }
 
         function autoScroll() {
@@ -251,21 +257,25 @@
         document.querySelector('.carousel-button.left').addEventListener('click', () => {
             currentIndex = (currentIndex - 1 + items.length) % items.length;
             updateCarousel(currentIndex);
+            resetAutoScroll();
         });
 
         document.querySelector('.carousel-button.right').addEventListener('click', () => {
             currentIndex = (currentIndex + 1) % items.length;
             updateCarousel(currentIndex);
+            resetAutoScroll();
         });
 
         dots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
                 currentIndex = index;
                 updateCarousel(index);
+                resetAutoScroll();
             });
         });
 
-        setInterval(autoScroll, 4000);
+        // Initialize auto-scroll with a 5-second interval
+        autoScrollTimer = setInterval(autoScroll, 5000);
     </script>
 </body>
 </html>
