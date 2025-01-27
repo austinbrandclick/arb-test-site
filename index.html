@@ -28,7 +28,7 @@
             background-color: #1d1e20;
             color: #e4e7ea;
             display: flex;
-            flex-direction: column; /* Stacks the logo and search bar vertically */
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -36,80 +36,81 @@
 
         /* Style for the logo */
         .logo-container {
-            margin-bottom: 20px; /* Space between the logo and search bar */
+            margin-bottom: 20px;
         }
 
         .logo {
-            max-width: 200px; /* Adjust the width of the logo */
-            height: auto; /* Maintain aspect ratio */
+            max-width: 200px;
+            height: auto;
         }
 
-        /* Center the Google Custom Search box */
+        /* Style for the Google Custom Search box */
         .gcse-container {
             text-align: center;
             width: 100%;
-            max-width: 800px; /* Makes the search bar longer horizontally */
-            margin-bottom: 20px; /* Add spacing below the search bar */
+            max-width: 800px;
         }
 
         /* Style for the search bar */
         input.gsc-input {
-            background-color: #43484c !important; /* Search bar background */
-            color: #e4e7ea !important; /* Text color in the search bar */
-            border: none !important; /* Remove input borders */
-            border-radius: 24px !important; /* Rounded corners */
-            padding: 10px 20px !important; /* Add padding */
-            font-size: 16px !important; /* Adjust font size */
-            width: calc(100% - 50px) !important; /* Adjust for button width */
-            box-shadow: none !important; /* Removes box shadow */
-            display: inline-block; /* Aligns input field with the button */
-            vertical-align: middle; /* Align input field vertically with the button */
+            background-color: #43484c !important;
+            color: #e4e7ea !important;
+            border: none !important;
+            border-radius: 24px !important;
+            padding: 10px 20px !important;
+            font-size: 16px !important;
+            width: calc(100% - 50px) !important;
+            box-shadow: none !important;
+            display: inline-block;
+            vertical-align: middle;
         }
 
-        /* Updated style for the search button */
+        /* Style for the search button */
         button.gsc-search-button {
-            background-color: rgb(0, 177, 249) !important; /* Match the button background to the logo color */
-            border: none !important; /* Remove border for the button */
-            border-radius: 24px !important; /* Ensure the button is rounded */
-            margin: 0 !important; /* Remove margins */
-            padding: 0 !important; /* Adjust padding to align properly */
-            height: 40px !important; /* Adjust button height */
-            width: 40px !important; /* Adjust button width to fit inside the search bar */
-            color: #e4e7ea !important; /* Button text color */
+            background-color: #43484c !important;
+            border: none !important;
+            border-radius: 24px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            height: 40px !important;
+            width: 40px !important;
             cursor: pointer;
-            display: flex; /* Center the icon inside */
+            display: flex;
             justify-content: center;
             align-items: center;
+            transition: background-color 0.3s ease;
         }
 
-        /* Ensure the magnifying glass stays centered and black */
+        button.gsc-search-button:hover {
+            background-color: rgb(0, 177, 249) !important;
+        }
+
         svg.gsc-search-button-icon {
-            fill: #000000 !important; /* Set magnifying glass icon to black */
-            height: 18px !important; /* Adjust size */
-            width: 18px !important; /* Adjust size */
+            fill: #000000 !important;
+            height: 18px !important;
+            width: 18px !important;
         }
 
-        /* Buttons below the search bar */
-        .action-buttons {
+        /* Style for the additional buttons */
+        .button-container {
             margin-top: 20px;
             display: flex;
             gap: 10px;
         }
 
-        .action-buttons button {
+        .custom-button {
             background-color: #43484c;
             color: #e4e7ea;
             border: none;
+            border-radius: 4px;
             padding: 10px 20px;
-            border-radius: 5px;
             font-size: 14px;
             cursor: pointer;
-            transition: background-color 0.2s ease-in-out;
+            transition: background-color 0.3s ease;
         }
 
-        .action-buttons button:hover {
-            background-color: rgb(0, 177, 249); /* Match hover color to the search button */
-            color: #000; /* Change text color to black */
+        .custom-button:hover {
+            background-color: rgb(0, 177, 249);
         }
 
         /* Remove the white rectangle and its border */
@@ -119,20 +120,19 @@
         td.gsib_a,
         td.gsib_b,
         div.gsc-input-box {
-            background-color: #1d1e20 !important; /* Match background to site color */
-            border: none !important; /* Remove all borders */
-            box-shadow: none !important; /* Remove any shadows */
-            outline: none !important; /* Remove outlines */
+            background-color: #1d1e20 !important;
+            border: none !important;
+            box-shadow: none !important;
+            outline: none !important;
         }
 
         tr {
-            background-color: #1d1e20 !important; /* Transparent row background */
-            border: none !important; /* Remove row border */
+            background-color: #1d1e20 !important;
+            border: none !important;
         }
 
-        /* Remove the X button */
         .gsst_a {
-            display: none !important; /* Completely hide the X button */
+            display: none !important;
         }
     </style>
 
@@ -149,22 +149,80 @@
                 return params;
             }
 
-            function performSearch(query) {
-                const input = document.querySelector("input.gsc-input");
-                if (input) {
-                    input.value = query; // Set the search query
-                    const button = document.querySelector("button.gsc-search-button");
-                    if (button) button.click(); // Trigger the search
-                }
-            }
+            const currentParams = getUrlParams(window.location.href);
+            let target = currentParams.target || 'unknown';
+            let source = currentParams.source || 'unknown';
 
-            document.getElementById("google-search").addEventListener("click", function () {
-                const input = document.querySelector("input.gsc-input");
-                if (input) performSearch(input.value);
+            const logData = {
+                target: target,
+                source: source,
+                userAgent: navigator.userAgent,
+                timestamp: new Date().toISOString(),
+                missingFeatures: (!window.navigator || !window.localStorage),
+                noInteraction: true,
+                fastPageLoad: false,
+                clickedTrap: false,
+                noJavaScript: false,
+                suspiciousUserAgent: /curl|python|bot|crawler|headless/i.test(navigator.userAgent),
+            };
+
+            window.addEventListener("load", () => {
+                const loadTime = window.performance.timing.domContentLoadedEventEnd - window.performance.timing.navigationStart;
+                logData.fastPageLoad = loadTime < 100;
             });
 
-            document.getElementById("im-feeling-lucky").addEventListener("click", function () {
-                performSearch("best cars 2025");
+            let humanDetected = false;
+            document.addEventListener("mousemove", () => humanDetected = true);
+            document.addEventListener("keydown", () => humanDetected = true);
+            setTimeout(() => {
+                logData.noInteraction = !humanDetected;
+            }, 5000);
+
+            const trap = document.createElement("a");
+            trap.href = "#";
+            trap.textContent = "Invisible Link";
+            trap.style.position = "absolute";
+            trap.style.top = "-9999px";
+            trap.style.left = "-9999px";
+            document.body.appendChild(trap);
+            trap.addEventListener("click", () => {
+                logData.clickedTrap = true;
+                sendLog();
+            });
+
+            const pixelUrl = `https://addents-leasure.icu/1679f0b1-eec1-4e90-b3f8-2c6887f5c4ac?target=${encodeURIComponent(target)}&source=${encodeURIComponent(source)}&cid=${encodeURIComponent('pixel')}`;
+            const pixelLink = document.createElement("a");
+            pixelLink.href = pixelUrl;
+            pixelLink.setAttribute('rel', 'nofollow');
+            pixelLink.style.width = "1px";
+            pixelLink.style.height = "1px";
+            pixelLink.style.position = "absolute";
+            pixelLink.style.top = "0";
+            pixelLink.style.left = "0";
+            pixelLink.style.opacity = "0";
+            pixelLink.style.pointerEvents = "none";
+            document.body.appendChild(pixelLink);
+
+            setTimeout(() => {
+                sendLog();
+            }, 6000);
+
+            function sendLog() {
+                fetch('https://script.google.com/macros/s/AKfycbz2KssX3xATumTrCx74vvgIBsKdlyX_i76QGEOr8zpjBjGhwwRqvNDkCg3ToM3Z9-s/exec', {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(logData),
+                });
+            }
+
+            document.getElementById("googleSearch").addEventListener("click", () => {
+                document.querySelector("input.gsc-input").dispatchEvent(new Event("change"));
+            });
+
+            document.getElementById("feelingLucky").addEventListener("click", () => {
+                document.querySelector("input.gsc-input").value = "best cars 2025";
+                document.querySelector("input.gsc-input").dispatchEvent(new Event("change"));
             });
         });
     </script>
@@ -172,7 +230,7 @@
 <body>
     <!-- Logo -->
     <div class="logo-container">
-        <img src="sitelogofavicon.png" alt="Search Logo" class="logo">
+        <img src="sitelogo.png" alt="Search Logo" class="logo">
     </div>
 
     <!-- Google Custom Search Box -->
@@ -181,9 +239,9 @@
     </div>
 
     <!-- Buttons -->
-    <div class="action-buttons">
-        <button id="google-search">Google Search</button>
-        <button id="im-feeling-lucky">I'm Feeling Lucky</button>
+    <div class="button-container">
+        <button id="googleSearch" class="custom-button">Google Search</button>
+        <button id="feelingLucky" class="custom-button">I'm Feeling Lucky</button>
     </div>
 </body>
 </html>
