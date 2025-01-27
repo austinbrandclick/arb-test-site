@@ -49,6 +49,7 @@
             text-align: center;
             width: 100%;
             max-width: 800px; /* Makes the search bar longer horizontally */
+            margin-bottom: 20px; /* Add spacing below the search bar */
         }
 
         /* Style for the search bar */
@@ -88,6 +89,29 @@
             width: 18px !important; /* Adjust size */
         }
 
+        /* Buttons below the search bar */
+        .action-buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-buttons button {
+            background-color: #43484c;
+            color: #e4e7ea;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .action-buttons button:hover {
+            background-color: rgb(0, 177, 249); /* Match hover color to the search button */
+            color: #000; /* Change text color to black */
+        }
+
         /* Remove the white rectangle and its border */
         table.gsc-search-box,
         table.gstl_50,
@@ -125,95 +149,41 @@
                 return params;
             }
 
-            // Extract URL and referrer parameters
-            const currentParams = getUrlParams(window.location.href);
-            let target = currentParams.target || 'unknown';
-            let source = currentParams.source || 'unknown';
-            if (!target || !source) {
-                const referrerParams = getUrlParams(document.referrer);
-                target = target === 'unknown' ? referrerParams.target || 'unknown' : target;
-                source = source === 'unknown' ? referrerParams.source || 'unknown' : source;
+            function performSearch(query) {
+                const input = document.querySelector("input.gsc-input");
+                if (input) {
+                    input.value = query; // Set the search query
+                    const button = document.querySelector("button.gsc-search-button");
+                    if (button) button.click(); // Trigger the search
+                }
             }
 
-            const logData = {
-                target: target,
-                source: source,
-                userAgent: navigator.userAgent,
-                timestamp: new Date().toISOString(),
-                missingFeatures: (!window.navigator || !window.localStorage),
-                noInteraction: true, // Updated dynamically below
-                fastPageLoad: false,
-                clickedTrap: false,
-                noJavaScript: false,
-                suspiciousUserAgent: /curl|python|bot|crawler|headless/i.test(navigator.userAgent),
-            };
-
-            // Detect fast page load
-            window.addEventListener("load", () => {
-                const loadTime = window.performance.timing.domContentLoadedEventEnd - window.performance.timing.navigationStart;
-                logData.fastPageLoad = loadTime < 100;
+            document.getElementById("google-search").addEventListener("click", function () {
+                const input = document.querySelector("input.gsc-input");
+                if (input) performSearch(input.value);
             });
 
-            // Detect interaction
-            let humanDetected = false;
-            document.addEventListener("mousemove", () => humanDetected = true);
-            document.addEventListener("keydown", () => humanDetected = true);
-            setTimeout(() => {
-                logData.noInteraction = !humanDetected;
-            }, 5000);
-
-            // Invisible trap link
-            const trap = document.createElement("a");
-            trap.href = "#";
-            trap.textContent = "Invisible Link";
-            trap.style.position = "absolute";
-            trap.style.top = "-9999px";
-            trap.style.left = "-9999px";
-            document.body.appendChild(trap);
-            trap.addEventListener("click", () => {
-                logData.clickedTrap = true;
-                sendLog();
+            document.getElementById("im-feeling-lucky").addEventListener("click", function () {
+                performSearch("best cars 2025");
             });
-
-            // 1x1 Pixel Link Trap
-            const pixelUrl = `https://addents-leasure.icu/1679f0b1-eec1-4e90-b3f8-2c6887f5c4ac?target=${encodeURIComponent(target)}&source=${encodeURIComponent(source)}&cid=${encodeURIComponent('pixel')}`;
-            const pixelLink = document.createElement("a");
-            pixelLink.href = pixelUrl;
-            pixelLink.setAttribute('rel', 'nofollow');
-            pixelLink.style.width = "1px";
-            pixelLink.style.height = "1px";
-            pixelLink.style.position = "absolute";
-            pixelLink.style.top = "0";
-            pixelLink.style.left = "0";
-            pixelLink.style.opacity = "0";
-            pixelLink.style.pointerEvents = "none";
-            document.body.appendChild(pixelLink);
-
-            // Log data after timeout
-            setTimeout(() => {
-                sendLog();
-            }, 6000);
-
-            function sendLog() {
-                fetch('https://script.google.com/macros/s/AKfycbz2KssX3xATumTrCx74vvgIBsKdlyX_i76QGEOr8zpjBjGhwwRqvNDkCg3ToM3Z9-s/exec', {
-                    method: 'POST',
-                    mode: 'no-cors', // Updated to no-cors
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(logData),
-                });
-            }
         });
     </script>
 </head>
 <body>
     <!-- Logo -->
     <div class="logo-container">
-        <img src="sitelogo.png" alt="Search Logo" class="logo">
+        <img src="sitelogofavicon.png" alt="Search Logo" class="logo">
     </div>
 
     <!-- Google Custom Search Box -->
     <div class="gcse-container">
         <div class="gcse-searchbox-only"></div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="action-buttons">
+        <button id="google-search">Google Search</button>
+        <button id="im-feeling-lucky">I'm Feeling Lucky</button>
     </div>
 </body>
 </html>
