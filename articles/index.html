@@ -162,6 +162,41 @@
         .carousel-dots button.active {
             background-color: rgb(255, 255, 255);
         }
+
+        /* Product Row Styling */
+        .product-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            margin-top: 15px;
+            border-radius: 15px;
+            background: linear-gradient(to right, rgb(65, 41, 40), rgb(36, 38, 65));
+        }
+
+        .product {
+            width: 10%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border-radius: 10px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .product img {
+            width: 100%;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .product-title {
+            padding: 10px;
+            font-size: 12px;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -227,6 +262,42 @@
                 <button></button>
                 <button></button>
                 <button></button>
+            </div>
+        </div>
+
+        <!-- Product Row -->
+        <div class="product-row">
+            <div class="product">
+                <img src="placeholder1.avif" alt="Product 1">
+                <div class="product-title">Product Title 1</div>
+            </div>
+            <div class="product">
+                <img src="placeholder2.avif" alt="Product 2">
+                <div class="product-title">Product Title 2</div>
+            </div>
+            <div class="product">
+                <img src="placeholder3.avif" alt="Product 3">
+                <div class="product-title">Product Title 3</div>
+            </div>
+            <div class="product">
+                <img src="placeholder4.avif" alt="Product 4">
+                <div class="product-title">Product Title 4</div>
+            </div>
+            <div class="product">
+                <img src="placeholder5.avif" alt="Product 5">
+                <div class="product-title">Product Title 5</div>
+            </div>
+            <div class="product">
+                <img src="placeholder6.avif" alt="Product 6">
+                <div class="product-title">Product Title 6</div>
+            </div>
+            <div class="product">
+                <img src="placeholder7.avif" alt="Product 7">
+                <div class="product-title">Product Title 7</div>
+            </div>
+            <div class="product">
+                <img src="placeholder8.avif" alt="Product 8">
+                <div class="product-title">Product Title 8</div>
             </div>
         </div>
     </div>
