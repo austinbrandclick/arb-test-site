@@ -216,10 +216,6 @@
                 });
             }
 
-            // Auto-focus the search input
-            const searchInput = document.querySelector("input.gsc-input");
-            searchInput.focus();
-
             // Updated Google Search button functionality
             document.getElementById("googleSearch").addEventListener("click", () => {
                 const searchButton = document.querySelector("button.gsc-search-button");
@@ -228,6 +224,7 @@
 
             // Updated I'm Feeling Lucky button functionality
             document.getElementById("feelingLucky").addEventListener("click", () => {
+                const searchInput = document.querySelector("input.gsc-input");
                 searchInput.value = "best cars 2025";
                 const searchButton = document.querySelector("button.gsc-search-button");
                 searchButton.click();
