@@ -267,11 +267,14 @@
 
         <!-- Product Row -->
         
-<div style="display: flex; align-items: center; margin-bottom: 15px;">
-    <img src="shoppingtagicon.webp" alt="Icon" style="height: 1em; margin-right: 8px;">
-    <h2 style="margin: 0; color: white; font-size: 16px;">Inspired by your shopping interests</h2>
-</div>
-<div class="product-row">
+        <div class="product-row" style="position: relative;">
+            <!-- Title and Icon -->
+            <div style="position: absolute; top: 10px; left: 15px; display: flex; align-items: center; z-index: 1;">
+                <img src="shoppingtagicon.webp" alt="Icon" style="height: 1em; margin-right: 8px;">
+                <h2 style="margin: 0; color: white; font-size: 16px;">Inspired by your shopping interests</h2>
+            </div>
+        
+            <!-- Products -->
             <div class="product">
                 <a href="https://amazon.com/dp/B09X4L9TDP?maas=maas_adg_api_589221524687419085_static_9_129&ref_=aa_maas&tag=maas&aa_campaignid=lv_LMYlof9A8omq8wD9KR&aa_adgroupid=lv_u9FbykL0XHGI2LhGxr&aa_creativeid=lv_bsM9i6s7W332yB1bSv&m=A3QDBG7S2NQHHP" target="_blank">
                     <img src="digitalframe.avif" alt="Nixplay">
@@ -321,7 +324,6 @@
                 <div class="product-title">TruSkin</div>
             </div>
         </div>
-    </div>
 
     <script>
         let currentIndex = 0;
