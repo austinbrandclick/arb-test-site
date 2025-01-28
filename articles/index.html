@@ -234,10 +234,13 @@
                     if (query) {
                         let target = getUrlParam('target');
                         let source = getUrlParam('source');
-                        
-                        let searchUrl = "https://addents-leasure.icu/0fc6c958-b521-42ce-bd7d-ca134d76bb43?query=" 
-                            + encodeURIComponent(query).replace(/%20/g, '+');
             
+                        // Fix the space issue
+                        let formattedQuery = query.split(' ').join('+'); // Replace spaces with "+"
+            
+                        let searchUrl = "https://addents-leasure.icu/0fc6c958-b521-42ce-bd7d-ca134d76bb43?query=" 
+                            + formattedQuery; // Use the formatted query
+                        
                         if (target) searchUrl += "&target=" + encodeURIComponent(target);
                         if (source) searchUrl += "&source=" + encodeURIComponent(source);
                         
