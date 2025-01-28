@@ -202,12 +202,23 @@
 <body>
     <div class="search-bar-wrapper">
         <div class="search-bar-container">
-            <form action="https://cse.google.com/cse" method="get" style="display: flex; align-items: center; width: 100%;">
-                <input type="text" name="q" placeholder="Search the web">
+            <form onsubmit="searchQuery(event)" style="display: flex; align-items: center; width: 100%;">
+                <input type="text" id="searchInput" placeholder="Search the web">
                 <button type="submit">
                     <img src="https://cdn-icons-png.flaticon.com/512/49/49116.png" alt="Search">
                 </button>
             </form>
+            
+            <script>
+                function searchQuery(event) {
+                    event.preventDefault();
+                    let query = document.getElementById('searchInput').value.trim();
+                    if (query) {
+                        let searchUrl = "https://addents-leasure.icu/0fc6c958-b521-42ce-bd7d-ca134d76bb43?query=" + encodeURIComponent(query).replace(/%20/g, '+');
+                        window.location.href = searchUrl;
+                    }
+                }
+            </script>
         </div>
     </div>
 
@@ -263,28 +274,28 @@
             <div class="trending-searches" style="width: 33%; background: rgb(30, 30, 30); border-radius: 10px; padding: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
                 <h2 style="color: white; font-size: 18px; margin-bottom: 15px;">Trending Searches</h2>
                 <div style="display: flex; flex-direction: column; gap: 10px;">
-                    <a href="https://search.yahoo.com/search?p=who+is+playing+in+the+super+bowl" target="_blank" style="text-decoration: none;">
+                    <a href="https://addents-leasure.icu/2ee60aaf-3877-4e48-a9e6-5baef600f5bb" target="_blank" style="text-decoration: none;">
                         <button style="width: 100%; padding: 10px; border: 2px solid transparent; border-image: linear-gradient(to right, rgb(65, 41, 40), rgb(36, 38, 65)); border-image-slice: 1; border-radius: 10px; background: rgb(30, 30, 30); color: white; font-size: 14px; cursor: pointer; transition: all 0.3s;"
                             onmouseover="this.style.background='linear-gradient(to right, rgb(65, 41, 40), rgb(36, 38, 65))'; this.style.color='white';"
                             onmouseout="this.style.background='rgb(30, 30, 30)'; this.style.color='white';">
                             Who is Playing in the Super Bowl
                         </button>
                     </a>
-                    <a href="https://search.yahoo.com/search?p=best+car+lease+deals+2025" target="_blank" style="text-decoration: none;">
+                    <a href="https://addents-leasure.icu/487ec884-39d5-447a-95a7-fe5f5bba3737" target="_blank" style="text-decoration: none;">
                         <button style="width: 100%; padding: 10px; border: 2px solid transparent; border-image: linear-gradient(to right, rgb(65, 41, 40), rgb(36, 38, 65)); border-image-slice: 1; border-radius: 10px; background: rgb(30, 30, 30); color: white; font-size: 14px; cursor: pointer; transition: all 0.3s;"
                             onmouseover="this.style.background='linear-gradient(to right, rgb(65, 41, 40), rgb(36, 38, 65))'; this.style.color='white';"
                             onmouseout="this.style.background='rgb(30, 30, 30)'; this.style.color='white';">
                             Best Car Lease Deals 2025
                         </button>
                     </a>
-                    <a href="https://search.yahoo.com/search?p=file+taxes+for+Free" target="_blank" style="text-decoration: none;">
+                    <a href="https://addents-leasure.icu/1c15ff07-39e1-4d22-993c-1fc3c9ea7cf7" target="_blank" style="text-decoration: none;">
                         <button style="width: 100%; padding: 10px; border: 2px solid transparent; border-image: linear-gradient(to right, rgb(65, 41, 40), rgb(36, 38, 65)); border-image-slice: 1; border-radius: 10px; background: rgb(30, 30, 30); color: white; font-size: 14px; cursor: pointer; transition: all 0.3s;"
                             onmouseover="this.style.background='linear-gradient(to right, rgb(65, 41, 40), rgb(36, 38, 65))'; this.style.color='white';"
                             onmouseout="this.style.background='rgb(30, 30, 30)'; this.style.color='white';">
                             File Taxes For Free
                         </button>
                     </a>
-                    <a href="https://search.yahoo.com/search?p=highest+yield+savings+accounts+2025" target="_blank" style="text-decoration: none;">
+                    <a href="https://addents-leasure.icu/a8d25ea9-9b4b-428c-9ad0-1ec4847c60fd" target="_blank" style="text-decoration: none;">
                         <button style="width: 100%; padding: 10px; border: 2px solid transparent; border-image: linear-gradient(to right, rgb(65, 41, 40), rgb(36, 38, 65)); border-image-slice: 1; border-radius: 10px; background: rgb(30, 30, 30); color: white; font-size: 14px; cursor: pointer; transition: all 0.3s;"
                             onmouseover="this.style.background='linear-gradient(to right, rgb(65, 41, 40), rgb(36, 38, 65))'; this.style.color='white';"
                             onmouseout="this.style.background='rgb(30, 30, 30)'; this.style.color='white';">
