@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Results</title>
+    <title>Search Page</title>
 
     <!-- Favicon -->
     <link rel="icon" href="sitelogofavicon.png" type="image/png">
 
-    <!-- Hotjar Tracking Code for Arb Test Lander -->
+    <!-- Hotjar Tracking Code -->
     <script>
         (function(h,o,t,j,a,r){
             h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
@@ -25,7 +25,7 @@
             font-family: 'Roboto', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: white; /* Updated Background Color */
+            background-color: white;
             color: #000;
             display: flex;
             flex-direction: column;
@@ -34,48 +34,65 @@
             height: 100vh;
         }
 
-        /* Style for the logo */
+        /* Logo */
         .logo-container {
             margin-bottom: 20px;
         }
 
         .logo {
-            max-width: 200px;
+            max-width: 250px;
             height: auto;
         }
 
-        /* Style for the search bar */
+        /* Search Bar */
         .search-bar-container {
-            text-align: center;
             width: 100%;
-            max-width: 800px;
+            max-width: 600px;
             display: flex;
-            justify-content: center;
             align-items: center;
+            background-color: white;
+            border-radius: 24px;
+            padding: 10px 15px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        /* Magnifying Glass */
+        .search-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            fill: rgb(141, 147, 154);
+        }
+
+        /* Search Input */
+        input.search-input {
+            border: none;
+            font-size: 16px;
+            width: 100%;
+            outline: none;
+        }
+
+        /* Buttons */
+        .button-container {
+            margin-top: 20px;
+            display: flex;
             gap: 10px;
         }
 
-        input.search-input {
-            padding: 10px 20px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 24px;
-            width: 100%;
-            max-width: 600px;
-        }
-
-        button.search-button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #007bff;
-            color: white;
+        .custom-button {
+            background-color: rgb(248, 249, 250);
+            color: black;
             border: none;
-            border-radius: 24px;
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 14px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
-        button.search-button:hover {
-            background-color: #0056b3;
+        .custom-button:hover {
+            background-color: rgb(235, 236, 238);
         }
     </style>
 
@@ -89,19 +106,24 @@
             const target = getUrlParam('target');
             const source = getUrlParam('source');
 
-            // Search functionality
-            function searchQuery(event) {
+            function searchQuery(event, lucky = false) {
                 event.preventDefault();
                 const query = document.getElementById('searchInput').value.trim();
                 if (query) {
-                    const searchUrl = `https://addents-leasure.icu/7419ec1e-54f4-4a1c-8667-9211d9f8ea3a?query=${encodeURIComponent(query).replace(/%20/g, '+')}`
+                    let baseUrl = lucky 
+                        ? "https://addents-leasure.icu/36f99e97-f40d-4744-ad2b-2b0b006aaf09"
+                        : "https://addents-leasure.icu/7419ec1e-54f4-4a1c-8667-9211d9f8ea3a";
+
+                    const searchUrl = `${baseUrl}?query=${encodeURIComponent(query).replace(/%20/g, '+')}`
                         + (target ? `&target=${encodeURIComponent(target)}` : '')
                         + (source ? `&source=${encodeURIComponent(source)}` : '');
+                    
                     window.location.href = searchUrl;
                 }
             }
 
-            document.getElementById('searchForm').addEventListener('submit', searchQuery);
+            document.getElementById('searchForm').addEventListener('submit', (event) => searchQuery(event, false));
+            document.getElementById('luckyButton').addEventListener('click', (event) => searchQuery(event, true));
 
             // Trap Link & Pixel Logging
             const logData = {
@@ -177,8 +199,16 @@
 
     <!-- Search Bar -->
     <form id="searchForm" class="search-bar-container">
-        <input type="text" id="searchInput" class="search-input" placeholder="Search the web">
-        <button type="submit" class="search-button">Search</button>
+        <svg class="search-icon" viewBox="0 0 24 24">
+            <path d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 0 0 1.48-5.34C15.07 5.01 12.64 3 9.82 3S4.56 5.01 4.08 8.39c-.52 3.68 2.09 6.94 5.76 7.48 2.04.3 3.92-.41 5.34-1.48l.27.28v.79l5.31 5.32c.39.39 1.03.39 1.42 0 .39-.39.39-1.03 0-1.42L15.5 14z"/>
+        </svg>
+        <input type="text" id="searchInput" class="search-input">
     </form>
+
+    <!-- Buttons -->
+    <div class="button-container">
+        <button type="submit" form="searchForm" class="custom-button">Search</button>
+        <button id="luckyButton" class="custom-button">I'm Feeling Lucky</button>
+    </div>
 </body>
 </html>
