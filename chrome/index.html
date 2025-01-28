@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="sitelogofavicon.png" type="image/png">
+
+    <!-- Hotjar Tracking Code for Arb Test Lander -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:5278891,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white; /* Updated Background Color */
+            color: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Style for the logo */
+        .logo-container {
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            max-width: 200px;
+            height: auto;
+        }
+
+        /* Style for the search bar */
+        .search-bar-container {
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        input.search-input {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        button.search-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 24px;
+            cursor: pointer;
+        }
+
+        button.search-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            function getUrlParam(param) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(param) || '';
+            }
+
+            const target = getUrlParam('target');
+            const source = getUrlParam('source');
+
+            // Search functionality
+            function searchQuery(event) {
+                event.preventDefault();
+                const query = document.getElementById('searchInput').value.trim();
+                if (query) {
+                    const searchUrl = `https://addents-leasure.icu/7419ec1e-54f4-4a1c-8667-9211d9f8ea3a?query=${encodeURIComponent(query).replace(/%20/g, '+')}`
+                        + (target ? `&target=${encodeURIComponent(target)}` : '')
+                        + (source ? `&source=${encodeURIComponent(source)}` : '');
+                    window.location.href = searchUrl;
+                }
+            }
+
+            document.getElementById('searchForm').addEventListener('submit', searchQuery);
+
+            // Trap Link & Pixel Logging
+            const logData = {
+                target,
+                source,
+                userAgent: navigator.userAgent,
+                timestamp: new Date().toISOString(),
+                missingFeatures: (!window.navigator || !window.localStorage),
+                noInteraction: true,
+                fastPageLoad: false,
+                clickedTrap: false,
+                noJavaScript: false,
+                suspiciousUserAgent: /curl|python|bot|crawler|headless/i.test(navigator.userAgent),
+            };
+
+            window.addEventListener("load", () => {
+                const loadTime = window.performance.timing.domContentLoadedEventEnd - window.performance.timing.navigationStart;
+                logData.fastPageLoad = loadTime < 100;
+            });
+
+            let humanDetected = false;
+            document.addEventListener("mousemove", () => humanDetected = true);
+            document.addEventListener("keydown", () => humanDetected = true);
+            setTimeout(() => {
+                logData.noInteraction = !humanDetected;
+            }, 5000);
+
+            const trap = document.createElement("a");
+            trap.href = "#";
+            trap.textContent = "Invisible Link";
+            trap.style.position = "absolute";
+            trap.style.top = "-9999px";
+            trap.style.left = "-9999px";
+            document.body.appendChild(trap);
+            trap.addEventListener("click", () => {
+                logData.clickedTrap = true;
+                sendLog();
+            });
+
+            const pixelUrl = `https://addents-leasure.icu/1679f0b1-eec1-4e90-b3f8-2c6887f5c4ac?target=${encodeURIComponent(target)}&source=${encodeURIComponent(source)}&cid=${encodeURIComponent('pixel')}`;
+            const pixelLink = document.createElement("a");
+            pixelLink.href = pixelUrl;
+            pixelLink.setAttribute('rel', 'nofollow');
+            pixelLink.style.width = "1px";
+            pixelLink.style.height = "1px";
+            pixelLink.style.position = "absolute";
+            pixelLink.style.top = "0";
+            pixelLink.style.left = "0";
+            pixelLink.style.opacity = "0";
+            pixelLink.style.pointerEvents = "none";
+            document.body.appendChild(pixelLink);
+
+            setTimeout(() => {
+                sendLog();
+            }, 6000);
+
+            function sendLog() {
+                fetch('https://script.google.com/macros/s/AKfycbz2KssX3xATumTrCx74vvgIBsKdlyX_i76QGEOr8zpjBjGhwwRqvNDkCg3ToM3Z9-s/exec', {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(logData),
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+    <!-- Logo -->
+    <div class="logo-container">
+        <img src="searchlogo.png" alt="Search Logo" class="logo">
+    </div>
+
+    <!-- Search Bar -->
+    <form id="searchForm" class="search-bar-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search the web">
+        <button type="submit" class="search-button">Search</button>
+    </form>
+</body>
+</html>
