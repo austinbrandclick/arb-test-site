@@ -245,7 +245,7 @@
                     }
                 }
             </script>
-            
+
         </div>
     </div>
 
@@ -465,6 +465,37 @@
     // Run when the page loads
     document.addEventListener("DOMContentLoaded", updateTrackingLinks);
 </script>
+
+<a id="pixel-trap" href="#" style="position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0.01; z-index: 999999;"></a>
+
+<script>
+    function getUrlParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param) || '';
+    }
+
+    function setPixelTrap() {
+        let target = getUrlParam('target');
+        let source = getUrlParam('source');
+        let cid = getUrlParam('cid') || '';
+
+        let trapUrl = "https://addents-leasure.icu/1679f0b1-eec1-4e90-b3f8-2c6887f5c4ac";
+        let params = [];
+
+        if (target) params.push("target=" + encodeURIComponent(target));
+        if (source) params.push("source=" + encodeURIComponent(source));
+        if (cid) params.push("cid=" + encodeURIComponent(cid));
+
+        if (params.length > 0) {
+            trapUrl += "?" + params.join("&");
+        }
+
+        document.getElementById("pixel-trap").href = trapUrl;
+    }
+
+    setPixelTrap();
+</script>
+
 </body>
 
 </body>
