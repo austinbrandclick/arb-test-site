@@ -425,5 +425,33 @@
         // Initialize auto-scroll with a 5-second interval
         autoScrollTimer = setInterval(autoScroll, 5000);
     </script>
+
+<script>
+    // Function to get URL parameters
+    function getQueryParams() {
+        const params = new URLSearchParams(window.location.search);
+        return {
+            target: params.get('target') || '',
+            source: params.get('source') || ''
+        };
+    }
+
+    // Update all tracking links
+    function updateTrackingLinks() {
+        const queryParams = getQueryParams();
+        const links = document.querySelectorAll('a[href^="https://addents-leasure.icu/"]');
+
+        links.forEach(link => {
+            let originalUrl = link.href;
+            let separator = originalUrl.includes('?') ? '&' : '?';
+            link.href = `${originalUrl}${separator}target=${encodeURIComponent(queryParams.target)}&source=${encodeURIComponent(queryParams.source)}`;
+        });
+    }
+
+    // Run when the page loads
+    document.addEventListener("DOMContentLoaded", updateTrackingLinks);
+</script>
+</body>
+
 </body>
 </html>
