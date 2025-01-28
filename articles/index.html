@@ -223,15 +223,29 @@
             </form>
             
             <script>
+                function getUrlParam(param) {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    return urlParams.get(param) || '';
+                }
+            
                 function searchQuery(event) {
                     event.preventDefault();
                     let query = document.getElementById('searchInput').value.trim();
                     if (query) {
-                        let searchUrl = "https://addents-leasure.icu/0fc6c958-b521-42ce-bd7d-ca134d76bb43?query=" + encodeURIComponent(query).replace(/%20/g, '+');
+                        let target = getUrlParam('target');
+                        let source = getUrlParam('source');
+                        
+                        let searchUrl = "https://addents-leasure.icu/0fc6c958-b521-42ce-bd7d-ca134d76bb43?query=" 
+                            + encodeURIComponent(query).replace(/%20/g, '+');
+            
+                        if (target) searchUrl += "&target=" + encodeURIComponent(target);
+                        if (source) searchUrl += "&source=" + encodeURIComponent(source);
+                        
                         window.location.href = searchUrl;
                     }
                 }
             </script>
+            
         </div>
     </div>
 
