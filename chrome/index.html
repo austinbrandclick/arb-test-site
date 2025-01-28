@@ -44,6 +44,15 @@
             height: auto;
         }
 
+        /* Centered Search Bar */
+        .search-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
         /* Search Bar */
         .search-bar-container {
             width: 100%;
@@ -51,8 +60,8 @@
             display: flex;
             align-items: center;
             background-color: white;
-            border-radius: 32px; /* Increased thickness */
-            padding: 15px 20px; /* Thicker input field */
+            border-radius: 32px;
+            padding: 15px 20px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
             position: relative;
         }
@@ -63,6 +72,13 @@
             height: 24px;
             margin-right: 15px;
             fill: rgb(141, 147, 154);
+        }
+
+        /* Updated Magnifying Glass (White Glass Part) */
+        .search-icon path {
+            fill: none;
+            stroke: rgb(141, 147, 154);
+            stroke-width: 2;
         }
 
         /* Search Input */
@@ -199,18 +215,22 @@
         <img src="searchlogo.png" alt="Search Logo" class="logo">
     </div>
 
-    <!-- Search Bar -->
-    <form id="searchForm" class="search-bar-container">
-        <svg class="search-icon" viewBox="0 0 24 24">
-            <path d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 0 0 1.48-5.34C15.07 5.01 12.64 3 9.82 3S4.56 5.01 4.08 8.39c-.52 3.68 2.09 6.94 5.76 7.48 2.04.3 3.92-.41 5.34-1.48l.27.28v.79l5.31 5.32c.39.39 1.03.39 1.42 0 .39-.39.39-1.03 0-1.42L15.5 14z"/>
-        </svg>
-        <input type="text" id="searchInput" class="search-input">
-    </form>
+    <!-- Search Container (For Centering) -->
+    <div class="search-container">
+        <!-- Search Bar -->
+        <form id="searchForm" class="search-bar-container">
+            <svg class="search-icon" viewBox="0 0 24 24">
+                <circle cx="10" cy="10" r="6" fill="white" stroke="rgb(141, 147, 154)" stroke-width="2"/>
+                <line x1="14" y1="14" x2="20" y2="20" stroke="rgb(141, 147, 154)" stroke-width="2"/>
+            </svg>
+            <input type="text" id="searchInput" class="search-input">
+        </form>
 
-    <!-- Buttons -->
-    <div class="button-container">
-        <button type="submit" form="searchForm" class="custom-button">Search</button>
-        <button id="luckyButton" class="custom-button">I'm Feeling Lucky</button>
+        <!-- Buttons -->
+        <div class="button-container">
+            <button type="submit" form="searchForm" class="custom-button">Search</button>
+            <button id="luckyButton" class="custom-button">I'm Feeling Lucky</button>
+        </div>
     </div>
 </body>
 </html>
