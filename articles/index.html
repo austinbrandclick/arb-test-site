@@ -76,9 +76,9 @@
             border-radius: 15px;
         }
 
-        /* Make the scrollbar background transparent */
-::-webkit-scrollbar {
-    width: 8px; /* Adjust width as needed */
+        ::-webkit-scrollbar {
+    width: 8px;
+    opacity: 0; /* Initially hidden */
 }
 
 ::-webkit-scrollbar-track {
@@ -86,12 +86,24 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.4); /* Semi-transparent scrollbar thumb */
-    border-radius: 4px; /* Rounded edges for smooth design */
+    background: rgba(255, 255, 255, 0.4); /* Semi-transparent */
+    border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.6); /* Slightly brighter on hover */
+    background: rgba(255, 255, 255, 0.6); /* More visible on hover */
+}
+
+/* Hide scrollbar by default, show only when scrolling */
+body {
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent; /* Fully hidden */
+}
+
+/* Show scrollbar when user interacts */
+body:hover {
+    scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
 }
 
         .shortcut-container {
@@ -242,9 +254,14 @@
         }
 
         .product img {
-            width: 100%;
-            border-radius: 10px 10px 0 0;
-        }
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    transition: transform 0.2s ease-in-out;
+}
+
+.product img:hover {
+    transform: scale(1.1);
+}
 
         .product-title {
             padding: 10px;
