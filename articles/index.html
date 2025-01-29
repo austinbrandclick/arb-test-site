@@ -461,26 +461,44 @@
 <script>
     let rssFeeds = [
     "https://moxie.foxnews.com/google-publisher/latest.xml"
+    "https://feeds.a.dj.com/rss/RSSMarketsMain.xml"
 ];
     let rssIndex = 0;
     let loading = false;
 
-    async function fetchRSS(feedUrl) {
-    if (loading) return;
-    loading = true;
+    async function fetchAllRSS() {
+    let allArticles = [];
 
-    try {
-        let response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`);
-        let data = await response.json();
+    for (let feedUrl of rssFeeds) {
+        try {
+            let response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`);
+            let data = await response.json();
 
-        if (data.status === "ok") {
-            appendArticles(data.items);
+            if (data.status === "ok") {
+                let articles = data.items.map(item => ({
+                    title: item.title,
+                    link: item.link,
+                    image: item.enclosure?.link || item.thumbnail || 
+                           (item["media:content"] ? item["media:content"].url : "default-thumbnail.jpg"),
+                    source: new URL(item.link).hostname.replace("www.", "")
+                }));
+                allArticles.push(articles);
+            }
+        } catch (error) {
+            console.error("Error fetching RSS feed:", error);
         }
-    } catch (error) {
-        console.error("Error fetching RSS feed:", error);
     }
 
-    loading = false;
+    // Interleave Fox News and WSJ articles (one from each)
+    let interleavedArticles = [];
+    let maxLength = Math.max(allArticles[0]?.length || 0, allArticles[1]?.length || 0);
+
+    for (let i = 0; i < maxLength; i++) {
+        if (allArticles[0] && allArticles[0][i]) interleavedArticles.push(allArticles[0][i]); // Fox News
+        if (allArticles[1] && allArticles[1][i]) interleavedArticles.push(allArticles[1][i]); // WSJ
+    }
+
+    appendArticles(interleavedArticles);
 }
 
     function appendArticles(articles) {
@@ -491,8 +509,7 @@
         card.classList.add("rss-card");
 
         let img = document.createElement("img");
-        img.src = article.enclosure?.link || article.thumbnail || 
-            (article["media:content"] ? article["media:content"].url : "default-thumbnail.jpg");
+        img.src = article.image;
         img.alt = "Article Image";
 
         let title = document.createElement("a");
@@ -503,7 +520,7 @@
 
         let source = document.createElement("div");
         source.classList.add("rss-source");
-        source.innerText = new URL(article.link).hostname.replace("www.", ""); // Site name
+        source.innerText = article.source;
 
         card.appendChild(img);
         card.appendChild(title);
@@ -521,9 +538,7 @@
 });
 
     document.addEventListener("DOMContentLoaded", () => {
-    rssFeeds.forEach(feed => {
-        fetchRSS(feed);
-    });
+    fetchAllRSS();
 });
 </script>
         
