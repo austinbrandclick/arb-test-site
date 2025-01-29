@@ -76,34 +76,27 @@
             border-radius: 15px;
         }
 
-        ::-webkit-scrollbar {
+        /* Default: Hide Scrollbar */
+::-webkit-scrollbar {
     width: 8px;
-    opacity: 0; /* Initially hidden */
+    background: transparent;
 }
 
-::-webkit-scrollbar-track {
-    background: transparent; /* Transparent background */
-}
-
+/* Default: Hide Scrollbar Thumb */
 ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.4); /* Semi-transparent */
+    background: transparent;
     border-radius: 4px;
+    transition: background 0.3s ease-in-out;
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.6); /* More visible on hover */
+/* Show Scrollbar When Scrolling */
+body.scrolling ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.4);
 }
 
-/* Hide scrollbar by default, show only when scrolling */
-body {
-    overflow-y: scroll;
-    scrollbar-width: thin;
-    scrollbar-color: transparent transparent; /* Fully hidden */
-}
-
-/* Show scrollbar when user interacts */
-body:hover {
-    scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
+/* Slightly Brighter Scrollbar Thumb on Hover */
+body.scrolling ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.6);
 }
 
         .shortcut-container {
@@ -766,6 +759,19 @@ body:hover {
     }
 
     setPixelTrap();
+</script>
+
+        <script>
+    let scrollTimeout;
+
+    document.addEventListener("scroll", () => {
+        document.body.classList.add("scrolling");
+
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            document.body.classList.remove("scrolling");
+        }, 800); // Hides scrollbar after 800ms of no scroll activity
+    });
 </script>
 
 </body>
