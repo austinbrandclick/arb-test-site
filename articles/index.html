@@ -461,7 +461,7 @@
 <script>
     let rssFeeds = [
     "https://moxie.foxnews.com/google-publisher/latest.xml",
-    "https://api.rss2json.com/v1/api.json?rss_url=https://fortune.com/feed/fortune-feeds/?id=3230629"
+    "https://www.topspeed.com/feed/tag/wrc/"
 ];
     let rssIndex = 0;
     let loading = false;
@@ -480,13 +480,13 @@ let items = xml.querySelectorAll("item");
 allArticles[i] = Array.from(items).map(item => {
     let title = item.querySelector("title")?.textContent || "No Title";
     let link = item.querySelector("link")?.textContent || "#";
-    let mediaContent = item.querySelector("media\\:content, content, enclosure");
-let image = mediaContent ? mediaContent.getAttribute("url") || mediaContent.getAttribute("href") : "default-thumbnail.jpg";
+    let enclosure = item.querySelector("enclosure");
+let image = enclosure ? enclosure.getAttribute("url") : "default-thumbnail.jpg";
 
     return { title, link, image, source: new URL(link).hostname.replace("www.", "") };
 });
 
-            console.log(`Fetched RSS Data from: ${rssFeeds[i]}`, data); // Debugging log
+            console.log(`Fetched RSS Data from: ${rssFeeds[i]}`); // Debugging log
 
             if (data.status === "ok") {
                 allArticles[i] = data.items.map(item => ({
@@ -503,13 +503,13 @@ let image = mediaContent ? mediaContent.getAttribute("url") || mediaContent.getA
     }
 
     // Interleave Fox News and WSJ articles
-    let interleavedArticles = [];
+        let interleavedArticles = [];
     let maxLength = Math.max(allArticles[0]?.length || 0, allArticles[1]?.length || 0);
 
-for (let i = 0; i < maxLength; i++) {
-    if (allArticles[0][i]) interleavedArticles.push(allArticles[0][i]); // Fox News
-    if (allArticles[1][i]) interleavedArticles.push(allArticles[1][i]); // Fortune
-}
+    for (let i = 0; i < maxLength; i++) {
+        if (allArticles[0][i]) interleavedArticles.push(allArticles[0][i]); // Fox News
+        if (allArticles[1][i]) interleavedArticles.push(allArticles[1][i]); // TopSpeed
+    }
 
     console.log("Interleaved Articles:", interleavedArticles); // Debugging log
     appendArticles(interleavedArticles);
