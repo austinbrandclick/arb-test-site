@@ -461,49 +461,54 @@
 <script>
     let rssFeeds = [
         "https://moxie.foxnews.com/google-publisher/latest.xml",
+        "https://rss.nytimes.com/services/xml/rss/nyt/Automobiles.xml"
         
     ];
     let loading = false;
 
     async function fetchAllRSS() {
-        let allArticles = [[], []]; // Array for Fox News and The Drive articles
+    let allArticles = [[], []]; // Array for Fox News and NYT Automobiles
 
-        for (let i = 0; i < rssFeeds.length; i++) {
-            try {
-                let response = await fetch(rssFeeds[i]);
-                let text = await response.text();
-                let parser = new DOMParser();
-                let xml = parser.parseFromString(text, "text/xml");
+    for (let i = 0; i < rssFeeds.length; i++) {
+        try {
+            let response = await fetch(rssFeeds[i]);
+            let text = await response.text();
+            let parser = new DOMParser();
+            let xml = parser.parseFromString(text, "text/xml");
 
-                let items = xml.querySelectorAll("item");
-                allArticles[i] = Array.from(items).map(item => {
-                    let title = item.querySelector("title")?.textContent || "No Title";
-                    let link = item.querySelector("link")?.textContent || "#";
-                    let enclosure = item.querySelector("enclosure");
-                    let mediaContent = item.querySelector("media\\:content, content");
-                    let image = enclosure ? enclosure.getAttribute("url") : (mediaContent ? mediaContent.getAttribute("url") || mediaContent.getAttribute("href") : "default-thumbnail.jpg");
+            let items = xml.querySelectorAll("item");
+            allArticles[i] = Array.from(items).map(item => {
+                let title = item.querySelector("title")?.textContent || "No Title";
+                let link = item.querySelector("link")?.textContent || "#";
+                
+                // Extract image from media:content, enclosure, or fallback
+                let enclosure = item.querySelector("enclosure");
+                let mediaContent = item.querySelector("media\\:content, content");
+                let image = enclosure 
+                    ? enclosure.getAttribute("url") 
+                    : (mediaContent ? mediaContent.getAttribute("url") || mediaContent.getAttribute("href") : "default-thumbnail.jpg");
 
-                    return { title, link, image, source: new URL(link).hostname.replace("www.", "") };
-                });
+                return { title, link, image, source: new URL(link).hostname.replace("www.", "") };
+            });
 
-                console.log(`Fetched RSS Data from: ${rssFeeds[i]}`); // Debugging log
-            } catch (error) {
-                console.error(`Error fetching RSS feed ${rssFeeds[i]}:`, error);
-            }
+            console.log(`Fetched RSS Data from: ${rssFeeds[i]}`);
+        } catch (error) {
+            console.error(`Error fetching RSS feed ${rssFeeds[i]}:`, error);
         }
-
-        // Interleave articles
-        let interleavedArticles = [];
-        let maxLength = Math.max(allArticles[0]?.length || 0, allArticles[1]?.length || 0);
-
-        for (let i = 0; i < maxLength; i++) {
-            if (allArticles[0][i]) interleavedArticles.push(allArticles[0][i]); // Fox News
-            if (allArticles[1][i]) interleavedArticles.push(allArticles[1][i]); // The Drive
-        }
-
-        console.log("Interleaved Articles:", interleavedArticles); // Debugging log
-        appendArticles(interleavedArticles);
     }
+
+    // Interleave Fox News and NYT Automobiles articles
+    let interleavedArticles = [];
+    let maxLength = Math.max(allArticles[0]?.length || 0, allArticles[1]?.length || 0);
+
+    for (let i = 0; i < maxLength; i++) {
+        if (allArticles[0][i]) interleavedArticles.push(allArticles[0][i]); // Fox News
+        if (allArticles[1][i]) interleavedArticles.push(allArticles[1][i]); // NYT Automobiles
+    }
+
+    console.log("Interleaved Articles:", interleavedArticles);
+    appendArticles(interleavedArticles);
+}
 
     function appendArticles(articles) {
         let rssContainer = document.getElementById("rss-feed");
