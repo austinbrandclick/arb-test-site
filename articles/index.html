@@ -481,7 +481,7 @@
                     title: item.title,
                     link: item.link,
                     image: item.enclosure?.link || item.thumbnail || 
-                           (item["media:content"] ? item["media:content"].url : "default-thumbnail.jpg"),
+       (item["media:content"] && item["media:content"]["@url"]) || "default-thumbnail.jpg",
                     source: new URL(item.link).hostname.replace("www.", "")
                 }));
             }
