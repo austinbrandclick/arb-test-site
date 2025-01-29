@@ -218,6 +218,49 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "q18zr5her9");
 </script>
+
+/* RSS Feed Styling */
+.rss-feed-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.rss-card {
+    background: rgb(45, 45, 45);
+    border-radius: 12px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.rss-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.rss-title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.rss-source {
+    font-size: 12px;
+    color: rgb(180, 180, 180);
+}
+
+/* Infinite Scroll Loader */
+.loader {
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    color: white;
+}
     
 </head>
 <body>
@@ -404,6 +447,12 @@
             </div>
         </div>
 
+<!-- RSS Feed Section -->
+<div id="rss-feed" class="rss-feed-container"></div>
+
+<!-- Infinite Scroll Loader -->
+<div class="loader">Loading more articles...</div>
+        
     <script>
         let currentIndex = 0;
         const items = document.querySelectorAll('.carousel-item');
@@ -505,6 +554,84 @@
     }
 
     setPixelTrap();
+</script>
+
+<script>
+    let rssFeeds = [
+        "https://techcrunch.com/feed/",
+        "https://www.theverge.com/rss/index.xml",
+        "https://www.wired.com/feed/rss",
+        "https://www.bloomberg.com/feed/podcast/technology.xml",
+        "https://www.forbes.com/money/feed/",
+        "https://www.cnbc.com/id/15839069/device/rss/rss.html",
+        "https://www.marketwatch.com/rss/topstories",
+        "http://feeds.bbci.co.uk/news/world/rss.xml",
+        "http://rss.cnn.com/rss/cnn_topstories.rss",
+        "https://www.reutersagency.com/feed/?best-topics=business"
+    ];
+
+    let rssIndex = 0;
+    let loading = false;
+
+    async function fetchRSS() {
+        if (loading || rssIndex >= rssFeeds.length) return;
+        loading = true;
+
+        try {
+            let response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssFeeds[rssIndex])}`);
+            let data = await response.json();
+
+            if (data.status === "ok") {
+                appendArticles(data.items);
+            }
+        } catch (error) {
+            console.error("Error fetching RSS feed:", error);
+        }
+
+        rssIndex++;
+        loading = false;
+    }
+
+    function appendArticles(articles) {
+        let rssContainer = document.getElementById("rss-feed");
+
+        articles.forEach(article => {
+            let card = document.createElement("div");
+            card.classList.add("rss-card");
+
+            let img = document.createElement("img");
+            img.src = article.enclosure?.link || "default-thumbnail.jpg";
+            img.alt = "Article Image";
+
+            let title = document.createElement("div");
+            title.classList.add("rss-title");
+            title.innerText = article.title;
+
+            let source = document.createElement("div");
+            source.classList.add("rss-source");
+            source.innerText = article.author || article.link.split("/")[2];
+
+            let link = document.createElement("a");
+            link.href = article.link;
+            link.target = "_blank";
+            link.appendChild(title);
+
+            card.appendChild(img);
+            card.appendChild(link);
+            card.appendChild(source);
+
+            rssContainer.appendChild(card);
+        });
+    }
+
+    // Infinite Scroll
+    window.addEventListener("scroll", () => {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 500) {
+            fetchRSS();
+        }
+    });
+
+    document.addEventListener("DOMContentLoaded", fetchRSS);
 </script>
 
 </body>
