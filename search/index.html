@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search | Custom Google Search</title>
+    <style>
+        /* General Page Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+        }
+
+        /* Logo */
+        .logo {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+
+        /* Search Bar */
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        /* Google Search Box */
+        .gcse-search {
+            width: 100%;
+        }
+
+        /* Search Results */
+        .search-results {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        /* Hide scrollbar unless scrolling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+    </style>
+
+    <!-- Google Custom Search Engine -->
+    <script async src="https://cse.google.com/cse.js?cx=64ded9897c12e4573"></script>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Logo -->
+        <img src="google_logo.png" alt="Google Logo" class="logo">
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <div class="gcse-search"></div>
+        </div>
+
+        <!-- Search Results -->
+        <div class="search-results">
+            <div class="gcse-searchresults-only"></div>
+        </div>
+    </div>
+
+</body>
+</html>
