@@ -502,7 +502,8 @@
         card.classList.add("rss-card");
 
         let img = document.createElement("img");
-        img.src = article.enclosure?.link || article.thumbnail || "default-thumbnail.jpg";
+        img.src = article.enclosure?.link || article.thumbnail || 
+            (article["media:content"] ? article["media:content"].url : "default-thumbnail.jpg");
         img.alt = "Article Image";
 
         let title = document.createElement("a");
@@ -513,16 +514,15 @@
 
         let source = document.createElement("div");
         source.classList.add("rss-source");
-        source.innerText = article.author || article.link.split("/")[2];
+        source.innerText = new URL(article.link).hostname.replace("www.", ""); // Site name
 
         let description = document.createElement("div");
         description.classList.add("rss-description");
-        description.innerText = article.description || "No description available.";
+        description.innerText = article.description ? article.description.replace(/<\/?[^>]+(>|$)/g, "") : "";
 
         card.appendChild(img);
         card.appendChild(title);
         card.appendChild(source);
-        card.appendChild(description);
 
         rssContainer.appendChild(card);
     });
@@ -530,12 +530,16 @@
 
     // Infinite Scroll
     window.addEventListener("scroll", () => {
-        if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000) {
-            fetchRSS();
-        }
-    });
+    if (!loading && window.innerHeight + window.scrollY >= document.body.offsetHeight - 800) {
+        rssFeeds.forEach(feed => fetchRSS(feed));
+    }
+});
 
-    document.addEventListener("DOMContentLoaded", fetchRSS);
+    document.addEventListener("DOMContentLoaded", () => {
+    rssFeeds.forEach(feed => {
+        fetchRSS(feed);
+    });
+});
 </script>
         
     <script>
