@@ -481,6 +481,7 @@
     let rssFeeds = [
         "https://moxie.foxnews.com/google-publisher/latest.xml",
         "https://rss.nytimes.com/services/xml/rss/nyt/Automobiles.xml"
+        "https://www.usmagazine.com/category/celebrity-news/feed/"
         
     ];
     let loading = false;
@@ -502,10 +503,13 @@
                 
                 // Extract image from media:content, enclosure, or fallback
                 let enclosure = item.querySelector("enclosure");
-                let mediaContent = item.querySelector("media\\:content, content");
-                let image = enclosure 
-                    ? enclosure.getAttribute("url") 
-                    : (mediaContent ? mediaContent.getAttribute("url") || mediaContent.getAttribute("href") : "default-thumbnail.jpg");
+let mediaContent = item.querySelector("media\\:content, content");
+let usWeeklyImage = item.querySelector("media\\:thumbnail") || item.querySelector("media\\:content");
+
+let image = enclosure 
+    ? enclosure.getAttribute("url") 
+    : (mediaContent ? mediaContent.getAttribute("url") || mediaContent.getAttribute("href") 
+    : (usWeeklyImage ? usWeeklyImage.getAttribute("url") : "default-thumbnail.jpg"));
 
                 return { title, link, image, source: new URL(link).hostname.replace("www.", "") };
             });
