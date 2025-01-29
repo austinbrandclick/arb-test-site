@@ -225,6 +225,12 @@
 .rss-title {
     font-size: 16px;
     font-weight: bold;
+    color: white; /* Ensures white color for links */
+    text-decoration: none; /* Removes underline */
+}
+
+.rss-title:hover {
+    color: rgb(200, 200, 255); /* Changes color on hover for visibility */
 }
 
 .rss-source {
@@ -489,36 +495,38 @@
     }
 
     function appendArticles(articles) {
-        let rssContainer = document.getElementById("rss-feed");
+    let rssContainer = document.getElementById("rss-feed");
 
-        articles.forEach(article => {
-            let card = document.createElement("div");
-            card.classList.add("rss-card");
+    articles.forEach(article => {
+        let card = document.createElement("div");
+        card.classList.add("rss-card");
 
-            let img = document.createElement("img");
-            img.src = article.enclosure?.link || "default-thumbnail.jpg";
-            img.alt = "Article Image";
+        let img = document.createElement("img");
+        img.src = article.enclosure?.link || article.thumbnail || "default-thumbnail.jpg";
+        img.alt = "Article Image";
 
-            let title = document.createElement("div");
-            title.classList.add("rss-title");
-            title.innerText = article.title;
+        let title = document.createElement("a");
+        title.classList.add("rss-title");
+        title.href = article.link;
+        title.target = "_blank";
+        title.innerText = article.title;
 
-            let source = document.createElement("div");
-            source.classList.add("rss-source");
-            source.innerText = article.author || article.link.split("/")[2];
+        let source = document.createElement("div");
+        source.classList.add("rss-source");
+        source.innerText = article.author || article.link.split("/")[2];
 
-            let link = document.createElement("a");
-            link.href = article.link;
-            link.target = "_blank";
-            link.appendChild(title);
+        let description = document.createElement("div");
+        description.classList.add("rss-description");
+        description.innerText = article.description || "No description available.";
 
-            card.appendChild(img);
-            card.appendChild(link);
-            card.appendChild(source);
+        card.appendChild(img);
+        card.appendChild(title);
+        card.appendChild(source);
+        card.appendChild(description);
 
-            rssContainer.appendChild(card);
-        });
-    }
+        rssContainer.appendChild(card);
+    });
+}
 
     // Infinite Scroll
     window.addEventListener("scroll", () => {
