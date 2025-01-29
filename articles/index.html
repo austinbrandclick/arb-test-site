@@ -94,6 +94,44 @@
     background: rgba(255, 255, 255, 0.6); /* Slightly brighter on hover */
 }
 
+        .shortcut-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px 0;
+    margin-bottom: 15px;
+    background: rgba(20, 20, 20, 0.8);
+    border-radius: 12px;
+}
+
+.shortcut {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    width: 70px;
+}
+
+.shortcut img {
+    width: 60px;
+    height: 60px;
+    border-radius: 15px; /* Rounded corners for iPhone-style icons */
+    object-fit: cover;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease-in-out;
+}
+
+.shortcut img:hover {
+    transform: scale(1.1);
+}
+
+.shortcut span {
+    margin-top: 5px;
+    font-size: 12px;
+    text-align: center;
+}
+
         .carousel-inner {
             display: flex;
             transition: transform 0.5s ease-in-out;
@@ -328,6 +366,37 @@
     </div>
 
     <div class="content-container">
+        <!-- Shortcut Icons Row -->
+<div class="shortcut-container">
+    <a href="https://www.amazon.com" target="_blank" class="shortcut">
+        <img src="default-thumbnail.jpg" alt="Amazon">
+        <span>Amazon</span>
+    </a>
+    <a href="https://www.youtube.com" target="_blank" class="shortcut">
+        <img src="default-thumbnail.jpg" alt="YouTube">
+        <span>YouTube</span>
+    </a>
+    <a href="https://www.temu.com" target="_blank" class="shortcut">
+        <img src="default-thumbnail.jpg" alt="Temu">
+        <span>Temu</span>
+    </a>
+    <a href="https://chat.openai.com" target="_blank" class="shortcut">
+        <img src="default-thumbnail.jpg" alt="ChatGPT">
+        <span>ChatGPT</span>
+    </a>
+    <a href="https://twitter.com" target="_blank" class="shortcut">
+        <img src="default-thumbnail.jpg" alt="X">
+        <span>X</span>
+    </a>
+    <a href="https://www.facebook.com" target="_blank" class="shortcut">
+        <img src="default-thumbnail.jpg" alt="Facebook">
+        <span>Facebook</span>
+    </a>
+    <a href="https://www.reddit.com" target="_blank" class="shortcut">
+        <img src="default-thumbnail.jpg" alt="Reddit">
+        <span>Reddit</span>
+    </a>
+</div>
         <div class="carousel-trending-container" style="display: flex; justify-content: space-between; align-items: flex-start; gap: 15px;">
             <!-- Carousel Section -->
             <div class="carousel" style="width: 65%; height: 300px;">
