@@ -460,46 +460,88 @@
 
 <script>
     let rssFeeds = [
-    "https://moxie.foxnews.com/google-publisher/latest.xml"
+    "https://moxie.foxnews.com/google-publisher/latest.xml",
     "https://feeds.a.dj.com/rss/RSSMarketsMain.xml"
 ];
     let rssIndex = 0;
     let loading = false;
 
     async function fetchAllRSS() {
-    let allArticles = [];
+    let allArticles = [[], []]; // Array for Fox News and WSJ articles
 
-    for (let feedUrl of rssFeeds) {
+    for (let i = 0; i < rssFeeds.length; i++) {
         try {
-            let response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`);
+            let response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssFeeds[i])}`);
             let data = await response.json();
 
+            console.log(`Fetched RSS Data from: ${rssFeeds[i]}`, data); // Debugging log
+
             if (data.status === "ok") {
-                let articles = data.items.map(item => ({
+                allArticles[i] = data.items.map(item => ({
                     title: item.title,
                     link: item.link,
                     image: item.enclosure?.link || item.thumbnail || 
                            (item["media:content"] ? item["media:content"].url : "default-thumbnail.jpg"),
                     source: new URL(item.link).hostname.replace("www.", "")
                 }));
-                allArticles.push(articles);
             }
         } catch (error) {
-            console.error("Error fetching RSS feed:", error);
+            console.error(`Error fetching RSS feed ${rssFeeds[i]}:`, error);
         }
     }
 
-    // Interleave Fox News and WSJ articles (one from each)
+    // Interleave Fox News and WSJ articles
     let interleavedArticles = [];
     let maxLength = Math.max(allArticles[0]?.length || 0, allArticles[1]?.length || 0);
 
     for (let i = 0; i < maxLength; i++) {
-        if (allArticles[0] && allArticles[0][i]) interleavedArticles.push(allArticles[0][i]); // Fox News
-        if (allArticles[1] && allArticles[1][i]) interleavedArticles.push(allArticles[1][i]); // WSJ
+        if (allArticles[0][i]) interleavedArticles.push(allArticles[0][i]); // Fox News
+        if (allArticles[1][i]) interleavedArticles.push(allArticles[1][i]); // WSJ
     }
 
+    console.log("Interleaved Articles:", interleavedArticles); // Debugging log
     appendArticles(interleavedArticles);
 }
+
+function appendArticles(articles) {
+    let rssContainer = document.getElementById("rss-feed");
+    rssContainer.innerHTML = ""; // Clear existing articles
+
+    if (articles.length === 0) {
+        rssContainer.innerHTML = "<p style='color:white;'>No articles found.</p>";
+        return;
+    }
+
+    articles.forEach(article => {
+        let card = document.createElement("div");
+        card.classList.add("rss-card");
+
+        let img = document.createElement("img");
+        img.src = article.image;
+        img.alt = "Article Image";
+        img.onerror = function() { this.src = "default-thumbnail.jpg"; }; // Fallback image
+
+        let title = document.createElement("a");
+        title.classList.add("rss-title");
+        title.href = article.link;
+        title.target = "_blank";
+        title.innerText = article.title;
+
+        let source = document.createElement("div");
+        source.classList.add("rss-source");
+        source.innerText = article.source;
+
+        card.appendChild(img);
+        card.appendChild(title);
+        card.appendChild(source);
+
+        rssContainer.appendChild(card);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    fetchAllRSS();
+});
 
     function appendArticles(articles) {
     let rssContainer = document.getElementById("rss-feed");
