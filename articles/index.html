@@ -478,16 +478,16 @@
 <div class="loader">Loading more articles...</div>
 
 <script>
-   let rssFeeds = [
-    "https://moxie.foxnews.com/google-publisher/latest.xml",
-    "https://rss.nytimes.com/services/xml/rss/nyt/Automobiles.xml",
-    "https://www.usmagazine.com/category/celebrity-news/feed/"
-];
+    let rssFeeds = [
+        "https://moxie.foxnews.com/google-publisher/latest.xml",
+        "https://rss.nytimes.com/services/xml/rss/nyt/Automobiles.xml"
+        
+    ];
+    let loading = false;
 
-let allArticles = [[], [], []]; // Three feeds now
-let loading = false;
+    async function fetchAllRSS() {
+    let allArticles = [[], []]; // Array for Fox News and NYT Automobiles
 
-async function fetchAllRSS() {
     for (let i = 0; i < rssFeeds.length; i++) {
         try {
             let response = await fetch(rssFeeds[i]);
@@ -500,49 +500,75 @@ async function fetchAllRSS() {
                 let title = item.querySelector("title")?.textContent || "No Title";
                 let link = item.querySelector("link")?.textContent || "#";
                 
+                // Extract image from media:content, enclosure, or fallback
                 let enclosure = item.querySelector("enclosure");
                 let mediaContent = item.querySelector("media\\:content, content");
-                let usWeeklyImage = item.querySelector("media\\:thumbnail") || item.querySelector("media\\:content");
-
-                let image = enclosure?.getAttribute("url") || 
-                            mediaContent?.getAttribute("url") || 
-                            mediaContent?.getAttribute("href") || 
-                            usWeeklyImage?.getAttribute("url") || 
-                            "default-thumbnail.jpg";
-
-                console.log(`Extracted image: ${image}`); // Debugging
+                let image = enclosure 
+                    ? enclosure.getAttribute("url") 
+                    : (mediaContent ? mediaContent.getAttribute("url") || mediaContent.getAttribute("href") : "default-thumbnail.jpg");
 
                 return { title, link, image, source: new URL(link).hostname.replace("www.", "") };
             });
 
-            console.log(`Fetched ${allArticles[i].length} articles from: ${rssFeeds[i]}`);
+            console.log(`Fetched RSS Data from: ${rssFeeds[i]}`);
         } catch (error) {
             console.error(`Error fetching RSS feed ${rssFeeds[i]}:`, error);
         }
     }
 
-    // Fix interleaving to include Us Weekly
+    // Interleave Fox News and NYT Automobiles articles
     let interleavedArticles = [];
-    let maxLength = Math.max(
-        allArticles[0]?.length || 0, 
-        allArticles[1]?.length || 0, 
-        allArticles[2]?.length || 0
-    );
+    let maxLength = Math.max(allArticles[0]?.length || 0, allArticles[1]?.length || 0);
 
     for (let i = 0; i < maxLength; i++) {
-        if (allArticles[0][i]) interleavedArticles.push(allArticles[0][i]);
-        if (allArticles[1][i]) interleavedArticles.push(allArticles[1][i]);
-        if (allArticles[2][i]) interleavedArticles.push(allArticles[2][i]); // Add Us Weekly
+        if (allArticles[0][i]) interleavedArticles.push(allArticles[0][i]); // Fox News
+        if (allArticles[1][i]) interleavedArticles.push(allArticles[1][i]); // NYT Automobiles
     }
 
-    console.log("Final Interleaved Articles:", interleavedArticles);
+    console.log("Interleaved Articles:", interleavedArticles);
     appendArticles(interleavedArticles);
 }
 
-// Load RSS on page load
-document.addEventListener("DOMContentLoaded", () => {
-    fetchAllRSS();
-});
+    function appendArticles(articles) {
+        let rssContainer = document.getElementById("rss-feed");
+        rssContainer.innerHTML = ""; // Clear existing articles
+
+        if (articles.length === 0) {
+            rssContainer.innerHTML = "<p style='color:white;'>No articles found.</p>";
+            return;
+        }
+
+        articles.forEach(article => {
+            let card = document.createElement("div");
+            card.classList.add("rss-card");
+
+            let img = document.createElement("img");
+            img.src = article.image;
+            img.alt = "Article Image";
+            img.onerror = function() { this.src = "default-thumbnail.jpg"; }; // Fallback image
+
+            let title = document.createElement("a");
+            title.classList.add("rss-title");
+            title.href = article.link;
+            title.target = "_blank";
+            title.innerText = article.title;
+
+            let source = document.createElement("div");
+            source.classList.add("rss-source");
+            source.innerText = article.source;
+
+            card.appendChild(img);
+            card.appendChild(title);
+            card.appendChild(source);
+
+            rssContainer.appendChild(card);
+        });
+    }
+
+    // Load RSS on page load
+    document.addEventListener("DOMContentLoaded", () => {
+        fetchAllRSS();
+    });
 
     // Infinite Scroll
     window.addEventListener("scroll", () => {
