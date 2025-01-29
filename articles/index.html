@@ -471,8 +471,20 @@
 
     for (let i = 0; i < rssFeeds.length; i++) {
         try {
-            let response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssFeeds[i])}`);
-            let data = await response.json();
+            let response = await fetch(rssFeeds[i]);
+let text = await response.text();
+let parser = new DOMParser();
+let xml = parser.parseFromString(text, "text/xml");
+
+let items = xml.querySelectorAll("item");
+allArticles[i] = Array.from(items).map(item => {
+    let title = item.querySelector("title")?.textContent || "No Title";
+    let link = item.querySelector("link")?.textContent || "#";
+    let mediaContent = item.querySelector("media\\:content, content");
+    let image = mediaContent ? mediaContent.getAttribute("url") : "default-thumbnail.jpg";
+
+    return { title, link, image, source: new URL(link).hostname.replace("www.", "") };
+});
 
             console.log(`Fetched RSS Data from: ${rssFeeds[i]}`, data); // Debugging log
 
@@ -481,7 +493,7 @@
                     title: item.title,
                     link: item.link,
                     image: item.enclosure?.link || item.thumbnail || 
-       (item["media:content"] && item["media:content"]["@url"]) || "default-thumbnail.jpg",
+       (item["media:content"] ? item["media:content"][0]?.url : "default-thumbnail.jpg"),
                     source: new URL(item.link).hostname.replace("www.", "")
                 }));
             }
