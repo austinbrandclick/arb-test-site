@@ -460,39 +460,28 @@
 
 <script>
     let rssFeeds = [
-        "https://techcrunch.com/feed/",
-        "https://www.theverge.com/rss/index.xml",
-        "https://www.wired.com/feed/rss",
-        "https://www.bloomberg.com/feed/podcast/technology.xml",
-        "https://www.forbes.com/money/feed/",
-        "https://www.cnbc.com/id/15839069/device/rss/rss.html",
-        "https://www.marketwatch.com/rss/topstories",
-        "http://feeds.bbci.co.uk/news/world/rss.xml",
-        "http://rss.cnn.com/rss/cnn_topstories.rss",
-        "https://www.reutersagency.com/feed/?best-topics=business"
-    ];
-
+    "https://moxie.foxnews.com/google-publisher/latest.xml"
+];
     let rssIndex = 0;
     let loading = false;
 
-    async function fetchRSS() {
-        if (loading || rssIndex >= rssFeeds.length) return;
-        loading = true;
+    async function fetchRSS(feedUrl) {
+    if (loading) return;
+    loading = true;
 
-        try {
-            let response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssFeeds[rssIndex])}`);
-            let data = await response.json();
+    try {
+        let response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`);
+        let data = await response.json();
 
-            if (data.status === "ok") {
-                appendArticles(data.items);
-            }
-        } catch (error) {
-            console.error("Error fetching RSS feed:", error);
+        if (data.status === "ok") {
+            appendArticles(data.items);
         }
-
-        rssIndex++;
-        loading = false;
+    } catch (error) {
+        console.error("Error fetching RSS feed:", error);
     }
+
+    loading = false;
+}
 
     function appendArticles(articles) {
     let rssContainer = document.getElementById("rss-feed");
@@ -515,10 +504,6 @@
         let source = document.createElement("div");
         source.classList.add("rss-source");
         source.innerText = new URL(article.link).hostname.replace("www.", ""); // Site name
-
-        let description = document.createElement("div");
-        description.classList.add("rss-description");
-        description.innerText = article.description ? article.description.replace(/<\/?[^>]+(>|$)/g, "") : "";
 
         card.appendChild(img);
         card.appendChild(title);
