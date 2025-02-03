@@ -95,28 +95,11 @@
             padding: 20px;
         }
 
-        /* Google Custom Search Bar (Inside Results Page) */
-        .gsc-control-cse {
-            background: #fff !important;
-            border: none !important;
-        }
-
-        .gsc-input {
-            background: #fff !important;
-            color: black !important;
-            border-radius: 24px !important;
-            border: 1px solid #dfe1e5 !important;
-        }
-
-        .gsc-search-button {
-            background-color: #f8f9fa !important;
-            border: 1px solid #dfe1e5 !important;
-            border-radius: 10px !important;
-        }
-
-        .gsc-tabHeader {
-            background: none !important;
-            color: black !important;
+        /* Google Custom Search Integration */
+        .gcse-search {
+            max-width: 900px;
+            margin: 140px auto 0;
+            padding: 20px;
         }
 
         /* Sort Dropdown */
@@ -145,33 +128,30 @@
 
     <!-- Navigation Bar -->
     <div class="nav-bar">
-        <a href="#" onclick="redirectTo('images')">Images</a>
-        <a href="#" onclick="redirectTo('videos')">Videos</a>
-        <a href="#" onclick="redirectTo('books')">Books</a>
-        <a href="#" onclick="redirectTo('shopping')">Shopping</a>
+        <a href="#" onclick="redirectTo('isch')">Images</a>
+        <a href="#" onclick="redirectTo('vid')">Videos</a>
+        <a href="#" onclick="redirectTo('bks')">Books</a>
+        <a href="#" onclick="redirectTo('shop')">Shopping</a>
         <a href="#" onclick="redirectTo('maps')">Maps</a>
-        <a href="#" onclick="redirectTo('flights')">Flights</a>
-        <a href="#" onclick="redirectTo('finance')">Finance</a>
+        <a href="#" onclick="redirectTo('flt')">Flights</a>
+        <a href="#" onclick="redirectTo('fin')">Finance</a>
     </div>
 
-    <!-- Search Results Container -->
-    <div class="results-container">
-        <div class="sort-dropdown">
-            <label for="sort">Sort by:</label>
-            <select id="sort">
-                <option>Relevance</option>
-                <option>Newest</option>
-            </select>
-        </div>
-        <div class="gcse-searchresults-only" id="search-results"></div>
-    </div>
+    <!-- Google Search Results -->
+    <div class="gcse-search"></div>
 
     <script>
         function startSearch() {
             let query = document.getElementById("searchInput").value.trim();
             if (query) {
-                document.getElementById("search-results").innerHTML = ""; 
-                google.search.cse.element.getElement("gcs").execute(query);
+                let searchBox = document.querySelector(".gsc-input");
+                if (searchBox) {
+                    searchBox.value = query;
+                    let searchButton = document.querySelector(".gsc-search-button");
+                    if (searchButton) {
+                        searchButton.click();
+                    }
+                }
             }
         }
 
