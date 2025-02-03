@@ -14,12 +14,13 @@
             background-color: #fff;
         }
 
-        /* Left-Aligned Search Bar with Google Logo */
+        /* Search Container */
         .search-container {
             display: flex;
             align-items: center;
             justify-content: left;
-            width: 950px; /* Match button width */
+            width: 100%;
+            max-width: 950px; /* Match button width */
             margin: 20px;
         }
 
@@ -29,22 +30,26 @@
             margin-right: 12px;
         }
 
-        /* Google Search Box - Force Width */
+        /* Custom Search Box */
         .gcse-searchbox {
             flex-grow: 1;
             width: 100% !important;
+            max-width: 850px !important; /* Match the width of the navigation bar */
         }
 
-        /* Force Width & Styling on Input Box */
+        /* Force Input Box to Extend Horizontally */
         .gcse-searchbox .gsc-input-box {
             width: 100% !important;
-            max-width: 950px !important; /* Matches button width */
+            max-width: 850px !important;
             border-radius: 24px !important;
             border: 1px solid #dfe1e5 !important;
             transition: box-shadow 0.2s ease-in-out;
+            height: 40px !important;
+            display: flex !important;
+            align-items: center;
         }
 
-        /* Ensure Search Input Field is Styled */
+        /* Ensure Text Field is Styled */
         input.gsc-input {
             width: 100% !important;
             border-radius: 24px !important;
@@ -63,7 +68,7 @@
             justify-content: left;
             gap: 15px;
             margin: 10px 20px;
-            width: 950px; /* Match search bar width */
+            width: 850px; /* Match search bar width */
         }
 
         .nav-bar a {
