@@ -164,6 +164,24 @@
                 }
             }, 200); // Small delay to ensure search box is loaded
         }
+
+        // Ensure Google's CSE iframe applies styles correctly
+        function fixSearchBox() {
+            setTimeout(() => {
+                let searchBox = document.querySelector(".gcse-searchbox");
+                if (searchBox) {
+                    let inputBox = searchBox.querySelector(".gsc-input-box");
+                    if (inputBox) {
+                        inputBox.style.width = "850px";
+                        inputBox.style.borderRadius = "24px";
+                        inputBox.style.height = "40px";
+                    }
+                }
+            }, 1000); // Wait for Google CSE to load
+        }
+
+        // Run fix after Google's script loads
+        window.addEventListener("load", fixSearchBox);
     </script>
 
 </body>
