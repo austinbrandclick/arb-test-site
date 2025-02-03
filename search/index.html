@@ -116,9 +116,10 @@
 
     <script>
         function redirectTo(type) {
-            let queryBox = document.querySelector(".gsc-input");
-            if (queryBox) {
-                let query = queryBox.value.trim();
+            setTimeout(() => {
+                let queryBox = document.querySelector("input.gsc-input");
+                let query = queryBox ? queryBox.value.trim() : "";
+                
                 if (query) {
                     let url = "";
                     switch(type) {
@@ -145,7 +146,7 @@
                         window.location.href = url;
                     }
                 }
-            }
+            }, 200); // Small delay to ensure search box is loaded
         }
     </script>
 
