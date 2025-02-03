@@ -18,6 +18,7 @@
         .search-container {
             display: flex;
             align-items: center;
+            justify-content: left;
             width: 950px; /* Match button width */
             margin: 20px;
         }
@@ -28,30 +29,31 @@
             margin-right: 12px;
         }
 
-        /* Google Search Box */
+        /* Google Search Box - Force Width */
         .gcse-searchbox {
             flex-grow: 1;
             width: 100% !important;
         }
 
-        /* Force Search Bar to Expand */
-        .gcse-searchbox input.gsc-input {
+        /* Force Width & Styling on Input Box */
+        .gcse-searchbox .gsc-input-box {
             width: 100% !important;
-            max-width: none !important;
-            height: 40px;
-            padding: 10px;
-            border-radius: 24px;
+            max-width: 950px !important; /* Matches button width */
+            border-radius: 24px !important;
+            border: 1px solid #dfe1e5 !important;
+            transition: box-shadow 0.2s ease-in-out;
         }
 
-        /* Override Google's Iframe Search Box */
-        .gcse-searchbox .gsc-search-box {
+        /* Ensure Search Input Field is Styled */
+        input.gsc-input {
             width: 100% !important;
-            max-width: 950px !important;
-            border-radius: 24px;
+            border-radius: 24px !important;
+            height: 40px !important;
+            padding: 10px 16px !important;
         }
 
         /* Hover effect */
-        .gcse-searchbox .gsc-search-box:hover {
+        .gcse-searchbox .gsc-input-box:hover {
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2) !important;
         }
 
