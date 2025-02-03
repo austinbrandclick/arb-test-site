@@ -12,23 +12,27 @@
             margin: 0;
             padding: 0;
             background-color: #fff;
-            text-align: center;
         }
 
         /* Google Logo */
         .logo {
-            margin-top: 80px;
+            position: absolute;
+            top: 20px;
+            left: 40px;
         }
 
         .logo img {
-            width: 250px;
+            width: 120px;
         }
 
         /* Search Bar Styling */
         .search-container {
             display: flex;
-            justify-content: center;
-            margin-top: 20px;
+            align-items: center;
+            position: absolute;
+            top: 25px;
+            left: 180px;
+            width: 600px;
         }
 
         .search-box {
@@ -37,7 +41,7 @@
             border: 1px solid #dfe1e5;
             border-radius: 24px;
             padding: 10px;
-            width: 600px;
+            width: 100%;
             background-color: white;
             box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
         }
@@ -63,35 +67,32 @@
 
         /* Navigation Bar */
         .nav-bar {
-            display: none;
-            justify-content: center;
+            display: flex;
+            justify-content: left;
             gap: 15px;
-            margin-top: 20px;
+            position: absolute;
+            top: 80px;
+            left: 180px;
         }
 
-        .nav-bar button {
-            background: none;
-            border: none;
+        .nav-bar a {
+            text-decoration: none;
             font-size: 14px;
-            cursor: pointer;
             color: #5f6368;
-            padding: 5px 10px;
+            padding: 8px 12px;
             border-radius: 20px;
         }
 
-        .nav-bar button:hover {
+        .nav-bar a:hover {
             background-color: #e8f0fe;
         }
 
         /* Search Results Styling */
         .results-container {
-            display: none;
-            background-color: white;
-            padding: 20px;
             max-width: 900px;
-            margin: 20px auto;
-            border-radius: 10px;
+            margin: 140px auto 0;
             text-align: left;
+            padding: 20px;
         }
 
         /* Google Custom Search Bar (Inside Results Page) */
@@ -103,7 +104,7 @@
         .gsc-input {
             background: #fff !important;
             color: black !important;
-            border-radius: 10px !important;
+            border-radius: 24px !important;
             border: 1px solid #dfe1e5 !important;
         }
 
@@ -120,18 +121,9 @@
 
         /* Sort Dropdown */
         .sort-dropdown {
-            display: none;
             float: right;
-            margin-right: 20px;
+            margin-bottom: 10px;
         }
-
-        /* Show Elements When Searching */
-        .search-active .nav-bar,
-        .search-active .results-container,
-        .search-active .sort-dropdown {
-            display: flex;
-        }
-
     </style>
 </head>
 <body>
@@ -153,13 +145,13 @@
 
     <!-- Navigation Bar -->
     <div class="nav-bar">
-        <button>Images</button>
-        <button>Videos</button>
-        <button>Books</button>
-        <button>Shopping</button>
-        <button>Maps</button>
-        <button>Flights</button>
-        <button>Finance</button>
+        <a href="#" onclick="redirectTo('images')">Images</a>
+        <a href="#" onclick="redirectTo('videos')">Videos</a>
+        <a href="#" onclick="redirectTo('books')">Books</a>
+        <a href="#" onclick="redirectTo('shopping')">Shopping</a>
+        <a href="#" onclick="redirectTo('maps')">Maps</a>
+        <a href="#" onclick="redirectTo('flights')">Flights</a>
+        <a href="#" onclick="redirectTo('finance')">Finance</a>
     </div>
 
     <!-- Search Results Container -->
@@ -171,15 +163,14 @@
                 <option>Newest</option>
             </select>
         </div>
-        <div class="gcse-searchresults-only"></div>
+        <div class="gcse-searchresults-only" id="search-results"></div>
     </div>
 
     <script>
         function startSearch() {
             let query = document.getElementById("searchInput").value.trim();
             if (query) {
-                document.body.classList.add("search-active");
-                document.querySelector(".gcse-searchresults-only").innerHTML = ""; 
+                document.getElementById("search-results").innerHTML = ""; 
                 google.search.cse.element.getElement("gcs").execute(query);
             }
         }
@@ -190,6 +181,13 @@
                 startSearch();
             }
         });
+
+        function redirectTo(type) {
+            let query = document.getElementById("searchInput").value.trim();
+            if (query) {
+                window.location.href = `https://www.google.com/search?tbm=${type}&q=${encodeURIComponent(query)}`;
+            }
+        }
     </script>
 
 </body>
