@@ -14,13 +14,11 @@
             background-color: #fff;
         }
 
-        /* Search Container */
+        /* Left-Aligned Search Bar with Google Logo */
         .search-container {
             display: flex;
             align-items: center;
-            justify-content: left;
-            width: 100%;
-            max-width: 950px; /* Match button width */
+            width: 950px; /* Extended width to match button area */
             margin: 20px;
         }
 
@@ -30,36 +28,32 @@
             margin-right: 12px;
         }
 
-        /* Custom Search Box */
+        /* Google Search Box */
         .gcse-searchbox {
             flex-grow: 1;
-            width: 100% !important;
-            max-width: 850px !important; /* Match the width of the navigation bar */
+            width: 100% !important; /* Ensure it takes the full width */
+            max-width: 850px !important; /* Match button width */
         }
 
-        /* Force Input Box to Extend Horizontally */
-        .gcse-searchbox .gsc-input-box {
-            width: 100% !important;
-            max-width: 850px !important;
+        /* Override CSE Styles to Enforce Width */
+        .gsc-input-box {
             border-radius: 24px !important;
             border: 1px solid #dfe1e5 !important;
-            transition: box-shadow 0.2s ease-in-out;
-            height: 40px !important;
-            display: flex !important;
-            align-items: center;
-        }
-
-        /* Ensure Text Field is Styled */
-        input.gsc-input {
+            overflow: hidden;
             width: 100% !important;
-            border-radius: 24px !important;
-            height: 40px !important;
-            padding: 10px 16px !important;
+            transition: box-shadow 0.2s ease-in-out;
         }
 
-        /* Hover effect */
-        .gcse-searchbox .gsc-input-box:hover {
+        /* Hover effect for search bar */
+        .gsc-input-box:hover {
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2) !important;
+        }
+
+        /* Ensure Text Field is Fully Extended */
+        input.gsc-input {
+            border-radius: 24px !important;
+            width: 100% !important;
+            padding: 10px 16px !important;
         }
 
         /* Navigation Bar */
@@ -68,7 +62,7 @@
             justify-content: left;
             gap: 15px;
             margin: 10px 20px;
-            width: 850px; /* Match search bar width */
+            width: 950px; /* Ensure it's the same width as search bar */
         }
 
         .nav-bar a {
@@ -164,24 +158,6 @@
                 }
             }, 200); // Small delay to ensure search box is loaded
         }
-
-        // Ensure Google's CSE iframe applies styles correctly
-        function fixSearchBox() {
-            setTimeout(() => {
-                let searchBox = document.querySelector(".gcse-searchbox");
-                if (searchBox) {
-                    let inputBox = searchBox.querySelector(".gsc-input-box");
-                    if (inputBox) {
-                        inputBox.style.width = "850px";
-                        inputBox.style.borderRadius = "24px";
-                        inputBox.style.height = "40px";
-                    }
-                }
-            }, 1000); // Wait for Google CSE to load
-        }
-
-        // Run fix after Google's script loads
-        window.addEventListener("load", fixSearchBox);
     </script>
 
 </body>
