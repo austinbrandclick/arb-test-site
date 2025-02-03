@@ -18,7 +18,7 @@
         .search-container {
             display: flex;
             align-items: center;
-            width: 950px; /* Extended width to match buttons */
+            width: 950px; /* Extended width to match button area */
             margin: 20px;
         }
 
@@ -31,17 +31,17 @@
         /* Google Search Box */
         .gcse-searchbox {
             flex-grow: 1;
-            width: 100%;
+            width: 100% !important; /* Ensure it takes the full width */
+            max-width: 850px !important; /* Match button width */
         }
 
-        /* Make Search Bar Rounded, Extended Width & Hover Shadow */
+        /* Override CSE Styles to Enforce Width */
         .gsc-input-box {
             border-radius: 24px !important;
             border: 1px solid #dfe1e5 !important;
             overflow: hidden;
             width: 100% !important;
             transition: box-shadow 0.2s ease-in-out;
-            max-width: 850px; /* Match button width */
         }
 
         /* Hover effect for search bar */
@@ -49,11 +49,11 @@
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2) !important;
         }
 
-        /* Ensure Text Field Looks Normal */
+        /* Ensure Text Field is Fully Extended */
         input.gsc-input {
             border-radius: 24px !important;
             width: 100% !important;
-            padding: 8px 12px !important;
+            padding: 10px 16px !important;
         }
 
         /* Navigation Bar */
@@ -62,14 +62,14 @@
             justify-content: left;
             gap: 15px;
             margin: 10px 20px;
-            width: 950px; /* Extended width to match search bar */
+            width: 950px; /* Ensure it's the same width as search bar */
         }
 
         .nav-bar a {
             text-decoration: none;
             font-size: 14px;
             color: #5f6368;
-            padding: 8px 12px;
+            padding: 10px 16px;
             border-radius: 20px;
             cursor: pointer;
             border: 1px solid #dfe1e5;
