@@ -25,44 +25,42 @@
             width: 120px;
         }
 
-        /* Search Bar Styling */
-        .search-container {
-            display: flex;
-            align-items: center;
+        /* Search Bar Styling (applies to CSE input) */
+        .gcse-search {
             position: absolute;
             top: 25px;
             left: 180px;
             width: 600px;
         }
 
-        .search-box {
-            display: flex;
-            align-items: center;
-            border: 1px solid #dfe1e5;
-            border-radius: 24px;
-            padding: 10px;
-            width: 100%;
-            background-color: white;
-            box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+        /* Fixing the styling of Google CSE input field */
+        .gsc-control-cse {
+            background: none !important;
+            border: none !important;
         }
 
-        .search-box input {
-            width: 100%;
-            border: none;
-            outline: none;
-            font-size: 16px;
-            padding: 8px;
-            background: transparent;
+        .gsc-input-box {
+            border: 1px solid #dfe1e5 !important;
+            border-radius: 24px !important;
+            padding: 10px !important;
+            background-color: white !important;
+            box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28) !important;
         }
 
-        .search-box button {
-            background: none;
-            border: none;
-            cursor: pointer;
+        .gsc-input {
+            font-size: 16px !important;
+            padding: 8px !important;
         }
 
-        .search-box button img {
-            width: 20px;
+        .gsc-search-button {
+            background: none !important;
+            border: none !important;
+            border-radius: 10px !important;
+            cursor: pointer !important;
+        }
+
+        .gsc-search-button img {
+            width: 20px !important;
         }
 
         /* Navigation Bar */
@@ -95,13 +93,6 @@
             padding: 20px;
         }
 
-        /* Google Custom Search Integration */
-        .gcse-search {
-            max-width: 900px;
-            margin: 140px auto 0;
-            padding: 20px;
-        }
-
         /* Sort Dropdown */
         .sort-dropdown {
             float: right;
@@ -116,15 +107,8 @@
         <img src="google_logo.png" alt="Google">
     </div>
 
-    <!-- Search Box -->
-    <div class="search-container">
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Search">
-            <button onclick="startSearch()">
-                <img src="search_icon.png" alt="Search">
-            </button>
-        </div>
-    </div>
+    <!-- Google Search Bar (Correctly Styled) -->
+    <div class="gcse-search"></div>
 
     <!-- Navigation Bar -->
     <div class="nav-bar">
@@ -137,35 +121,14 @@
         <a href="#" onclick="redirectTo('fin')">Finance</a>
     </div>
 
-    <!-- Google Search Results -->
-    <div class="gcse-search"></div>
-
     <script>
-        function startSearch() {
-            let query = document.getElementById("searchInput").value.trim();
-            if (query) {
-                let searchBox = document.querySelector(".gsc-input");
-                if (searchBox) {
-                    searchBox.value = query;
-                    let searchButton = document.querySelector(".gsc-search-button");
-                    if (searchButton) {
-                        searchButton.click();
-                    }
-                }
-            }
-        }
-
-        document.getElementById("searchInput").addEventListener("keypress", function(event) {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                startSearch();
-            }
-        });
-
         function redirectTo(type) {
-            let query = document.getElementById("searchInput").value.trim();
-            if (query) {
-                window.location.href = `https://www.google.com/search?tbm=${type}&q=${encodeURIComponent(query)}`;
+            let queryBox = document.querySelector(".gsc-input");
+            if (queryBox) {
+                let query = queryBox.value.trim();
+                if (query) {
+                    window.location.href = `https://www.google.com/search?tbm=${type}&q=${encodeURIComponent(query)}`;
+                }
             }
         }
     </script>
