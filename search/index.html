@@ -18,7 +18,7 @@
         .search-container {
             display: flex;
             align-items: center;
-            width: 750px; /* Extended to match Finance button alignment */
+            width: 850px; /* Extended width to match buttons */
             margin: 20px;
         }
 
@@ -33,12 +33,18 @@
             flex-grow: 1;
         }
 
-        /* Make Search Bar Rounded & Match Extended Width */
+        /* Make Search Bar Rounded, Extended Width & Hover Shadow */
         .gsc-input-box {
             border-radius: 24px !important;
             border: 1px solid #dfe1e5 !important;
             overflow: hidden;
             width: 100% !important;
+            transition: box-shadow 0.2s ease-in-out;
+        }
+
+        /* Hover effect for search bar */
+        .gsc-input-box:hover {
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2) !important;
         }
 
         /* Ensure Text Field Looks Normal */
@@ -54,7 +60,7 @@
             justify-content: left;
             gap: 15px;
             margin: 10px 20px;
-            width: 750px; /* Extended width to match search bar */
+            width: 850px; /* Extended width to match search bar */
         }
 
         .nav-bar a {
@@ -64,6 +70,8 @@
             padding: 8px 12px;
             border-radius: 20px;
             cursor: pointer;
+            border: 1px solid #dfe1e5;
+            background-color: #fff;
         }
 
         .nav-bar a:hover {
