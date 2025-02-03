@@ -14,53 +14,50 @@
             background-color: #fff;
         }
 
-        /* Google Logo */
-        .logo {
+        /* Search Box Container */
+        .search-container {
+            display: flex;
+            align-items: center;
             position: absolute;
             top: 20px;
             left: 40px;
         }
 
+        /* Google Logo */
         .logo img {
-            width: 120px;
+            width: 100px;
+            margin-right: 15px;
         }
 
-        /* Search Bar Styling (applies to CSE input) */
-        .gcse-search {
-            position: absolute;
-            top: 25px;
-            left: 180px;
+        /* Search Box */
+        .search-box {
+            display: flex;
+            align-items: center;
+            border: 1px solid #dfe1e5;
+            border-radius: 24px;
+            padding: 10px;
             width: 600px;
+            background-color: white;
+            box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
         }
 
-        /* Fixing the styling of Google CSE input field */
-        .gsc-control-cse {
-            background: none !important;
-            border: none !important;
+        .search-box input {
+            width: 100%;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            padding: 8px;
+            background: transparent;
         }
 
-        .gsc-input-box {
-            border: 1px solid #dfe1e5 !important;
-            border-radius: 24px !important;
-            padding: 10px !important;
-            background-color: white !important;
-            box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28) !important;
+        .search-box button {
+            background: none;
+            border: none;
+            cursor: pointer;
         }
 
-        .gsc-input {
-            font-size: 16px !important;
-            padding: 8px !important;
-        }
-
-        .gsc-search-button {
-            background: none !important;
-            border: none !important;
-            border-radius: 10px !important;
-            cursor: pointer !important;
-        }
-
-        .gsc-search-button img {
-            width: 20px !important;
+        .search-box button img {
+            width: 20px;
         }
 
         /* Navigation Bar */
@@ -70,7 +67,7 @@
             gap: 15px;
             position: absolute;
             top: 80px;
-            left: 180px;
+            left: 40px;
         }
 
         .nav-bar a {
@@ -85,30 +82,39 @@
             background-color: #e8f0fe;
         }
 
-        /* Search Results Styling */
-        .results-container {
+        /* Google Custom Search Styling */
+        .gcse-search {
+            margin: 100px auto 0;
             max-width: 900px;
-            margin: 140px auto 0;
-            text-align: left;
             padding: 20px;
         }
 
-        /* Sort Dropdown */
-        .sort-dropdown {
-            float: right;
-            margin-bottom: 10px;
+        /* Hide Web and Image Tabs */
+        .gsc-tabsArea {
+            display: none !important;
+        }
+
+        /* Keep "About X results in X seconds" */
+        .gsc-result-info {
+            font-size: 14px !important;
+            color: #5f6368 !important;
         }
     </style>
 </head>
 <body>
 
-    <!-- Google Logo -->
-    <div class="logo">
-        <img src="google_logo.png" alt="Google">
+    <!-- Search Box -->
+    <div class="search-container">
+        <div class="logo">
+            <img src="google_logo.png" alt="Google">
+        </div>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search">
+            <button onclick="startSearch()">
+                <img src="search_icon.png" alt="Search">
+            </button>
+        </div>
     </div>
-
-    <!-- Google Search Bar (Correctly Styled) -->
-    <div class="gcse-search"></div>
 
     <!-- Navigation Bar -->
     <div class="nav-bar">
@@ -121,7 +127,31 @@
         <a href="#" onclick="redirectTo('fin')">Finance</a>
     </div>
 
+    <!-- Google Custom Search Results -->
+    <div class="gcse-search"></div>
+
     <script>
+        function startSearch() {
+            let query = document.getElementById("searchInput").value.trim();
+            if (query) {
+                let searchBox = document.querySelector(".gsc-input");
+                if (searchBox) {
+                    searchBox.value = query;
+                    let searchButton = document.querySelector(".gsc-search-button");
+                    if (searchButton) {
+                        searchButton.click();
+                    }
+                }
+            }
+        }
+
+        document.getElementById("searchInput").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                startSearch();
+            }
+        });
+
         function redirectTo(type) {
             let queryBox = document.querySelector(".gsc-input");
             if (queryBox) {
