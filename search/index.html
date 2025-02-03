@@ -63,6 +63,7 @@
             color: #5f6368;
             padding: 8px 12px;
             border-radius: 20px;
+            cursor: pointer;
         }
 
         .nav-bar a:hover {
@@ -101,12 +102,12 @@
 
     <!-- Navigation Bar -->
     <div class="nav-bar">
-        <a href="javascript:void(0)" onclick="redirectTo('images')">Images</a>
-        <a href="javascript:void(0)" onclick="redirectTo('videos')">Videos</a>
-        <a href="javascript:void(0)" onclick="redirectTo('books')">Books</a>
-        <a href="javascript:void(0)" onclick="redirectTo('shopping')">Shopping</a>
-        <a href="javascript:void(0)" onclick="redirectTo('maps')">Maps</a>
-        <a href="javascript:void(0)" onclick="redirectTo('flights')">Flights</a>
+        <a href="#" onclick="redirectTo('images'); return false;">Images</a>
+        <a href="#" onclick="redirectTo('videos'); return false;">Videos</a>
+        <a href="#" onclick="redirectTo('books'); return false;">Books</a>
+        <a href="#" onclick="redirectTo('shopping'); return false;">Shopping</a>
+        <a href="#" onclick="redirectTo('maps'); return false;">Maps</a>
+        <a href="#" onclick="redirectTo('flights'); return false;">Flights</a>
         <a href="https://www.google.com/finance/" target="_blank">Finance</a>
     </div>
 
@@ -141,7 +142,7 @@
                             break;
                     }
                     if (url) {
-                        window.open(url, "_blank");
+                        window.location.href = url;
                     }
                 }
             }
