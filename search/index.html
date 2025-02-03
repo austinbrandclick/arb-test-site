@@ -73,7 +73,6 @@
         .gsc-tabsArea {
             display: none !important;
         }
-
     </style>
 </head>
 <body>
@@ -88,12 +87,12 @@
 
     <!-- Navigation Bar -->
     <div class="nav-bar">
-        <a href="#" onclick="redirectTo('images')">Images</a>
-        <a href="#" onclick="redirectTo('videos')">Videos</a>
-        <a href="#" onclick="redirectTo('books')">Books</a>
-        <a href="#" onclick="redirectTo('shopping')">Shopping</a>
-        <a href="#" onclick="redirectTo('maps')">Maps</a>
-        <a href="#" onclick="redirectTo('flights')">Flights</a>
+        <a href="javascript:void(0)" onclick="redirectTo('images')">Images</a>
+        <a href="javascript:void(0)" onclick="redirectTo('videos')">Videos</a>
+        <a href="javascript:void(0)" onclick="redirectTo('books')">Books</a>
+        <a href="javascript:void(0)" onclick="redirectTo('shopping')">Shopping</a>
+        <a href="javascript:void(0)" onclick="redirectTo('maps')">Maps</a>
+        <a href="javascript:void(0)" onclick="redirectTo('flights')">Flights</a>
         <a href="https://www.google.com/finance/" target="_blank">Finance</a>
     </div>
 
@@ -128,7 +127,7 @@
                             break;
                     }
                     if (url) {
-                        window.location.href = url;
+                        window.open(url, "_blank");
                     }
                 }
             }
