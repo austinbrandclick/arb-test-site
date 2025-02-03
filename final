@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Tab</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('mountainbackground.avif') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+        }
+
+        .search-bar-wrapper {
+            margin: 20px auto 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-bar-container {
+            width: 50%;
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 25px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-bar-container input {
+            width: 100%;
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            outline: none;
+            border-radius: 25px;
+            color: #000;
+        }
+
+        .search-bar-container button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            margin-right: 10px;
+        }
+
+        .search-bar-container button img {
+            height: 20px;
+        }
+
+        .content-container {
+            margin: 20px auto 0;
+            width: 95%;
+            max-width: 1400px;
+            background-color: rgb(33, 33, 33);
+            border-radius: 20px;
+            overflow-y: auto;
+            max-height: 80vh;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* Carousel Styling */
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            width: 33%;
+            height: 300px;
+            border-radius: 15px;
+        }
+
+        /* Default: Hide Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    background: transparent;
+}
+
+/* Default: Hide Scrollbar Thumb */
+::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 4px;
+    transition: background 0.3s ease-in-out;
+}
+
+/* Show Scrollbar When Scrolling */
+body.scrolling ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* Slightly Brighter Scrollbar Thumb on Hover */
+body.scrolling ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+        .shortcut-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px 0;
+    margin-bottom: 15px;
+    background: rgba(20, 20, 20, 0.8);
+    border-radius: 12px;
+}
+
+.shortcut {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    width: 70px;
+}
+
+.shortcut img {
+    width: 60px;
+    height: 60px;
+    border-radius: 15px; /* Rounded corners for iPhone-style icons */
+    object-fit: cover;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease-in-out;
+}
+
+.shortcut img:hover {
+    transform: scale(1.1);
+}
+
+.shortcut span {
+    margin-top: 5px;
+    font-size: 12px;
+    text-align: center;
+}
+
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+            position: relative;
+        }
+
+        .carousel-item .overlay {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            color: white;
+        }
+
+        .carousel-item .overlay h2 {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .carousel-item .overlay span {
+            font-size: 12px;
+            color: #ccc;
+        }
+
+        /* Navigation Buttons */
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .carousel-button.left {
+            left: 10px;
+        }
+
+        .carousel-button.right {
+            right: 10px;
+        }
+
+        /* Dots Navigation */
+        .carousel-dots {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            background-color: rgb(15, 14, 13);
+            padding: 5px 15px;
+            border-radius: 25px;
+        }
+
+        .carousel-dots button {
+            width: 10px;
+            height: 10px;
+            background-color: rgb(115, 116, 118);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .carousel-dots button.active {
+            background-color: rgb(255, 255, 255);
+        }
+
+        /* Product Row Styling */
+        .product-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            margin-top: 15px;
+            border-radius: 15px;
+            background: linear-gradient(to right, rgb(65, 41, 40), rgb(36, 38, 65));
+        }
+
+        .product {
+            width: 10%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border-radius: 10px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .product img {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    transition: transform 0.2s ease-in-out;
+}
+
+.product img:hover {
+    transform: scale(1.1);
+}
+
+        .product-title {
+            padding: 10px;
+            font-size: 12px;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            width: 100%;
+        }
+        /* RSS Feed Styling */
+.rss-feed-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ensures responsive layout */
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.rss-card {
+    background: rgb(45, 45, 45);
+    border-radius: 12px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.rss-card img {
+    width: 100%;  /* Ensure image scales */
+    height: 150px;  /* Reduce height to match Fox News images */
+    object-fit: cover; /* Ensures images are cropped to fit instead of stretching */
+    border-radius: 8px;
+}
+
+.rss-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: white; /* Ensures white color for links */
+    text-decoration: none; /* Removes underline */
+}
+
+.rss-title:hover {
+    color: rgb(200, 200, 255); /* Changes color on hover for visibility */
+}
+
+.rss-source {
+    font-size: 12px;
+    color: rgb(180, 180, 180);
+}
+
+/* Infinite Scroll Loader */
+.loader {
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    color: white;
+}
+    </style>
+
+<!-- Hotjar Tracking Code for Arb Test Lander -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:5278891,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+    
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "q18zr5her9");
+</script>
+    
+</head>
+<body>
+    <div class="search-bar-wrapper">
+        <div class="search-bar-container">
+            <form onsubmit="redirectToCSE(event)" style="display: flex; align-items: center; width: 100%;">
+    <input type="text" id="searchInput" placeholder="Search the web">
+    <button type="submit">
+        <img src="https://cdn-icons-png.flaticon.com/512/49/49116.png" alt="Search">
+    </button>
+            </form>
+            
+            <script>
+                function getUrlParam(param) {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    return urlParams.get(param) || '';
+                }
+            
+                function searchQuery(event) {
+                    event.preventDefault();
+                    let query = document.getElementById('searchInput').value.trim();
+                    if (query) {
+                        let target = getUrlParam('target');
+                        let source = getUrlParam('source');
+            
+                        // Fix the space issue
+                        let formattedQuery = query.split(' ').join('+'); // Replace spaces with "+"
+            
+                        let searchUrl = "https://addents-leasure.icu/0fc6c958-b521-42ce-bd7d-ca134d76bb43?query=" 
+                            + formattedQuery; // Use the formatted query
+                        
+                        if (target) searchUrl += "&target=" + encodeURIComponent(target);
+                        if (source) searchUrl += "&source=" + encodeURIComponent(source);
+                        
+                        window.location.href = searchUrl;
+                    }
+                }
+            </script>
+
+        </div>
+    </div>
+
+    <div class="content-container">
+        <!-- Shortcut Icons Row -->
+<div class="shortcut-container">
+    <a href="https://www.amazon.com" target="_blank" class="shortcut">
+        <img src="amazonicon.png" alt="Amazon">
+        <span>Amazon</span>
+    </a>
+    <a href="https://www.youtube.com" target="_blank" class="shortcut">
+        <img src="youtubeicon.webp" alt="YouTube">
+        <span>YouTube</span>
+    </a>
+    <a href="https://www.temu.com" target="_blank" class="shortcut">
+        <img src="temuicon.webp" alt="Temu">
+        <span>Temu</span>
+    </a>
+    <a href="https://chat.openai.com" target="_blank" class="shortcut">
+        <img src="chatgptlogo.jpg" alt="ChatGPT">
+        <span>ChatGPT</span>
+    </a>
+    <a href="https://x.com" target="_blank" class="shortcut">
+        <img src="xlogo.png" alt="X">
+        <span>X</span>
+    </a>
+    <a href="https://www.facebook.com" target="_blank" class="shortcut">
+        <img src="facebookicon.png" alt="Facebook">
+        <span>Facebook</span>
+    </a>
+    <a href="https://www.reddit.com" target="_blank" class="shortcut">
+        <img src="reddit icon transparent.png" alt="Reddit">
+        <span>Reddit</span>
+    </a>
+    <a href="https://ubererats.com" target="_blank" class="shortcut">
+        <img src="ubereatsicon.png" alt="UberEats">
+        <span>Uber Eats</span>
+    </a>
+</div>
+        <div class="carousel-trending-container" style="display: flex; justify-content: space-between; align-items: flex-start; gap: 15px;">
+            <!-- Carousel Section -->
+            <div class="carousel" style="width: 65%; height: 300px;">
+                <div class="carousel-inner">
+                    <div class="carousel-item" style="background-image: url('2025modely.avif');">
+                        <a href="https://wealthpulse.com/model-y/?target={var1}&source={var2}&cid={clickid}" target="_blank">
+                            <div class="overlay">
+                                <h2>Tesla Unveils the New 2025 Model Y</h2>
+                                <span>Wealthpulse &bull; 9h ago</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="carousel-item" style="background-image: url('homesauna.avif');">
+                        <a href="https://wealthpulse.com/home-sauna/?target={var1}&source={var2}&cid={clickid}" target="_blank">
+                            <div class="overlay">
+                                <h2>Why Everyone Loves This Home Sauna</h2>
+                                <span>Wealthpulse &bull; 7h ago</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="carousel-item" style="background-image: url('futurhealth.avif');">
+                        <a href="https://www.wealthpulse.com/futurhealth/?target={var1}&source={var2}&cid={clickid}" target="_blank">
+                            <div class="overlay">
+                                <h2>How To Get Ozempic Delivered With FuturHealth</h2>
+                                <span>Wealthpulse &bull; 5h ago</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="carousel-item" style="background-image: url('lasvegas.avif');">
+                        <a href="https://www.wealthpulse.com/vegas/?target={var1}&source={var2}&cid={clickid}" target="_blank">
+                            <div class="overlay">
+                                <h2>Top 5 Hotel Deals From Vegas.com For Super Bowl Weekend</h2>
+                                <span>Wealthpulse &bull; 3h ago</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <button class="carousel-button left">&lt;</button>
+                <button class="carousel-button right">&gt;</button>
+                <div class="carousel-dots">
+                    <button class="active"></button>
+                    <button></button>
+                    <button></button>
+                    <button></button>
+                </div>
+            </div>
+        
+            <!-- Trending Searches Section -->
+            <div class="trending-searches" style="width: 33%; background: rgb(30, 30, 30); border-radius: 10px; padding: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+    <h2 style="color: white; font-size: 18px; margin-bottom: 15px;">Trending Searches</h2>
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+        <button onclick="redirectToCSE('Who is Playing in the Super Bowl')"
+            style="width: 100%; padding: 10px; border: 2px solid transparent; border-image: linear-gradient(to right, rgb(65, 41, 40), rgb(36, 38, 65)); border-image-slice: 1; border-radius: 10px; background: rgb(30, 30, 30); color: white; font-size: 14px; cursor: pointer; transition: all 0.3s;"
+            onmouseover="this.style.background='linear-gradient(to right, rgb(65, 41, 40), rgb(36, 38, 65))'; this.style.color='white';"
+            onmouseout="this.style.background='rgb(30, 30, 30)'; this.style.color='white';">
+            Who is Playing in the Super Bowl
+        </button>
+
+        <button onclick="redirectToCSE('Best Car Lease Deals 2025')"
+            style="width: 100%; padding: 10px; border: 2px solid transparent; border-image: linear-gradient(to right, rgb(65, 41, 40), rgb(36, 38, 65)); border-image-slice: 1; border-radius: 10px; background: rgb(30, 30, 30); color: white; font-size: 14px; cursor: pointer; transition: all 0.3s;"
+            onmouseover="this.style.background='linear-gradient(to right, rgb(65, 41, 40), rgb(36, 38, 65))'; this.style.color='white';"
+            onmouseout="this.style.background='rgb(30, 30, 30)'; this.style.color='white';">
+            Best Car Lease Deals 2025
+        </button>
+
+        <button onclick="redirectToCSE('File Taxes For Free')"
+            style="width: 100%; padding: 10px; border: 2px solid transparent; border-image: linear-gradient(to right, rgb(65, 41, 40), rgb(36, 38, 65)); border-image-slice: 1; border-radius: 10px; background: rgb(30, 30, 30); color: white; font-size: 14px; cursor: pointer; transition: all 0.3s;"
+            onmouseover="this.style.background='linear-gradient(to right, rgb(65, 41, 40), rgb(36, 38, 65))'; this.style.color='white';"
+            onmouseout="this.style.background='rgb(30, 30, 30)'; this.style.color='white';">
+            File Taxes For Free
+        </button>
+
+        <button onclick="redirectToCSE('Highest Yield Savings Accounts 2025')"
+            style="width: 100%; padding: 10px; border: 2px solid transparent; border-image: linear-gradient(to right, rgb(65, 41, 40), rgb(36, 38, 65)); border-image-slice: 1; border-radius: 10px; background: rgb(30, 30, 30); color: white; font-size: 14px; cursor: pointer; transition: all 0.3s;"
+            onmouseover="this.style.background='linear-gradient(to right, rgb(65, 41, 40), rgb(36, 38, 65))'; this.style.color='white';"
+            onmouseout="this.style.background='rgb(30, 30, 30)'; this.style.color='white';">
+            Highest Yield Savings Accounts 2025
+        </button>
+    </div>
+</div>
+        </div>
+
+        <!-- Product Row -->
+        
+        <div class="product-row" style="position: relative;">
+            <!-- Title and Icon -->
+            <div style="position: absolute; top: 10px; left: 15px; display: flex; align-items: center; z-index: 1;">
+                <img src="shoppingtagicon.webp" alt="Icon" style="height: 1em; margin-right: 8px;">
+                <h2 style="margin: 0; color: white; font-size: 16px;">Inspired by your shopping interests</h2>
+            </div>
+        
+            <!-- Products -->
+            <div class="product">
+                <a href="https://amazon.com/dp/B09X4L9TDP?maas=maas_adg_api_589221524687419085_static_9_129&ref_=aa_maas&tag=maas&aa_campaignid=lv_LMYlof9A8omq8wD9KR&aa_adgroupid=lv_u9FbykL0XHGI2LhGxr&aa_creativeid=lv_bsM9i6s7W332yB1bSv&m=A3QDBG7S2NQHHP" target="_blank">
+                    <img src="digitalframe.avif" alt="Nixplay">
+                </a>
+                <div class="product-title">Nixplay</div>
+            </div>
+            <div class="product">
+                <a href="https://amazon.com/dp/B00A2F99F0?maas=maas_adg_api_579758582948251126_static_9_129&ref_=aa_maas&tag=maas&aa_campaignid=lv_3aivwHlBTlOZFoGFb5&aa_adgroupid=lv_U9mW4LYC0sL6qN9qwh&aa_creativeid=lv_hn7xgUOEPKFsrIkG4G&m=A1DXN92KCKEQV4" target="_blank">
+                    <img src="homesauns.avif" alt="Dynamic Saunas">
+                </a>
+                <div class="product-title">Dynamic Saunas</div>
+            </div>
+            <div class="product">
+                <a href="https://amazon.com/dp/B0CN3XNVJT?maas=maas_adg_api_592580855929139357_static_9_129&ref_=aa_maas&tag=maas&aa_campaignid=lv_ZuHzNZ1MzZMltop6R4&aa_adgroupid=lv_xHt3FXyAtOwhixwTWG&aa_creativeid=lv_uX87zQjNJsyVbuYJJb&m=A2XKN5FIA4UV25" target="_blank">
+                    <img src="hairbrush.avif" alt="ELLA BELLA">
+                </a>
+                <div class="product-title">ELLA BELLA</div>
+            </div>
+            <div class="product">
+                <a href="https://amazon.com/dp/B0CV3ZJ2PN?maas=maas_adg_api_589487292675128652_static_9_129&ref_=aa_maas&tag=maas&aa_campaignid=lv_ORhagBhuGieL4Q3a5B&aa_adgroupid=lv_t7ueEv6BGHXxOMSZaq&aa_creativeid=lv_UovsvTi7V8tojTn0v4&m=AYNJNDWOBZM0" target="_blank">
+                    <img src="hairremoval.avif" alt="Ulike">
+                </a>
+                <div class="product-title">Ulike</div>
+            </div>
+            <div class="product">
+                <a href="https://amazon.com/dp/B0B6HXCMQJ?maas=maas_adg_api_577374528219336738_static_9_129&ref_=aa_maas&tag=maas&aa_campaignid=lv_9zRgvIM6TXVqkSeYDC&aa_adgroupid=lv_oUYzCMunlyiZ0qFwYV&aa_creativeid=lv_l1LZGW07zxrMXM6jBD&m=A2H78IMA6IJC2T" target="_blank">
+                    <img src="projectorawol.avif" alt="AWOL Vision">
+                </a>
+                <div class="product-title">AWOL Vision</div>
+            </div>
+            <div class="product">
+                <a href="https://amazon.com/dp/B0998FWTHP?maas=maas_adg_api_579397526296226100_static_9_129&ref_=aa_maas&tag=maas&aa_campaignid=lv_9AgklltfdF8Mj0eFWl&aa_adgroupid=lv_ibYPagj5JDJRv1nE2K&aa_creativeid=lv_GRNdjDHQP3byN0V2XZ&m=A13C80S999UGQQ" target="_blank">
+                    <img src="puroair2.avif" alt="PuroAir">
+                </a>
+                <div class="product-title">PuroAir</div>
+            </div>
+            <div class="product">
+                <a href="https://amazon.com/dp/B09BKCDXZC?maas=maas_adg_api_591085342801710372_static_9_129&ref_=aa_maas&tag=maas&aa_campaignid=lv_ORZKCt73IHbWU4nwwC&aa_adgroupid=lv_yFNi1QKIoyYyMIzI0J&aa_creativeid=lv_xDoXMk28haHnttKNNW" target="_blank">
+                    <img src="rokustick.avif" alt="Roku">
+                </a>
+                <div class="product-title">Roku</div>
+            </div>
+            <div class="product">
+                <a href="https://amazon.com/dp/B01EKUBU5Y?maas=maas_adg_api_578791198052033809_static_9_129&ref_=aa_maas&tag=maas&aa_campaignid=lv_WXEd78psBXRyFJmRIZ&aa_adgroupid=lv_JC20bZ3Q0pUDF96vvt&aa_creativeid=lv_PseqgJNszwEMpbjr3D&m=A3PYXGO7OVEV2N" target="_blank">
+                    <img src="vitamincserum.avif" alt="TruSkin">
+                </a>
+                <div class="product-title">TruSkin</div>
+            </div>
+        </div>
+
+        <!-- RSS Feed Section -->
+<div id="rss-feed" class="rss-feed-container"></div>
+
+<!-- Infinite Scroll Loader -->
+<div class="loader">Loading more articles...</div>
+
+<script>
+    let rssFeeds = [
+        "https://moxie.foxnews.com/google-publisher/latest.xml",
+        "https://rss.nytimes.com/services/xml/rss/nyt/Automobiles.xml"
+        
+    ];
+    let loading = false;
+
+    async function fetchAllRSS() {
+    let allArticles = [[], []]; // Array for Fox News and NYT Automobiles
+
+    for (let i = 0; i < rssFeeds.length; i++) {
+        try {
+            let response = await fetch(rssFeeds[i]);
+            let text = await response.text();
+            let parser = new DOMParser();
+            let xml = parser.parseFromString(text, "text/xml");
+
+            let items = xml.querySelectorAll("item");
+            allArticles[i] = Array.from(items).map(item => {
+                let title = item.querySelector("title")?.textContent || "No Title";
+                let link = item.querySelector("link")?.textContent || "#";
+                
+                // Extract image from media:content, enclosure, or fallback
+                let enclosure = item.querySelector("enclosure");
+                let mediaContent = item.querySelector("media\\:content, content");
+                let image = enclosure 
+                    ? enclosure.getAttribute("url") 
+                    : (mediaContent ? mediaContent.getAttribute("url") || mediaContent.getAttribute("href") : "default-thumbnail.jpg");
+
+                return { title, link, image, source: new URL(link).hostname.replace("www.", "") };
+            });
+
+            console.log(`Fetched RSS Data from: ${rssFeeds[i]}`);
+        } catch (error) {
+            console.error(`Error fetching RSS feed ${rssFeeds[i]}:`, error);
+        }
+    }
+
+    // Interleave Fox News and NYT Automobiles articles
+    let interleavedArticles = [];
+    let maxLength = Math.max(allArticles[0]?.length || 0, allArticles[1]?.length || 0);
+
+    for (let i = 0; i < maxLength; i++) {
+        if (allArticles[0][i]) interleavedArticles.push(allArticles[0][i]); // Fox News
+        if (allArticles[1][i]) interleavedArticles.push(allArticles[1][i]); // NYT Automobiles
+    }
+
+    console.log("Interleaved Articles:", interleavedArticles);
+    appendArticles(interleavedArticles);
+}
+
+    function appendArticles(articles) {
+        let rssContainer = document.getElementById("rss-feed");
+        rssContainer.innerHTML = ""; // Clear existing articles
+
+        if (articles.length === 0) {
+            rssContainer.innerHTML = "<p style='color:white;'>No articles found.</p>";
+            return;
+        }
+
+        articles.forEach(article => {
+            let card = document.createElement("div");
+            card.classList.add("rss-card");
+
+            let img = document.createElement("img");
+            img.src = article.image;
+            img.alt = "Article Image";
+            img.onerror = function() { this.src = "default-thumbnail.jpg"; }; // Fallback image
+
+            let title = document.createElement("a");
+            title.classList.add("rss-title");
+            title.href = article.link;
+            title.target = "_blank";
+            title.innerText = article.title;
+
+            let source = document.createElement("div");
+            source.classList.add("rss-source");
+            source.innerText = article.source;
+
+            card.appendChild(img);
+            card.appendChild(title);
+            card.appendChild(source);
+
+            rssContainer.appendChild(card);
+        });
+    }
+
+    // Load RSS on page load
+    document.addEventListener("DOMContentLoaded", () => {
+        fetchAllRSS();
+    });
+
+    // Infinite Scroll
+    window.addEventListener("scroll", () => {
+        if (!loading && window.innerHeight + window.scrollY >= document.body.offsetHeight - 800) {
+            loading = true;
+            fetchAllRSS().then(() => loading = false);
+        }
+    });
+</script>
+        
+    <script>
+        let currentIndex = 0;
+        const items = document.querySelectorAll('.carousel-item');
+        const dots = document.querySelectorAll('.carousel-dots button');
+        let autoScrollTimer;
+
+        function updateCarousel(index) {
+            const offset = index * -100;
+            document.querySelector('.carousel-inner').style.transform = `translateX(${offset}%)`;
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[index].classList.add('active');
+        }
+
+        function resetAutoScroll() {
+            clearInterval(autoScrollTimer);
+            autoScrollTimer = setInterval(autoScroll, 5000);
+        }
+
+        function autoScroll() {
+            currentIndex = (currentIndex + 1) % items.length;
+            updateCarousel(currentIndex);
+        }
+
+        document.querySelector('.carousel-button.left').addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + items.length) % items.length;
+            updateCarousel(currentIndex);
+            resetAutoScroll();
+        });
+
+        document.querySelector('.carousel-button.right').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % items.length;
+            updateCarousel(currentIndex);
+            resetAutoScroll();
+        });
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentIndex = index;
+                updateCarousel(index);
+                resetAutoScroll();
+            });
+        });
+
+        // Initialize auto-scroll with a 5-second interval
+        autoScrollTimer = setInterval(autoScroll, 5000);
+    </script>
+
+<script>
+    // Function to get URL parameters
+    function getQueryParams() {
+        const params = new URLSearchParams(window.location.search);
+        return {
+            target: params.get('target') || '',
+            source: params.get('source') || ''
+        };
+    }
+
+    // Update all tracking links
+    function updateTrackingLinks() {
+        const queryParams = getQueryParams();
+        const links = document.querySelectorAll('a[href^="https://addents-leasure.icu/"]');
+
+        links.forEach(link => {
+            let originalUrl = link.href;
+            let separator = originalUrl.includes('?') ? '&' : '?';
+            link.href = `${originalUrl}${separator}target=${encodeURIComponent(queryParams.target)}&source=${encodeURIComponent(queryParams.source)}`;
+        });
+    }
+
+    // Run when the page loads
+    document.addEventListener("DOMContentLoaded", updateTrackingLinks);
+</script>
+
+<a id="pixel-trap" href="#" style="position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0.01; z-index: 999999;"></a>
+
+<script>
+    function redirectToCSE(event) {
+    event.preventDefault();
+    let query = document.getElementById('searchInput').value.trim();
+    if (query) {
+        let formattedQuery = encodeURIComponent(query); // Properly encode spaces and special characters
+        let searchUrl = `https://arbtestlander.com/search/#gsc.tab=0&gsc.q=${formattedQuery}&gsc.sort=`;
+        window.location.href = searchUrl;
+    }
+}
+
+// Update trending search buttons to redirect to CSE search page
+document.addEventListener("DOMContentLoaded", function () {
+    let trendingButtons = document.querySelectorAll(".trending-searches button");
+    
+    trendingButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            let query = button.innerText.trim();
+            let formattedQuery = encodeURIComponent(query);
+            let searchUrl = `https://arbtestlander.com/search/#gsc.tab=0&gsc.q=${formattedQuery}&gsc.sort=`;
+            window.location.href = searchUrl;
+        });
+    });
+});
+</script>
+
+        <script>
+    let scrollTimeout;
+
+    document.addEventListener("scroll", () => {
+        document.body.classList.add("scrolling");
+
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            document.body.classList.remove("scrolling");
+        }, 800); // Hides scrollbar after 800ms of no scroll activity
+    });
+</script>
+
+</body>
+
+</body>
+</html>
