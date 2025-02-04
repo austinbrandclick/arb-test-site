@@ -600,16 +600,17 @@ footer a:hover {
 </div>
         </div>
 
-        <!-- Product Row -->
-        
-        <div class="product-row" style="position: relative;">
-            <!-- Title and Icon -->
-            <div style="position: absolute; top: 10px; left: 15px; display: flex; align-items: center; z-index: 1;">
-                <img src="shoppingtagicon.webp" alt="Icon" style="height: 1em; margin-right: 8px;">
-                <h2 style="margin: 0; color: white; font-size: 16px;">Inspired by your shopping interests</h2>
-            </div>
+<!-- Keep the same .product-row class -->
+<div class="product-row-wrapper">
+    <!-- Title and Icon (Now outside .product-row, preventing accidental deletion) -->
+    <div class="product-title-container" style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+        <img src="shoppingtagicon.webp" alt="Icon" style="height: 1em;">
+        <h2 style="margin: 0; color: white; font-size: 16px;">Inspired by your shopping interests</h2>
+    </div>
 
-            <div class="product-row"></div>
+    <!-- Keep the existing .product-row so JS and CSS still work -->
+    <div class="product-row" style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;"></div>
+</div>
            
         <!-- RSS Feed Section -->
 <div id="rss-feed" class="rss-feed-container"></div>
@@ -666,41 +667,44 @@ let maxLength = Math.min(44, Math.max(allArticles[0]?.length || 0, allArticles[1
     appendArticles(interleavedArticles);
 }
 
-    function appendArticles(articles) {
-        let rssContainer = document.getElementById("rss-feed");
-        rssContainer.innerHTML = ""; // Clear existing articles
-
-        if (articles.length === 0) {
-            rssContainer.innerHTML = "<p style='color:white;'>No articles found.</p>";
-            return;
-        }
-
-        articles.forEach(article => {
-            let card = document.createElement("div");
-            card.classList.add("rss-card");
-
-            let img = document.createElement("img");
-            img.src = article.image;
-            img.alt = "Article Image";
-            img.onerror = function() { this.src = "default-thumbnail.jpg"; }; // Fallback image
-
-            let title = document.createElement("a");
-            title.classList.add("rss-title");
-            title.href = article.link;
-            title.target = "_blank";
-            title.innerText = article.title;
-
-            let source = document.createElement("div");
-            source.classList.add("rss-source");
-            source.innerText = article.source;
-
-            card.appendChild(img);
-            card.appendChild(title);
-            card.appendChild(source);
-
-            rssContainer.appendChild(card);
-        });
+function appendArticles(articles) {
+    let rssContainer = document.getElementById("rss-feed");
+    if (!rssContainer) {
+        console.error("RSS container not found! Skipping update.");
+        return;
     }
+    rssContainer.innerHTML = ""; // Clear only if it's safe
+
+    if (articles.length === 0) {
+        rssContainer.innerHTML = "<p style='color:white;'>No articles found.</p>";
+        return;
+    }
+
+    articles.forEach(article => {
+        let card = document.createElement("div");
+        card.classList.add("rss-card");
+
+        let img = document.createElement("img");
+        img.src = article.image;
+        img.alt = "Article Image";
+        img.onerror = () => { img.src = "default-thumbnail.jpg"; };
+
+        let title = document.createElement("a");
+        title.classList.add("rss-title");
+        title.href = article.link;
+        title.target = "_blank";
+        title.innerText = article.title;
+
+        let source = document.createElement("div");
+        source.classList.add("rss-source");
+        source.innerText = article.source;
+
+        card.appendChild(img);
+        card.appendChild(title);
+        card.appendChild(source);
+        rssContainer.appendChild(card);
+    });
+}
 
     // Load RSS on page load
     document.addEventListener("DOMContentLoaded", () => {
@@ -852,23 +856,25 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function displayRandomProducts() {
-        let selectedProducts = getRandomProducts(allAmazonProducts, 8);
-        let productRow = document.querySelector(".product-row");
-        productRow.innerHTML = ""; // Clear existing products
+    let selectedProducts = getRandomProducts(allAmazonProducts, 8);
+    let productRow = document.querySelector(".product-row");
 
-        selectedProducts.forEach(product => {
-            let productDiv = document.createElement("div");
-            productDiv.classList.add("product");
-            productDiv.innerHTML = `
-                <a href="${product.link}" target="_blank">
-                    <img src="${product.img}" alt="${product.name}">
-                </a>
-                <div class="product-title">${product.name}</div>
-            `;
-            productRow.appendChild(productDiv);
-        });
-    }
+    // Remove only existing products, NOT the title
+    let products = productRow.querySelectorAll(".product");
+    products.forEach(product => product.remove());
 
+    selectedProducts.forEach(product => {
+        let productDiv = document.createElement("div");
+        productDiv.classList.add("product");
+        productDiv.innerHTML = `
+            <a href="${product.link}" target="_blank">
+                <img src="${product.img}" alt="${product.name}">
+            </a>
+            <div class="product-title">${product.name}</div>
+        `;
+        productRow.appendChild(productDiv);
+    });
+}
     // Load random products when the page loads
     document.addEventListener("DOMContentLoaded", displayRandomProducts);
 </script>
