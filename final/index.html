@@ -356,11 +356,6 @@ footer a:hover {
         display: none;
     }
 
-    /* Hide "Inspired by your shopping interests" title and icon */
-    .product-row > div:first-child {
-        display: none !important;
-    }
-
     /* Fix shortcut icons */
     .shortcut-container {
         flex-wrap: wrap;
@@ -402,10 +397,10 @@ footer a:hover {
         padding: 6px;
     }
 
-    /* Ensure products don't overlap and spacing is correct */
+    /* ✅ FIX: Ensure 2 products per row & all 8 show */
     .product-row {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); /* Always 2 per row */
         gap: 10px;
         padding: 15px;
         margin-top: 30px !important;
@@ -413,6 +408,7 @@ footer a:hover {
 
     .product {
         width: 100%;
+        min-height: 1px; /* Prevents missing products */
     }
 }
         
@@ -859,10 +855,11 @@ document.addEventListener("DOMContentLoaded", function () {
     let selectedProducts = getRandomProducts(allAmazonProducts, 8);
     let productRow = document.querySelector(".product-row");
 
-    // Remove only existing products, NOT the title
+    // Clear existing products (but keep the title)
     let products = productRow.querySelectorAll(".product");
     products.forEach(product => product.remove());
 
+    // Append exactly 8 products
     selectedProducts.forEach(product => {
         let productDiv = document.createElement("div");
         productDiv.classList.add("product");
@@ -874,9 +871,12 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
         productRow.appendChild(productDiv);
     });
+
+    console.log("Total Products Shown:", document.querySelectorAll(".product").length); // Debugging
 }
-    // Load random products when the page loads
-    document.addEventListener("DOMContentLoaded", displayRandomProducts);
+
+// Load products when the page loads
+document.addEventListener("DOMContentLoaded", displayRandomProducts);
 </script>
         
 </body>
