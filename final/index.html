@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="Homepage" />
+<link rel="manifest" href="/site.webmanifest" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Tab</title>
@@ -312,6 +318,104 @@ body.scrolling ::-webkit-scrollbar-thumb:hover {
     font-size: 16px;
     color: white;
 }
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px 0;
+    font-size: 14px;
+    color: white;
+    background: rgba(20, 20, 20, 0.9); /* Slightly darker for better contrast */
+    border-radius: 12px;
+    font-family: Arial, sans-serif; /* Matches the rest of your site */
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-family: Arial, sans-serif; /* Ensures font consistency */
+    font-size: 14px; /* Matches the rest of your site */
+}
+
+footer a:hover {
+    text-decoration: underline;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 768px) {
+    .content-container {
+        width: 100%;
+        max-width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    /* Hide "Trending Searches" title */
+    .trending-searches h2 {
+        display: none;
+    }
+
+    /* Hide "Inspired by your shopping interests" title and icon */
+    .product-row > div:first-child {
+        display: none !important;
+    }
+
+    /* Fix shortcut icons */
+    .shortcut-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .shortcut {
+        width: 22%;
+    }
+
+    /* 📏 Fix trending searches height & alignment */
+    .carousel-trending-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch; /* Ensures both sections stretch equally */
+    }
+
+    .trending-searches {
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .trending-searches div {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        width: 100%;
+    }
+
+    .trending-searches button {
+        width: 90%;
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    /* Ensure products don't overlap and spacing is correct */
+    .product-row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 15px;
+        margin-top: 30px !important;
+    }
+
+    .product {
+        width: 100%;
+    }
+}
+        
     </style>
 
 <!-- Hotjar Tracking Code for Arb Test Lander -->
@@ -333,6 +437,9 @@ body.scrolling ::-webkit-scrollbar-thumb:hover {
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "q18zr5her9");
 </script>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7777559601552199"
+     crossorigin="anonymous"></script>
     
 </head>
 <body>
@@ -406,7 +513,7 @@ body.scrolling ::-webkit-scrollbar-thumb:hover {
         <img src="reddit icon transparent.png" alt="Reddit">
         <span>Reddit</span>
     </a>
-    <a href="https://ubererats.com" target="_blank" class="shortcut">
+    <a href="https://ubereats.com" target="_blank" class="shortcut">
         <img src="ubereatsicon.png" alt="UberEats">
         <span>Uber Eats</span>
     </a>
@@ -483,11 +590,11 @@ body.scrolling ::-webkit-scrollbar-thumb:hover {
             File Taxes For Free
         </button>
 
-        <button onclick="redirectToCSE('Highest Yield Savings Accounts 2025')"
+        <button onclick="redirectToCSE('Highest Yield Savings Accounts')"
             style="width: 100%; padding: 10px; border: 2px solid transparent; border-image: linear-gradient(to right, rgb(65, 41, 40), rgb(36, 38, 65)); border-image-slice: 1; border-radius: 10px; background: rgb(30, 30, 30); color: white; font-size: 14px; cursor: pointer; transition: all 0.3s;"
             onmouseover="this.style.background='linear-gradient(to right, rgb(65, 41, 40), rgb(36, 38, 65))'; this.style.color='white';"
             onmouseout="this.style.background='rgb(30, 30, 30)'; this.style.color='white';">
-            Highest Yield Savings Accounts 2025
+            Highest Yield Savings Accounts
         </button>
     </div>
 </div>
@@ -501,63 +608,11 @@ body.scrolling ::-webkit-scrollbar-thumb:hover {
                 <img src="shoppingtagicon.webp" alt="Icon" style="height: 1em; margin-right: 8px;">
                 <h2 style="margin: 0; color: white; font-size: 16px;">Inspired by your shopping interests</h2>
             </div>
-        
-            <!-- Products -->
-            <div class="product">
-                <a href="https://amazon.com/dp/B09X4L9TDP?maas=maas_adg_api_589221524687419085_static_9_129&ref_=aa_maas&tag=maas&aa_campaignid=lv_LMYlof9A8omq8wD9KR&aa_adgroupid=lv_u9FbykL0XHGI2LhGxr&aa_creativeid=lv_bsM9i6s7W332yB1bSv&m=A3QDBG7S2NQHHP" target="_blank">
-                    <img src="digitalframe.avif" alt="Nixplay">
-                </a>
-                <div class="product-title">Nixplay</div>
-            </div>
-            <div class="product">
-                <a href="https://amazon.com/dp/B00A2F99F0?maas=maas_adg_api_579758582948251126_static_9_129&ref_=aa_maas&tag=maas&aa_campaignid=lv_3aivwHlBTlOZFoGFb5&aa_adgroupid=lv_U9mW4LYC0sL6qN9qwh&aa_creativeid=lv_hn7xgUOEPKFsrIkG4G&m=A1DXN92KCKEQV4" target="_blank">
-                    <img src="homesauns.avif" alt="Dynamic Saunas">
-                </a>
-                <div class="product-title">Dynamic Saunas</div>
-            </div>
-            <div class="product">
-                <a href="https://amazon.com/dp/B0CN3XNVJT?maas=maas_adg_api_592580855929139357_static_9_129&ref_=aa_maas&tag=maas&aa_campaignid=lv_ZuHzNZ1MzZMltop6R4&aa_adgroupid=lv_xHt3FXyAtOwhixwTWG&aa_creativeid=lv_uX87zQjNJsyVbuYJJb&m=A2XKN5FIA4UV25" target="_blank">
-                    <img src="hairbrush.avif" alt="ELLA BELLA">
-                </a>
-                <div class="product-title">ELLA BELLA</div>
-            </div>
-            <div class="product">
-                <a href="https://amazon.com/dp/B0CV3ZJ2PN?maas=maas_adg_api_589487292675128652_static_9_129&ref_=aa_maas&tag=maas&aa_campaignid=lv_ORhagBhuGieL4Q3a5B&aa_adgroupid=lv_t7ueEv6BGHXxOMSZaq&aa_creativeid=lv_UovsvTi7V8tojTn0v4&m=AYNJNDWOBZM0" target="_blank">
-                    <img src="hairremoval.avif" alt="Ulike">
-                </a>
-                <div class="product-title">Ulike</div>
-            </div>
-            <div class="product">
-                <a href="https://amazon.com/dp/B0B6HXCMQJ?maas=maas_adg_api_577374528219336738_static_9_129&ref_=aa_maas&tag=maas&aa_campaignid=lv_9zRgvIM6TXVqkSeYDC&aa_adgroupid=lv_oUYzCMunlyiZ0qFwYV&aa_creativeid=lv_l1LZGW07zxrMXM6jBD&m=A2H78IMA6IJC2T" target="_blank">
-                    <img src="projectorawol.avif" alt="AWOL Vision">
-                </a>
-                <div class="product-title">AWOL Vision</div>
-            </div>
-            <div class="product">
-                <a href="https://amazon.com/dp/B0998FWTHP?maas=maas_adg_api_579397526296226100_static_9_129&ref_=aa_maas&tag=maas&aa_campaignid=lv_9AgklltfdF8Mj0eFWl&aa_adgroupid=lv_ibYPagj5JDJRv1nE2K&aa_creativeid=lv_GRNdjDHQP3byN0V2XZ&m=A13C80S999UGQQ" target="_blank">
-                    <img src="puroair2.avif" alt="PuroAir">
-                </a>
-                <div class="product-title">PuroAir</div>
-            </div>
-            <div class="product">
-                <a href="https://amazon.com/dp/B09BKCDXZC?maas=maas_adg_api_591085342801710372_static_9_129&ref_=aa_maas&tag=maas&aa_campaignid=lv_ORZKCt73IHbWU4nwwC&aa_adgroupid=lv_yFNi1QKIoyYyMIzI0J&aa_creativeid=lv_xDoXMk28haHnttKNNW" target="_blank">
-                    <img src="rokustick.avif" alt="Roku">
-                </a>
-                <div class="product-title">Roku</div>
-            </div>
-            <div class="product">
-                <a href="https://amazon.com/dp/B01EKUBU5Y?maas=maas_adg_api_578791198052033809_static_9_129&ref_=aa_maas&tag=maas&aa_campaignid=lv_WXEd78psBXRyFJmRIZ&aa_adgroupid=lv_JC20bZ3Q0pUDF96vvt&aa_creativeid=lv_PseqgJNszwEMpbjr3D&m=A3PYXGO7OVEV2N" target="_blank">
-                    <img src="vitamincserum.avif" alt="TruSkin">
-                </a>
-                <div class="product-title">TruSkin</div>
-            </div>
-        </div>
 
+            <div class="product-row"></div>
+           
         <!-- RSS Feed Section -->
 <div id="rss-feed" class="rss-feed-container"></div>
-
-<!-- Infinite Scroll Loader -->
-<div class="loader">Loading more articles...</div>
 
 <script>
     let rssFeeds = [
@@ -599,13 +654,13 @@ body.scrolling ::-webkit-scrollbar-thumb:hover {
     }
 
     // Interleave Fox News and NYT Automobiles articles
-    let interleavedArticles = [];
-    let maxLength = Math.max(allArticles[0]?.length || 0, allArticles[1]?.length || 0);
+let interleavedArticles = [];
+let maxLength = Math.min(44, Math.max(allArticles[0]?.length || 0, allArticles[1]?.length || 0));
 
-    for (let i = 0; i < maxLength; i++) {
-        if (allArticles[0][i]) interleavedArticles.push(allArticles[0][i]); // Fox News
-        if (allArticles[1][i]) interleavedArticles.push(allArticles[1][i]); // NYT Automobiles
-    }
+    for (let i = 0; i < maxLength && interleavedArticles.length < 44; i++) {
+    if (allArticles[0][i] && interleavedArticles.length < 44) interleavedArticles.push(allArticles[0][i]);
+    if (allArticles[1][i] && interleavedArticles.length < 44) interleavedArticles.push(allArticles[1][i]);
+}
 
     console.log("Interleaved Articles:", interleavedArticles);
     appendArticles(interleavedArticles);
@@ -652,13 +707,6 @@ body.scrolling ::-webkit-scrollbar-thumb:hover {
         fetchAllRSS();
     });
 
-    // Infinite Scroll
-    window.addEventListener("scroll", () => {
-        if (!loading && window.innerHeight + window.scrollY >= document.body.offsetHeight - 800) {
-            loading = true;
-            fetchAllRSS().then(() => loading = false);
-        }
-    });
 </script>
         
     <script>
@@ -742,7 +790,7 @@ body.scrolling ::-webkit-scrollbar-thumb:hover {
     let query = document.getElementById('searchInput').value.trim();
     if (query) {
         let formattedQuery = encodeURIComponent(query); // Properly encode spaces and special characters
-        let searchUrl = `https://arbtestlander.com/search/#gsc.tab=0&gsc.q=${formattedQuery}&gsc.sort=`;
+        let searchUrl = `https://cleanesthomepage.com/search/#gsc.tab=0&gsc.q=${formattedQuery}&gsc.sort=`;
         window.location.href = searchUrl;
     }
 }
@@ -755,7 +803,7 @@ document.addEventListener("DOMContentLoaded", function () {
         button.addEventListener("click", function () {
             let query = button.innerText.trim();
             let formattedQuery = encodeURIComponent(query);
-            let searchUrl = `https://arbtestlander.com/search/#gsc.tab=0&gsc.q=${formattedQuery}&gsc.sort=`;
+            let searchUrl = `https://cleanesthomepage.com/search/#gsc.tab=0&gsc.q=${formattedQuery}&gsc.sort=`;
             window.location.href = searchUrl;
         });
     });
@@ -775,6 +823,56 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 </script>
 
+<footer>
+    <p>&copy; 2025 Cleanest Homepage</p>
+    <p><a href="https://cleanesthomepage.com/terms">Terms</a> | 
+       <a href="https://cleanesthomepage.com/disclosures">Disclosures</a> | 
+       <a href="https://cleanesthomepage.com/privacy">Privacy Policy</a>
+    </p>
+</footer>
+
+<script>
+    // Full list of Amazon products
+    let allAmazonProducts = [
+        { name: "Nixplay", img: "digitalframe.avif", link: "https://amazon.com/dp/B09X4L9TDP?maas=maas_adg_api_589221524687419085_static_9_129&ref_=aa_maas&tag=maas&aa_campaignid=lv_LMYlof9A8omq8wD9KR&aa_adgroupid=lv_u9FbykL0XHGI2LhGxr&aa_creativeid=lv_bsM9i6s7W332yB1bSv&m=A3QDBG7S2NQHHP" },
+        { name: "Dynamic Saunas", img: "homesauns.avif", link: "https://amazon.com/dp/B00A2F99F0?maas=maas_adg_api_579758582948251126_static_9_129&ref_=aa_maas&tag=maas&aa_campaignid=lv_3aivwHlBTlOZFoGFb5&aa_adgroupid=lv_U9mW4LYC0sL6qN9qwh&aa_creativeid=lv_hn7xgUOEPKFsrIkG4G&m=A1DXN92KCKEQV4" },
+        { name: "ELLA BELLA", img: "hairbrush.avif", link: "https://amazon.com/dp/B0CN3XNVJT?maas=maas_adg_api_592580855929139357_static_9_129&ref_=aa_maas&tag=maas&aa_campaignid=lv_ZuHzNZ1MzZMltop6R4&aa_adgroupid=lv_xHt3FXyAtOwhixwTWG&aa_creativeid=lv_uX87zQjNJsyVbuYJJb&m=A2XKN5FIA4UV25" },
+        { name: "Ulike", img: "hairremoval.avif", link: "https://amazon.com/dp/B0CV3ZJ2PN?maas=maas_adg_api_589487292675128652_static_9_129&ref_=aa_maas&tag=maas&aa_campaignid=lv_ORhagBhuGieL4Q3a5B&aa_adgroupid=lv_t7ueEv6BGHXxOMSZaq&aa_creativeid=lv_UovsvTi7V8tojTn0v4&m=AYNJNDWOBZM0" },
+        { name: "AWOL Vision", img: "projectorawol.avif", link: "https://amazon.com/dp/B0B6HXCMQJ?maas=maas_adg_api_577374528219336738_static_9_129&ref_=aa_maas&tag=maas&aa_campaignid=lv_9zRgvIM6TXVqkSeYDC&aa_adgroupid=lv_oUYzCMunlyiZ0qFwYV&aa_creativeid=lv_l1LZGW07zxrMXM6jBD&m=A2H78IMA6IJC2T" },
+        { name: "PuroAir", img: "puroair2.avif", link: "https://amazon.com/dp/B0998FWTHP?maas=maas_adg_api_579397526296226100_static_9_129&ref_=aa_maas&tag=maas&aa_campaignid=lv_9AgklltfdF8Mj0eFWl&aa_adgroupid=lv_ibYPagj5JDJRv1nE2K&aa_creativeid=lv_GRNdjDHQP3byN0V2XZ&m=A13C80S999UGQQ" },
+        { name: "Roku", img: "rokustick.avif", link: "https://amazon.com/dp/B09BKCDXZC?maas=maas_adg_api_591085342801710372_static_9_129&ref_=aa_maas&tag=maas&aa_campaignid=lv_ORZKCt73IHbWU4nwwC&aa_adgroupid=lv_yFNi1QKIoyYyMIzI0J&aa_creativeid=lv_xDoXMk28haHnttKNNW" },
+        { name: "TruSkin", img: "vitamincserum.avif", link: "https://amazon.com/dp/B01EKUBU5Y?maas=maas_adg_api_578791198052033809_static_9_129&ref_=aa_maas&tag=maas&aa_campaignid=lv_WXEd78psBXRyFJmRIZ&aa_adgroupid=lv_JC20bZ3Q0pUDF96vvt&aa_creativeid=lv_PseqgJNszwEMpbjr3D&m=A3PYXGO7OVEV2N" },
+        { name: "Echo Dot", img: "blackview.jpg", link: "https://amazon.com/dp/B0D1G1D4DY?maas=maas_adg_api_583777976906705977_static_9_129&ref_=aa_maas&tag=maas&aa_campaignid=lv_7r6oTNLr6YUIdbXXSU&aa_adgroupid=lv_DMC4PbCKkvjBU5v9zh&aa_creativeid=lv_fOENrTv4mu8MvbJDiL&m=AZUA87KRPRJ9D" }
+
+    ];
+
+    function getRandomProducts(products, count) {
+        let shuffled = [...products].sort(() => 0.5 - Math.random());
+        return shuffled.slice(0, count);
+    }
+
+    function displayRandomProducts() {
+        let selectedProducts = getRandomProducts(allAmazonProducts, 8);
+        let productRow = document.querySelector(".product-row");
+        productRow.innerHTML = ""; // Clear existing products
+
+        selectedProducts.forEach(product => {
+            let productDiv = document.createElement("div");
+            productDiv.classList.add("product");
+            productDiv.innerHTML = `
+                <a href="${product.link}" target="_blank">
+                    <img src="${product.img}" alt="${product.name}">
+                </a>
+                <div class="product-title">${product.name}</div>
+            `;
+            productRow.appendChild(productDiv);
+        });
+    }
+
+    // Load random products when the page loads
+    document.addEventListener("DOMContentLoaded", displayRandomProducts);
+</script>
+        
 </body>
 
 </body>
