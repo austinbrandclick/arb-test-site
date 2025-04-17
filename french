@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Résultats de recherche</title>
+
+ <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NLPSBWVG');</script>
+<!-- End Google Tag Manager -->
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+    .search-box {
+      display: flex;
+      margin-bottom: 1.5rem;
+    }
+    .search-box input {
+      flex-grow: 1;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-right: none;
+    }
+    .search-box button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4285f4;
+      color: white;
+      border: 1px solid #4285f4;
+      cursor: pointer;
+    }
+    .results-count {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+    .result {
+      background: white;
+      padding: 1rem;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      box-shadow: 0 0 4px rgba(0,0,0,0.05);
+    }
+    .result a {
+      display: block;
+      color: #1a0dab;
+      text-decoration: none;
+      font-size: 16px;
+      margin-bottom: 0.3rem;
+    }
+    .result .link {
+      color: #006621;
+      font-size: 14px;
+    }
+    .result p {
+      font-size: 14px;
+      color: #545454;
+      margin: 0;
+    }
+  </style>
+
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "q18zr5her9");
+</script>
+  
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NLPSBWVG"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div class="container">
+    <div class="search-box">
+      <input type="text" placeholder="Rechercher..." />
+      <button>Rechercher</button>
+    </div>
+
+    <div class="results-count">Environ 7 940 000 000 résultats (0,57 seconde)</div>
+
+    <div class="result">
+      <span class="link">https://cars.com/</span>
+      <a href="https://cars.com/" target="_blank">Voitures neuves, occasions, concessionnaires, prix et avis | Cars.com</a>
+      <p>Achetez des voitures neuves et d’occasion, comparez les modèles, trouvez des concessionnaires locaux, estimez la valeur de votre véhicule et plus encore sur Cars.com.</p>
+    </div>
+
+    <div class="result">
+      <span class="link">https://www.carmax.com/</span>
+      <a href="https://www.carmax.com/" target="_blank">CarMax - Achetez des voitures d'occasion en ligne ou en magasin</a>
+      <p>Recherchez des voitures d’occasion, comparez les modèles et obtenez des informations utiles sur carmax.com.</p>
+    </div>
+
+    <div class="result">
+      <span class="link">https://www.cars.com/news/car-buying/</span>
+      <a href="https://www.cars.com/news/car-buying/" target="_blank">Actualités sur l'achat de voitures | Cars.com</a>
+      <p>Consultez les articles de l'équipe éditoriale de Cars.com sur l'achat de véhicules.</p>
+    </div>
+
+    <div class="result">
+      <span class="link">https://www.autotrader.com/</span>
+      <a href="https://www.autotrader.com/" target="_blank">Autotrader : Achat et vente de voitures neuves et d'occasion</a>
+      <p>Trouvez des voitures neuves ou d’occasion parmi des millions d’annonces sur Autotrader. Comparaison facile et rapide.</p>
+    </div>
+
+    <div class="result">
+      <span class="link">https://www.carvana.com/</span>
+      <a href="https://www.carvana.com/" target="_blank">Carvana | Achetez et financez une voiture d'occasion en ligne</a>
+      <p>Carvana propose une nouvelle façon d’acheter une voiture. Parcourez les annonces, obtenez un financement, livraison à domicile disponible.</p>
+    </div>
+
+    <div class="result">
+      <span class="link">https://www.edmunds.com/</span>
+      <a href="https://www.edmunds.com/" target="_blank">Voitures neuves et d'occasion, avis et prix | Edmunds</a>
+      <p>Comparez les voitures, consultez les prix, les incitations, les stocks de concessionnaires et lisez les avis sur Edmunds.com.</p>
+    </div>
+
+    <div class="result">
+      <span class="link">https://shift.com/</span>
+      <a href="https://shift.com/" target="_blank">Shift | Achetez des voitures d’occasion en ligne | Livraison à domicile</a>
+      <p>Comparez les prix, consultez les listes de stock et obtenez des conseils sur l’achat de voitures avec Shift.</p>
+    </div>
+
+    <div class="result">
+      <span class="link">https://www.franksmotorcars.com/we-buy-cars.htm</span>
+      <a href="https://www.franksmotorcars.com/we-buy-cars.htm" target="_blank">Nous achetons votre voiture | Franks Motorcars</a>
+      <p>Nous rachetons votre voiture même si vous n'en achetez pas une chez nous. Vendez facilement et rapidement, sans les tracas de la vente privée.</p>
+    </div>
+
+    <div class="result">
+      <span class="link">https://www.truecar.com/</span>
+      <a href="https://www.truecar.com/" target="_blank">TrueCar | Voitures neuves et d'occasion à vendre | Prix & Avis</a>
+      <p>Contrôlez votre parcours d'achat avec TrueCar. Achetez, vendez et explorez les informations utiles sur les voitures.</p>
+    </div>
+
+    <div class="result">
+      <span class="link">https://www.cars.com/shopping/</span>
+      <a href="https://www.cars.com/shopping/" target="_blank">Voitures d'occasion à vendre près de chez vous</a>
+      <p>Parcourez les annonces, trouvez les meilleures offres près de chez vous et informez-vous sur le financement et les garanties sur Cars.com.</p>
+    </div>
+
+    <div class="result">
+      <span class="link">https://www.drivetime.com/</span>
+      <a href="https://www.drivetime.com/" target="_blank">DriveTime | Achetez des voitures d'occasion & obtenez un financement</a>
+      <p>Achetez parmi 8 500 véhicules et obtenez une approbation en ligne dès maintenant. Simple, rapide et sans souci.</p>
+    </div>
+  </div>
+
+</body>
+</html>
