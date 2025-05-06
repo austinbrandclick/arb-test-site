@@ -55,6 +55,17 @@
     .result .text {
       max-width: 75%;
     }
+    .headline {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .headline img.adicon {
+      height: 18px;
+    }
+    .headline img.brandicon {
+      height: 20px;
+    }
     .result .text a {
       color: #fff;
       font-size: 18px;
@@ -65,12 +76,13 @@
     .result .text .link {
       color: #4aa8ff;
       font-size: 16px;
-      margin-bottom: 0.25rem;
+      margin-top: 0.25rem;
     }
     .result .text p {
       color: #ccc;
       font-size: 16px;
       margin-top: 0.25rem;
+      margin-bottom: 0.5rem;
     }
     .shop-button {
       background: #007bff;
@@ -118,27 +130,39 @@
 
     <div class="result">
       <div class="text">
-        <div class="link">www.dell.com</div>
-        <a href="https://www.dell.com" target="_blank">Dell® Official Site - Laptops</a>
+        <div class="headline">
+          <img src="adicon.png" alt="ad" class="adicon">
+          <img src="dell.png" alt="dell" class="brandicon">
+          <a href="https://www.dell.com" target="_blank">Dell® Official Site - Laptops</a>
+        </div>
         <p>Find top rated laptops on sale. Shop XPS, Inspiron, and Alienware PCs today.</p>
+        <div class="link">www.dell.com</div>
       </div>
       <a class="shop-button" href="https://www.dell.com" target="_blank">Shop Now</a>
     </div>
 
     <div class="result">
       <div class="text">
-        <div class="link">www.apple.com</div>
-        <a href="https://www.apple.com" target="_blank">Apple® MacBook - Shop MacBook Laptops</a>
+        <div class="headline">
+          <img src="adicon.png" alt="ad" class="adicon">
+          <img src="apple.png" alt="apple" class="brandicon">
+          <a href="https://www.apple.com" target="_blank">Apple® MacBook - Shop MacBook Laptops</a>
+        </div>
         <p>Explore the powerful MacBook Pro and MacBook Air at Apple now.</p>
+        <div class="link">www.apple.com</div>
       </div>
       <a class="shop-button" href="https://www.apple.com" target="_blank">Shop Now</a>
     </div>
 
     <div class="result">
       <div class="text">
-        <div class="link">www.lenovo.com</div>
-        <a href="https://www.lenovo.com" target="_blank">Lenovo® Laptop Sale - Lenovo Laptops For Less</a>
+        <div class="headline">
+          <img src="adicon.png" alt="ad" class="adicon">
+          <img src="lenovo.png" alt="lenovo" class="brandicon">
+          <a href="https://www.lenovo.com" target="_blank">Lenovo® Laptop Sale - Lenovo Laptops For Less</a>
+        </div>
         <p>Browse the latest Lenovo laptop deals. Big savings on select models.</p>
+        <div class="link">www.lenovo.com</div>
       </div>
       <a class="shop-button" href="https://www.lenovo.com" target="_blank">Shop Now</a>
     </div>
@@ -148,17 +172,17 @@
     <div class="web-results">
       <div class="result">
         <div class="text">
-          <div class="link">www.bestbuy.com/site/computers</div>
           <a href="https://www.bestbuy.com/site/computers" target="_blank">Laptops & Notebook Computers - Best Buy</a>
           <p>Choosing the best laptop for you starts with understanding your specific needs and usage habits...</p>
+          <div class="link">www.bestbuy.com/site/computers</div>
         </div>
       </div>
 
       <div class="result">
         <div class="text">
-          <div class="link">www.costco.com/laptops.html</div>
           <a href="https://www.costco.com/laptops.html" target="_blank">Laptops | Costco - Costco Wholesale</a>
           <p>After $100 OFF MacBook Air Laptop (13-inch) - Apple M4 chip, 10-core CPU, 8-core GPU, 16GB Memory, 256GB SSD Storage.</p>
+          <div class="link">www.costco.com/laptops.html</div>
         </div>
       </div>
     </div>
