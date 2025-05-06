@@ -50,7 +50,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border: 1px solid rgba(0, 128, 255, 0.3);
+      border: 2px solid #0b84ff;
     }
     .result .text {
       max-width: 75%;
@@ -113,6 +113,20 @@
     .web-results .text a {
       font-size: 16px;
       font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .result {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .shop-button {
+        margin-top: 1rem;
+        align-self: flex-start;
+      }
+      .result .text {
+        max-width: 100%;
+      }
     }
   </style>
 </head>
