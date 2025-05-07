@@ -80,6 +80,12 @@
       justify-content: space-between;
       align-items: center;
       border: 2px solid #0b84ff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      will-change: transform;
+    }
+    .result:hover {
+      transform: scale(1.015);
+      box-shadow: 0 8px 24px rgba(0, 132, 255, 0.2);
     }
     .result .text {
       max-width: 75%;
@@ -121,6 +127,11 @@
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .shop-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(0,123,255,0.3);
     }
     .web-results-label {
       font-size: 16px;
@@ -245,7 +256,7 @@
       lines.forEach((el, i) => {
         setTimeout(() => {
           el.classList.add("visible");
-        }, i * 500); // each paragraph fades in with 500ms delay
+        }, i * 500);
       });
     };
   </script>
