@@ -40,17 +40,24 @@
       outline: none;
     }
     .ai-overview {
-      font-size: 16px;
-      background: rgba(255,255,255,0.05);
-      padding: 1rem;
+      background: rgba(255,255,255,0.03);
+      padding: 1rem 1.25rem;
       border-radius: 12px;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
       display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      align-items: flex-start;
+      gap: 0.75rem;
+      border-left: 4px solid #00bfff;
     }
     .ai-overview img {
-      height: 18px;
+      height: 24px;
+      margin-top: 2px;
+    }
+    #ai-overview-text {
+      font-size: 16px;
+      color: #ddd;
+      line-height: 1.5;
+      white-space: pre-wrap;
     }
     .sponsored-label {
       font-size: 14px;
@@ -153,8 +160,8 @@
     </div>
 
     <div class="ai-overview">
-      <img src="aiicon.png" alt="AI Icon" />
-      <div id="ai-overview-text">Loading overview...</div>
+      <img src="aiicon.png" alt="AI Icon">
+      <div id="ai-overview-text"></div>
     </div>
 
     <div class="sponsored-label">Sponsored Results for <strong>laptops</strong></div>
@@ -217,34 +224,19 @@
   </div>
 
   <script>
-    const apiKey = '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';
-    const endpoint = 'https://api.openai.com/v1/chat/completions';
+    const text = `Looking for the best laptop deals this May?\n- Dell is offering the XPS 13 Copilot+ with Snapdragon X Elite, 16GB RAM, and 512GB SSD for $960 ($300 off).\n- Apple has discounted the 13-inch M4 MacBook Air to $849 ($150 off).\n- Lenovo is running an EOFY sale with up to 42% off on select models, including the Yoga 2-in-1 and ThinkPad L14 Gen 5.\n\nHere are the top results for laptops.`;
+    let index = 0;
+    const speed = 25;
 
-    const prompt = `Write a helpful 2-3 sentence overview for someone searching for laptops. Highlight any sales, promos, or features from Dell, Apple, and Lenovo laptops. End with: "Here are the top results for laptops."`;
+    function typeWriter() {
+      if (index < text.length) {
+        document.getElementById("ai-overview-text").innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeWriter, speed);
+      }
+    }
 
-    const overviewEl = document.getElementById('ai-overview-text');
-
-    fetch(endpoint, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${apiKey}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        model: 'gpt-4',
-        messages: [{ role: 'user', content: prompt }],
-        temperature: 0.7
-      })
-    })
-    .then(response => response.json())
-    .then(data => {
-      const content = data?.choices?.[0]?.message?.content;
-      overviewEl.textContent = content || 'No overview available.';
-    })
-    .catch(err => {
-      console.error('OpenAI request failed:', err);
-      overviewEl.textContent = 'Error loading overview.';
-    });
+    window.onload = typeWriter;
   </script>
 </body>
 </html>
