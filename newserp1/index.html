@@ -53,11 +53,18 @@
       height: 24px;
       margin-top: 2px;
     }
-    #ai-overview-text {
+    #ai-overview-text p {
       font-size: 16px;
       color: #ddd;
       line-height: 1.5;
-      white-space: pre-wrap;
+      margin: 0 0 0.75rem;
+      opacity: 0;
+      transform: translateY(5px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    #ai-overview-text p.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     .sponsored-label {
       font-size: 14px;
@@ -161,7 +168,16 @@
 
     <div class="ai-overview">
       <img src="aiicon.png" alt="AI Icon">
-      <div id="ai-overview-text"></div>
+      <div>
+        <div style="font-weight: 600; color: #fff; margin-bottom: 0.5rem;">AI Overview</div>
+        <div id="ai-overview-text">
+          <p>Looking for the best laptop deals this May?</p>
+          <p>• Dell is offering the XPS 13 Copilot+ with Snapdragon X Elite, 16GB RAM, and 512GB SSD for <strong>$960</strong> <span style="color:#4aa8ff;">($300 off)</span>.</p>
+          <p>• Apple has discounted the 13-inch M4 MacBook Air to <strong>$849</strong> <span style="color:#4aa8ff;">($150 off)</span>.</p>
+          <p>• Lenovo is running an EOFY sale with up to <strong>42% off</strong> on select models, including the Yoga 2-in-1 and ThinkPad L14 Gen 5.</p>
+          <p><strong>Here are the top results for laptops.</strong></p>
+        </div>
+      </div>
     </div>
 
     <div class="sponsored-label">Sponsored Results for <strong>laptops</strong></div>
@@ -224,19 +240,14 @@
   </div>
 
   <script>
-    const text = `Looking for the best laptop deals this May?\n- Dell is offering the XPS 13 Copilot+ with Snapdragon X Elite, 16GB RAM, and 512GB SSD for $960 ($300 off).\n- Apple has discounted the 13-inch M4 MacBook Air to $849 ($150 off).\n- Lenovo is running an EOFY sale with up to 42% off on select models, including the Yoga 2-in-1 and ThinkPad L14 Gen 5.\n\nHere are the top results for laptops.`;
-    let index = 0;
-    const speed = 15;
-
-    function typeWriter() {
-      if (index < text.length) {
-        document.getElementById("ai-overview-text").innerHTML += text.charAt(index);
-        index++;
-        setTimeout(typeWriter, speed);
-      }
-    }
-
-    window.onload = typeWriter;
+    window.onload = () => {
+      const lines = document.querySelectorAll("#ai-overview-text p");
+      lines.forEach((el, i) => {
+        setTimeout(() => {
+          el.classList.add("visible");
+        }, i * 500); // each paragraph fades in with 500ms delay
+      });
+    };
   </script>
 </body>
 </html>
