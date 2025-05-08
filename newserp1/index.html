@@ -49,9 +49,13 @@
       gap: 0.75rem;
       border-left: 4px solid #00bfff;
     }
-    .ai-overview img {
-      height: 24px;
-      margin-top: 2px;
+    .ai-overview .icon-wrapper {
+      display: flex;
+      flex-direction: column;
+    }
+    .ai-overview img.light-only,
+    .headline img.light-only {
+      display: none;
     }
     #ai-overview-text p {
       font-size: 16px;
@@ -206,6 +210,14 @@
       .web-results-label {
         color: #333;
       }
+      .ai-overview img.dark-only,
+      .headline img.dark-only {
+        display: none;
+      }
+      .ai-overview img.light-only,
+      .headline img.light-only {
+        display: inline;
+      }
     }
   </style>
 </head>
@@ -217,7 +229,10 @@
     </div>
 
     <div class="ai-overview">
-      <img src="aiicon.png" alt="AI Icon">
+      <div class="icon-wrapper">
+        <img src="aiicon.png" class="dark-only" alt="AI Icon">
+        <img src="aiicon-light.png" class="light-only" alt="AI Icon Light">
+      </div>
       <div>
         <div style="font-weight: 600; color: #fff; margin-bottom: 0.5rem;">AI Overview</div>
         <div id="ai-overview-text">
@@ -247,7 +262,8 @@
     <div class="result">
       <div class="text">
         <div class="headline">
-          <img src="apple.png" alt="Apple icon">
+          <img src="apple.png" class="dark-only" alt="Apple icon">
+          <img src="apple-light.png" class="light-only" alt="Apple icon light">
           <a href="https://www.apple.com" target="_blank">Apple® MacBook - Shop MacBook Laptops</a>
         </div>
         <p>Explore the powerful MacBook Pro and MacBook Air at Apple now.</p>
