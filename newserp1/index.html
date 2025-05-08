@@ -168,6 +168,45 @@
         max-width: 100%;
       }
     }
+
+    @media (prefers-color-scheme: light) {
+      body {
+        background: linear-gradient(180deg, #f5f7fa, #eaecee);
+        color: #111;
+      }
+      .search-box {
+        background: rgba(0,0,0,0.05);
+      }
+      .search-box input {
+        color: #000;
+      }
+      .ai-overview {
+        background: rgba(0,0,0,0.04);
+        border-left-color: #007bff;
+      }
+      #ai-overview-text p {
+        color: #222;
+      }
+      .sponsored-label {
+        color: #555;
+      }
+      .result {
+        background: #ffffff;
+        border: 2px solid #007bff;
+      }
+      .result .text a {
+        color: #111;
+      }
+      .result .text p {
+        color: #333;
+      }
+      .result .text .link {
+        color: #007bff;
+      }
+      .web-results-label {
+        color: #333;
+      }
+    }
   </style>
 </head>
 <body>
