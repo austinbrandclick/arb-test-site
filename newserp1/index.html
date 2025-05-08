@@ -27,6 +27,16 @@
       padding: 0.75rem 1rem;
       margin-bottom: 2rem;
     }
+    .search-box .dark-only,
+    .ai-overview img.dark-only,
+    .headline img.dark-only {
+      display: inline;
+    }
+    .search-box .light-only,
+    .ai-overview img.light-only,
+    .headline img.light-only {
+      display: none;
+    }
     .search-box img {
       height: 24px;
       margin-right: 1rem;
@@ -58,9 +68,10 @@
       width: 24px;
       object-fit: contain;
     }
-    .ai-overview img.light-only,
-    .headline img.light-only {
-      display: none;
+    .ai-heading {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #fff;
     }
     #ai-overview-text p {
       font-size: 16px;
@@ -191,6 +202,9 @@
       .search-box input {
         color: #000;
       }
+      .ai-heading {
+        color: #111;
+      }
       .ai-overview {
         background: rgba(0,0,0,0.04);
         border-left-color: #007bff;
@@ -217,10 +231,12 @@
       .web-results-label {
         color: #333;
       }
+      .search-box .dark-only,
       .ai-overview img.dark-only,
       .headline img.dark-only {
         display: none;
       }
+      .search-box .light-only,
       .ai-overview img.light-only,
       .headline img.light-only {
         display: inline;
@@ -231,7 +247,8 @@
 <body>
   <div class="container">
     <div class="search-box">
-      <img src="bcwhite.png" alt="logo">
+      <img src="bcwhite.png" class="dark-only" alt="logo">
+      <img src="bc-light.png" class="light-only" alt="logo light">
       <input type="text" value="laptops" readonly />
     </div>
 
@@ -241,7 +258,7 @@
         <img src="aiicon-light.png" class="light-only" alt="AI Icon Light">
       </div>
       <div>
-        <div style="font-weight: 600; color: #fff; margin-bottom: 0.5rem;">AI Overview</div>
+        <div class="ai-heading">AI Overview</div>
         <div id="ai-overview-text">
           <p>Looking for the best laptop deals this May?</p>
           <p>• Dell is offering the XPS 13 Copilot+ with Snapdragon X Elite, 16GB RAM, and 512GB SSD for <strong>$960</strong> <span style="color:#4aa8ff;">($300 off)</span>.</p>
