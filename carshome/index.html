@@ -3,212 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cars and Hotties - Your Ultimate Car Guide</title>
+    <title>Cars and Hotties - Latest Car News, Reviews, and Hot Takes</title>
     <style>
-        /* Basic styles to mimic Morningstar's layout. You can expand this or link to an external CSS file. */
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-        header { background-color: #f8f8f8; padding: 10px; }
-        nav { display: flex; justify-content: space-between; }
-        .logo { font-size: 24px; font-weight: bold; }
-        .sections { display: flex; gap: 20px; }
-        .markets { background-color: #e0e0e0; padding: 20px; }
-        .portfolio { padding: 20px; }
-        .featured { padding: 20px; }
-        /* Add more styles as needed for sections like articles, etc. */
+        /* Basic styles to mimic The Drive's layout. Expand or link to external CSS as needed. */
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #fff; }
+        header { background-color: #000; color: #fff; padding: 20px; }
+        .logo { font-size: 32px; font-weight: bold; text-align: center; }
+        nav { display: flex; justify-content: center; gap: 15px; margin-top: 10px; }
+        nav a { color: #fff; text-decoration: none; font-weight: bold; }
+        .search { text-align: center; margin: 20px 0; }
+        .top-story { background-color: #f0f0f0; padding: 20px; text-align: center; }
+        .latest { padding: 20px; }
+        .feed { padding: 20px; background-color: #e8e8e8; }
+        .car-reviews { padding: 20px; }
+        .about { padding: 20px; text-align: center; }
+        .team { display: flex; flex-wrap: wrap; justify-content: center; }
+        .team-member { margin: 10px; text-align: center; }
+        .youtube { padding: 20px; background-color: #f0f0f0; }
+        .newsletter { padding: 20px; text-align: center; }
+        footer { background-color: #000; color: #fff; padding: 20px; text-align: center; }
+        footer a { color: #fff; margin: 0 5px; }
+        /* Add more styles for images, articles, etc. */
     </style>
 </head>
 <body>
 
-    <!-- Advertisement Placeholder -->
-    <div class="advertisement">Advertisement</div>
-
-    <!-- Header and Navigation -->
+    <!-- Header -->
     <header>
         <div class="logo">Cars and Hotties</div>
         <nav>
-            <div class="tools">
-                <a href="#">Portfolio</a>
-                <a href="#">Tools</a>
-            </div>
-            <div class="sections">
-                <a href="/sedans.html">Sedans</a>
-                <a href="/coupes.html">Coupes</a>
-                <a href="/suv.html">SUVs</a>
-                <a href="/trucks.html">Trucks</a>
-                <a href="/electric.html">Electric</a>
-                <a href="/hybrid.html">Hybrid</a>
-            </div>
-            <div class="investing-ideas">
-                <a href="#">Investing Ideas</a>
-            </div>
+            <a href="/sedans.html">Sedans</a>
+            <a href="/coupes.html">Coupes</a>
+            <a href="/suv.html">SUVs</a>
+            <a href="/trucks.html">Trucks</a>
+            <a href="/electric.html">Electric</a>
+            <a href="/hybrid.html">Hybrid</a>
         </nav>
     </header>
 
-    <!-- Main Navigation Bar -->
-    <nav class="main-nav">
-        <a href="/">Home</a>
-        <a href="#">Tools</a>
-        <a href="#">Portfolio</a>
-        <a href="#">Watchlists</a>
-        <a href="#">Screener</a>
-        <a href="#">Chart</a>
-        <a href="#">Rating Changes</a>
-    </nav>
+    <!-- Search Bar -->
+    <div class="search">
+        <form>
+            <input type="text" placeholder="Search for:">
+            <button type="submit">Search</button>
+        </form>
+    </div>
 
-    <!-- Market Data Section (Adapted to Car Market) -->
-    <section class="markets">
-        <h2>Car Market Overview</h2>
-        <div class="indices">
-            <div>Top Sedans Index: 4,500 <span class="change">+50 (1.12%)</span></div>
-            <div>Top Coupes Index: 3,200 <span class="change">-20 (0.62%)</span></div>
-            <div>Top SUVs Index: 5,800 <span class="change">+100 (1.75%)</span></div>
-            <div>Top Trucks Index: 6,100 <span class="change">+30 (0.49%)</span></div>
-            <div>Electric Vehicles Index: 7,200 <span class="change">+200 (2.86%)</span></div>
-            <div>Hybrid Models Index: 4,900 <span class="change">+80 (1.66%)</span></div>
-        </div>
-        <div class="market-barometer">
-            <h3>Car Market Barometer</h3>
-            <!-- Style box or chart placeholder -->
-            <table>
-                <tr><td>Value</td><td>Core</td><td>Growth</td></tr>
-                <tr><td>Large</td><td>+0.14</td><td>-0.09</td><td>+0.09</td></tr>
-                <tr><td>Mid</td><td>-0.04</td><td>-0.09</td><td>+0.74</td></tr>
-                <tr><td>Small</td><td>+0.02</td><td>+0.01</td><td>+0.70</td></tr>
-            </table>
-        </div>
-        <div class="market-movers">
-            <h3>Market Movers</h3>
-            <ul>
-                <li>Gainers: Tesla Model 3 +$5,000 (10%)</li>
-                <li>Losers: Ford F-150 -$2,000 (5%)</li>
-                <li>Actives: Toyota Camry</li>
-            </ul>
-        </div>
+    <!-- Top Story -->
+    <section class="top-story">
+        <h2>Top Story</h2>
+        <h3>2025 Hyundai Elantra N AT Review: Posers Need Not Apply</h3>
+        <p>The Hyundai Elantra N doesn’t try to do it all, and that’s what makes it special for truly hardcore drivers—even with an automatic.</p>
+        <p>By Adam Ismail | Posted 5 Hours Ago</p>
     </section>
 
-    <!-- Portfolio Section (Adapted) -->
-    <section class="portfolio">
-        <h2>Portfolio</h2>
-        <p>Know what you own—and what puts you at risk. Understand your car collection from all angles and get personalized notifications.</p>
-        <a href="#">Free 7-Day Trial</a>
-    </section>
-
-    <!-- Featured Articles -->
-    <section class="featured">
-        <h2>Featured</h2>
+    <!-- The Latest -->
+    <section class="latest">
+        <h2>The Latest</h2>
         <article>
-            <h3>The Biggest Risk Car Buyers Face Today</h3>
-            <p>Plus, whether it’s too late to invest in electric vehicles, who needs hybrids, and what role trucks should play in your garage.</p>
+            <h3>A Movie Car Museum Is Closing Down and Selling Prop Vehicles and Replicas</h3>
+            <p>By Andrew P. Collins | Posted 28 Minutes Ago</p>
         </article>
-        <!-- Add more articles -->
-    </section>
-
-    <!-- Recommended Topics -->
-    <section class="recommended">
-        <h2>Recommended</h2>
-        <ul>
-            <li>Market Crash Lessons for Cars</li>
-            <li>10 Best Sedans</li>
-            <li>Portfolio Basics for Vehicles</li>
-            <!-- More items -->
-        </ul>
-    </section>
-
-    <!-- Company Earnings (Adapted to Car Reviews or News) -->
-    <section class="company-earnings">
-        <h2>Car Model Reviews</h2>
         <article>
-            <h3>5 Cars with the Largest Price Cuts After Q2 Sales</h3>
+            <h3>Gordon Murray Gave the World a True F1 Successor With the S1 LM</h3>
+            <p>By Joel Feder | Posted 32 Minutes Ago</p>
         </article>
-        <!-- More -->
+        <article>
+            <h3>This Is Our First Glimpse of the 2026 Nissan Pathfinder</h3>
+            <p>By Byron Hurd | Posted 3 Hours Ago</p>
+        </article>
     </section>
 
-    <!-- Sections for Categories -->
-    <section class="funds"> <!-- Adapted to Sedans -->
-        <h2>Sedans</h2>
-        <!-- Articles -->
+    <!-- The Feed -->
+    <section class="feed">
+        <h2>The Feed</h2>
+        <article>
+            <h3>2026 Can-Am Defender Further Proves That UTVs Are Just Cars At This Point</h3>
+            <p>There was a time when utility side-by-sides were simple, but as you can tell by the touchscreens and $38,000 sticker prices these days, that’s no longer the case.</p>
+            <p>By Caleb Jacobs | Posted 3 Hours Ago</p>
+        </article>
+        <article>
+            <h3>What’s Up With the Weird Exhaust on Pebble Beach’s Best of Show Car?</h3>
+            <p>The 2025 Pebble Beach concours show winner was a 1924 Hispano-Suiza H6C Nieuport-Astra Torpedo with this funky exhaust. I found out why it looks the way it does.</p>
+            <p>By Andrew P. Collins | Posted 4 Hours Ago</p>
+        </article>
+        <!-- Add more articles as needed -->
+        <a href="#">More Stories</a>
     </section>
 
-    <section class="stocks"> <!-- Adapted to Coupes -->
-        <h2>Coupes</h2>
-        <!-- Articles -->
+    <!-- Car Reviews -->
+    <section class="car-reviews">
+        <h2>Car Reviews</h2>
+        <article>
+            <h3>2025 Hyundai Elantra N AT Review: Posers Need Not Apply</h3>
+            <p>By Adam Ismail | Posted 5 Hours Ago</p>
+        </article>
+        <article>
+            <h3>I Drove a 2025 Honda Civic Hybrid for Two Months and Got an Easy 51 MPG</h3>
+            <p>By Jerry Perez | Posted on Aug 14, 2025</p>
+        </article>
+        <article>
+            <h3>2025 Lamborghini Revuelto Review: Great Bulls of Fire</h3>
+            <p>By Chris Tsui | Posted on Aug 12, 2025</p>
+        </article>
+        <article>
+            <h3>2025 Hyundai Santa Fe Hybrid Review: The SUV Your Family Needs</h3>
+            <p>By Joel Feder | Posted on Aug 8, 2025</p>
+        </article>
+        <a href="#">SEE MORE</a>
     </section>
 
-    <section class="bonds"> <!-- Adapted to SUVs -->
-        <h2>SUVs</h2>
-        <!-- Articles -->
+    <!-- About Section -->
+    <section class="about">
+        <h2>About Cars and Hotties</h2>
+        <p>Reporting on the auto industry and car culture with breaking news, model reveals, exclusive scoops, new car reviews, original features, enthusiast commentary, and more.</p>
+        <p>We cover the latest car news, tech trends, rumors, controversies, and cultural moments with high-quality original reporting every day. Our comprehensive car reviews of the most important new models provide real-world impressions that go beyond the marketing materials to give you real advice.</p>
+        <a href="#">About Cars and Hotties</a>
     </section>
 
-    <!-- More Sections -->
-    <section class="more-sections">
-        <h2>More Sections</h2>
-        <ul>
-            <li>Trucks</li>
-            <li>Electric</li>
-            <li>Hybrid</li>
-            <!-- Etc. -->
-        </ul>
+    <!-- Team -->
+    <section class="team">
+        <h2>Our Team</h2>
+        <div class="team-member">
+            <p>Kyle Cheromcha</p>
+            <p>Editor-in-Chief</p>
+        </div>
+        <div class="team-member">
+            <p>Joel Feder</p>
+            <p>Director of Content and Product</p>
+        </div>
+        <!-- Add more team members -->
+    </section>
+
+    <!-- YouTube Section -->
+    <section class="youtube">
+        <h2>Cars and Hotties on YouTube</h2>
+        <article>
+            <h3>Why the Mercedes-Benz G-Wagon is a Secret Tax Write-Off</h3>
+        </article>
+        <article>
+            <h3>Why America’s Street Lights Are Turning Purple</h3>
+        </article>
+        <article>
+            <h3>We’re Putting a Honda Engine in This Porsche with Big Dreams and a Small Budget</h3>
+        </article>
+        <p>The Chronicle of Car Culture</p>
+        <p>The car culture channel that started it all is back. New videos every week.</p>
+        <a href="#">Visit The Channel</a>
     </section>
 
     <!-- Newsletter Signup -->
     <section class="newsletter">
-        <h2>Get the best of Cars and Hotties straight to your inbox</h2>
-        <p>Start your day with the latest car news curated by our editors.</p>
-        <button>Subscribe</button>
+        <h2>Sign up for Cars and Hotties Daily</h2>
+        <p>Get the latest car news, reviews, and features.</p>
+        <form>
+            <input type="email" placeholder="Email address">
+            <button type="submit">Sign Up</button>
+        </form>
+        <p>By signing up you agree to our Terms of Service and Privacy Policy.</p>
     </section>
 
-    <!-- Market Insights (Adapted) -->
-    <section class="market-insights">
-        <h2>Car Market Insights</h2>
-        <!-- Articles -->
-    </section>
-
-    <!-- Market News -->
-    <section class="market-news">
-        <h2>Car Market News</h2>
-        <!-- News items -->
-    </section>
-
-    <!-- Calendar -->
-    <section class="market-calendar">
-        <h2>Car Release Calendar</h2>
-        <!-- Events -->
-    </section>
-
-    <!-- Company Reports (Adapted to Car Reports) -->
-    <section class="company-reports">
-        <h2>Car Model Reports</h2>
-        <!-- Reports -->
-    </section>
-
-    <!-- Videos -->
-    <section class="videos">
-        <h2>Videos</h2>
-        <!-- Video placeholders -->
-    </section>
-
-    <!-- Podcasts -->
-    <section class="podcasts">
-        <h2>Podcasts</h2>
-        <!-- Podcast links -->
-    </section>
-
-    <!-- Footer Sections -->
+    <!-- Footer -->
     <footer>
-        <div class="sponsor-center">
-            <!-- Sponsors -->
+        <nav>
+            <a href="/sedans.html">Sedans</a>
+            <a href="/coupes.html">Coupes</a>
+            <a href="/suv.html">SUVs</a>
+            <a href="/trucks.html">Trucks</a>
+            <a href="/electric.html">Electric</a>
+            <a href="/hybrid.html">Hybrid</a>
+            <a href="#">Features</a>
+            <a href="#">More</a>
+            <a href="#">About Cars and Hotties</a>
+            <a href="#">Buy A Car</a>
+            <a href="#">Merch</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Sitemap</a>
+        </nav>
+        <div class="social">
+            <h3>FOLLOW US</h3>
+            <!-- Social links placeholders -->
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">Instagram</a>
+            <a href="#">YouTube</a>
         </div>
-        <div class="transparency">
-            <h2>Transparency is our policy.</h2>
-            <!-- Text -->
-        </div>
-        <div class="site-index">
-            <h2>Site Index</h2>
-            <!-- Links -->
-        </div>
-        <div class="copyright">
-            © Copyright 2025 Cars and Hotties. All rights reserved.
-        </div>
+        <p>© 2025 Cars and Hotties. All Rights Reserved.</p>
+        <p>Articles may contain affiliate links which enable us to share in the revenue of any purchases made.</p>
+        <p>Some benefits of our Car Shopping program may not be available in your area. Please see terms for details.</p>
     </footer>
 
 </body>
