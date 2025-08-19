@@ -4,17 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cars and Hotties - Latest Car News, Reviews, and Hot Takes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Basic styles to mimic layout. Expand or link to external CSS as needed. */
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #fff; }
-        header { background-color: red; color: #fff; padding: 10px; } /* Reduced padding */
-        .logo { text-align: center; }
-        .logo img { height: 200px; width: auto; } /* Increased height for larger logo */
-        nav { display: flex; justify-content: center; gap: 15px; margin-top: 5px; } /* Reduced margin */
-        nav a { color: #fff; text-decoration: none; font-weight: bold; }
-        .search { text-align: center; margin: 20px 0; }
-        .top-story { background-color: #f0f0f0; padding: 20px; text-align: center; }
-        .latest { padding: 20px; }
+        /* Styles to mimic layout */
+        body { font-family: 'Oswald', sans-serif; margin: 0; padding: 0; background-color: #fff; }
+        header { background-color: red; color: #fff; padding: 10px; display: flex; justify-content: space-between; align-items: center; }
+        .logo img { height: 50px; width: auto; } /* Adjust based on actual SVG size */
+        nav { display: flex; gap: 10px; align-items: center; }
+        nav a { color: #fff; text-decoration: none; font-weight: bold; text-transform: uppercase; }
+        nav .separator { margin: 0 5px; }
+        .icons { display: flex; gap: 10px; }
+        .icons a { color: #fff; text-decoration: none; }
+        .search { margin: 20px 0; text-align: center; }
+        .main-content { display: flex; max-width: 1200px; margin: 0 auto; }
+        .top-story-section { flex: 7; position: relative; }
+        .top-story-label { position: absolute; top: 20px; left: -20px; background-color: orange; color: white; padding: 5px 10px; transform: rotate(-90deg); font-size: 14px; text-transform: uppercase; }
+        .top-story img { width: 100%; height: auto; }
+        .top-story h1 { font-size: 32px; margin: 10px 0; }
+        .top-story p { font-size: 18px; }
+        .latest { flex: 3; padding-left: 20px; }
+        .latest article { margin-bottom: 20px; }
+        .latest img { width: 100%; height: auto; }
         .feed { padding: 20px; background-color: #e8e8e8; }
         .car-reviews { padding: 20px; }
         .about { padding: 20px; text-align: center; }
@@ -24,7 +34,6 @@
         .newsletter { padding: 20px; text-align: center; }
         footer { background-color: #000; color: #fff; padding: 20px; text-align: center; }
         footer a { color: #fff; margin: 0 5px; }
-        /* Add more styles for images, articles, etc. */
     </style>
 </head>
 <body>
@@ -33,47 +42,54 @@
     <header>
         <div class="logo"><img src="Cars and Hotties.svg" alt="Cars and Hotties Logo"></div>
         <nav>
-            <a href="/sedans.html">Sedans</a>
-            <a href="/coupes.html">Coupes</a>
-            <a href="/suv.html">SUVs</a>
-            <a href="/trucks.html">Trucks</a>
-            <a href="/electric.html">Electric</a>
+            <a href="#">Latest</a><span class="separator">/</span>
+            <a href="/sedans.html">Sedans</a><span class="separator">/</span>
+            <a href="/coupes.html">Coupes</a><span class="separator">/</span>
+            <a href="/suv.html">SUVs</a><span class="separator">/</span>
+            <a href="/trucks.html">Trucks</a><span class="separator">/</span>
+            <a href="/electric.html">Electric</a><span class="separator">/</span>
             <a href="/hybrid.html">Hybrid</a>
+            <div class="icons">
+                <a href="#">&#128269; <!-- Search icon --></a>
+                <a href="#">&#128309; <!-- Facebook icon placeholder --></a>
+                <a href="#">&#128247; <!-- Instagram icon placeholder --></a>
+            </div>
         </nav>
     </header>
 
-    <!-- Search Bar -->
-    <div class="search">
-        <form>
-            <input type="text" placeholder="Search for:">
-            <button type="submit">Search</button>
-        </form>
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Story -->
+        <section class="top-story-section">
+            <div class="top-story-label">Top Story</div>
+            <div class="top-story">
+                <img src="top-story-image.jpg" alt="Top Story Image">
+                <h1>2025 Toyota Camry Review: Style Meets Performance</h1>
+                <p>The Toyota Camry combines sleek design with powerful efficiency, making it a top choice for daily drivers who want both comfort and excitement.</p>
+                <p>By Alex Rivera | Posted 5 Hours Ago</p>
+            </div>
+        </section>
+
+        <!-- The Latest -->
+        <aside class="latest">
+            <h2>The Latest</h2>
+            <article>
+                <img src="latest1.jpg" alt="Latest 1 Image">
+                <h3>Vintage Car Auction Features Rare Classics and Modern Gems</h3>
+                <p>By Mia Lopez | Posted 28 Minutes Ago</p>
+            </article>
+            <article>
+                <img src="latest2.jpg" alt="Latest 2 Image">
+                <h3>Designer Unveils Next-Gen Supercar Inspired by Racing Legends</h3>
+                <p>By Jordan Hayes | Posted 32 Minutes Ago</p>
+            </article>
+            <article>
+                <img src="latest3.jpg" alt="Latest 3 Image">
+                <h3>Sneak Peek at the 2026 Ford Explorer Redesign</h3>
+                <p>By Taylor Brooks | Posted 3 Hours Ago</p>
+            </article>
+        </aside>
     </div>
-
-    <!-- Top Story -->
-    <section class="top-story">
-        <h2>Top Story</h2>
-        <h3>2025 Toyota Camry Review: Style Meets Performance</h3>
-        <p>The Toyota Camry combines sleek design with powerful efficiency, making it a top choice for daily drivers who want both comfort and excitement.</p>
-        <p>By Alex Rivera | Posted 5 Hours Ago</p>
-    </section>
-
-    <!-- The Latest -->
-    <section class="latest">
-        <h2>The Latest</h2>
-        <article>
-            <h3>Vintage Car Auction Features Rare Classics and Modern Gems</h3>
-            <p>By Mia Lopez | Posted 28 Minutes Ago</p>
-        </article>
-        <article>
-            <h3>Designer Unveils Next-Gen Supercar Inspired by Racing Legends</h3>
-            <p>By Jordan Hayes | Posted 32 Minutes Ago</p>
-        </article>
-        <article>
-            <h3>Sneak Peek at the 2026 Ford Explorer Redesign</h3>
-            <p>By Taylor Brooks | Posted 3 Hours Ago</p>
-        </article>
-    </section>
 
     <!-- The Feed -->
     <section class="feed">
@@ -192,7 +208,6 @@
         </div>
         <p>© 2025 Cars and Hotties. All Rights Reserved.</p>
         <p>Articles may contain affiliate links which enable us to share in the revenue of any purchases made.</p>
-        <p>Some benefits of our Car Shopping program may not be available in your area. Please see terms for details.</p>
     </footer>
 
 </body>
